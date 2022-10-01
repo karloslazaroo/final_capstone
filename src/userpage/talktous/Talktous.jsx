@@ -20,7 +20,11 @@ function App() {
 
   return (
     <div className="body_talktous">
-
+      <div className="talktous_user">
+            <h2><span>Talk to Us!</span></h2>
+            <div className="divider"></div>
+            </div>
+            
     <div class="container">
     <div class="contact-box">
         <div class="left"></div>

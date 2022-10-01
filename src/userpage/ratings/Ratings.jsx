@@ -39,6 +39,10 @@ function App() {
   }
   return (
     <div>
+       <div className="ratings_user">
+            <h2><span>Review Us!</span></h2>
+            <div className="divider"></div>
+            </div>
         
    <div className="button">
       <a href='#'onClick={toggleModal}>You can add yours now!</a>

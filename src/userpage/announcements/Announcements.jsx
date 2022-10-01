@@ -17,10 +17,10 @@ function Announce() {
   return (
     
     <div className='announcement_body'>
-       <div className="announcement">
+       <div className="announcement_user">
             <h2><span>Announcements</span></h2>
             </div>
-        <div className='divider'></div>
+      <div className="divider"></div>
 
         {announceList.map((val, key) => {
               return (

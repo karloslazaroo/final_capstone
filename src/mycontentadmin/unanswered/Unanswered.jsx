@@ -12,6 +12,18 @@ function App () {
       });
     }, [talkList]);
 
+
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+      setModal(!modal);
+    };
+  
+    if(modal) {
+      document.body.classList.add('active-modal')
+    } else {
+      document.body.classList.remove('active-modal')
+    }
   return (
     
     <div className="body_Questions">
@@ -25,12 +37,14 @@ function App () {
             <div class="box_questions_contentadmin">
             <i class="fas fa-quote-left quote"></i>
       <p>{val.message}</p>
+
+      
       <div class="content_questions">
         <div class="info_questions">
           <div class="name">{val.name}</div>
           <div class="job">Designer | Developer</div>
           <div className="button_questions">
-      <a href='#'>Answer now!</a>
+      <a href='#' onClick={toggleModal}>Answer now!</a>
       </div>
         </div>
         <div class="image">
@@ -38,12 +52,32 @@ function App () {
         </div>
       </div>
     </div>
-
+    
           </div>
           );
         })}
 
   </div>
+  {modal && (
+        <div className="modal">
+          <div className="modal-content">
+          <div className="announcement">
+            <h2><span>Question</span></h2>
+            </div>
+            <label>Question: </label>  
+            <input className="name_ratings_user" type="text" placeholder="Type your title..." onChange={(event) => {setTitle(event.target.value);}}
+            />
+             <label>Answer: </label> 
+            <textarea className="message_user"  placeholder="Write something.."  onChange={(event) => {
+                setBody(event.target.value);
+            }}></textarea>
+            <div className="buttons_reviews_user">
+      <a href='#' >Answer</a>
+      <a href='#'onClick={toggleModal} >Close</a>
+      </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -1,11 +1,17 @@
 
 
 .announcement_body{
-    margin-top: 2%;
+    
     margin-left: 15%;
     margin-bottom:20%;
     
     
+}
+
+.announcement_user {
+  color: #f7ce05;
+    font-size: 4em;
+    font-weight: 900px;
 }
 
 .content {

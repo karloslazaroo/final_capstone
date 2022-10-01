@@ -49,10 +49,10 @@ function App() {
 
   return (
     <div className='announcement_body'>
-       <div className="announcement">
-          <h2><span>Announcements</span></h2>
-        </div>
-        <div className='divider'></div>
+       <div className="textBox">
+      <h2>Announcements<br></br></h2>
+      </div>
+       
           
         
         <div className="button_add_content">
@@ -77,9 +77,9 @@ function App() {
                   setNewTitle(event.target.value);
                 }}
               />
-              <div className="button_announcement_user">
-                <button onClick={() => updateTitle(val._id)}> Update </button>
-                <button onClick={() => deleteAnnounce(val._id)}> Delete </button>
+              <div className="button_announcement_content">
+                <a onClick={() => updateTitle(val._id)}> Update </a>
+                <a onClick={() => deleteAnnounce(val._id)}> Delete </a>
               </div>
               </div>
               <div class="image">
