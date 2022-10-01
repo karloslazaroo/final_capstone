@@ -117,12 +117,12 @@ function App() {
             type="text"
             placeholder="Type your title..." 
             onChange={(event) => {
-                setName(event.target.value);
+              setTitle(event.target.value);
             }}
             />
              <label>Body: </label> 
             <textarea className="message_user"  placeholder="Write something.."  onChange={(event) => {
-                setMessage(event.target.value);
+                setBody(event.target.value);
             }}></textarea>
             <div className="buttons_reviews_user">
       <a href='#'onClick={addToList} >Submit</a>
