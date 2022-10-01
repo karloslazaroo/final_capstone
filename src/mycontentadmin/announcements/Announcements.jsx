@@ -53,21 +53,8 @@ function App() {
           <h2><span>Announcements</span></h2>
         </div>
         <div className='divider'></div>
-          <label>Title: </label>  
-          <input 
-            type="text" 
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-          />
-          <label>Body: </label>
-          <input 
-          type="text"
-          onChange={(event) => {
-            setBody(event.target.value);
-          }}
-          />
-          <button onClick={addToList}>Submit</button>
+          
+        
         <div className="button_add_content">
           <a href='#' onClick={toggleModal}>New Announcements!</a>
         </div>
