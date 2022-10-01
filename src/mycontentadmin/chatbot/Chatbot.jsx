@@ -4,6 +4,9 @@ import './chatbot.css'
 const Chatbot = () => {
   return (
     <div className='chatbot_body_content'>
+       <div className="textBox">
+      <h2>Chatbots!<br></br></h2>
+      </div>
       <div className="container_chatbot">
         <div className="create_intents">
         CREATE INTENTS<br></br>
