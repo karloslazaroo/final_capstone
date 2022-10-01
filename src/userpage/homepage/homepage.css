@@ -1,0 +1,65 @@
+
+.body_homepage {
+    margin-left: 15%;
+    margin-bottom: 5%;   
+}
+
+.content {
+    position: relative;
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.textBox_user {
+    position: relative;
+    max-width: 600px;
+
+}
+
+.textBox_user h2 {
+    color: #333;
+    font-size: 3em;
+    line-height: 1.4em;
+    font-weight: 500px;
+}
+
+.textBox_user span {
+    color: #f7ce05;
+    font-size: 1.2em;
+    font-weight: 900px;
+}
+
+.textBox_user p {
+    color: rgb(187, 182, 182);
+}
+
+.textBox_user a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: #f7ce05;
+    color: rgb(0, 0, 0);
+    border-radius: 40px;
+    font-weight: 500px;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.imgBox {
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10%;
+    margin-top: 50px;
+}
+.school {
+    max-width: 480px;
+    
+    
+}
+
+
+

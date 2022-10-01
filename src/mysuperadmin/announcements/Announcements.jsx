@@ -1,0 +1,99 @@
+import React, { useState, useEffect } from "react";
+import Axios from 'axios';
+import './announcements.css';
+import Profile from '../../assets/profile1.jpg';
+
+
+function App() {
+  const [title, setTitle] = useState('');
+    const [body, setBody] = useState(''); //0 pag integer/number
+    const[newTitle, setNewTitle] = useState('');
+    const [announceList, setAnnounceList] = useState([]);
+
+    useEffect(() => {
+      Axios.get('http://localhost:3001/read').then((response) => {
+        setAnnounceList(response.data);
+      });
+    }, [announceList]);
+
+    const addToList = () => {
+      Axios.post("http://localhost:3001/insert", {
+        title: title,
+        body: body,
+      });
+    };
+
+    const updateTitle = (id) => {
+      Axios.put("http://localhost:3001/update", {
+        id: id, 
+        newTitle: newTitle,
+      });
+    };
+
+    const deleteAnnounce = (id) => {
+      Axios.delete(`http://localhost:3001/delete/${id}`)
+    };
+
+  return (
+    
+    <div className='announcement_body'>
+       <div className="announcement">
+            <h2><span>Announcements</span></h2>
+            </div>
+        <div className='divider'></div>
+            <label>Title: </label>  
+            <input 
+            type="text" 
+            onChange={(event) => {
+                setTitle(event.target.value);
+            }}
+            />
+            <label>Body: </label>
+            <input 
+            type="text"
+            onChange={(event) => {
+                setBody(event.target.value);
+            }}
+            />
+            <button onClick={addToList}>Submit</button>
+        <div className="button_add_content">
+      <a href='#'>New Announcements!</a>
+      </div>
+
+            {announceList.map((val, key) => {
+              return (
+                <div key={key}>
+                  <div class="box_questions_superadmin">
+                  <i class="fas fa-quote-left quote"></i>
+                  <h1> {val.title} </h1>
+                  <p>
+                    {val.body}
+                  </p>
+                  <div class="content_questions">
+                    <div class="info_questions">
+                      <div class="name">Administrator</div>
+                      <div class="job">College of Information and Computing Sciences</div>
+                      <input 
+                    type="text" placeholder="New Title..." 
+                    onChange={(event) => {
+                      setNewTitle(event.target.value);
+                    }}
+                  />
+                      <div className="button_announcement_user">
+                        <button onClick={() => updateTitle(val._id)}> Update </button>
+                        <button onClick={() => deleteAnnounce(val._id)}> Delete </button>
+                      </div>
+                    </div>
+                    <div class="image">
+                      <img src={Profile} alt=""/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              );
+            })}
+      </div>
+  )
+}
+
+export default App;

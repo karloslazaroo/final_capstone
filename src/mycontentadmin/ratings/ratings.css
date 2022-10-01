@@ -1,0 +1,102 @@
+.ratings_content {
+  margin-left: 15%;
+  
+}
+
+
+
+
+::selection{
+background: rgba(23,162,184,0.3);
+}
+.wrapper_ratings_content{
+max-width: 1200px;
+margin: auto;
+padding: 0 20px;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+margin-top: 2%;
+}
+.box_ratings_content{
+background: #fff;
+width: 350px;
+
+padding: 25px;
+border-radius: 3px;
+box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+margin-top: 2%;
+margin-bottom: 5%;
+
+}
+.box_ratings_content i.quote{
+font-size: 20px;
+color: #f7ce05;
+}
+
+.box_ratings_content i.thumbsup{
+  font-size: 20px;
+  color: #000000;
+  float: right;
+  
+}
+
+.box_ratings_content i.thumbsdown{
+  font-size: 20px;
+  color: #000000;
+  float: right;
+  margin-left: 5px;
+}
+
+
+.content_ratings_content{
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+padding-top: 10px;
+}
+.info .name{
+font-weight: 600;
+font-size: 17px;
+}
+.box_ratings_content .info .job{
+font-size: 16px;
+font-weight: 500;
+color: #f7ce05;
+}
+.box .info .stars{
+margin-top: 2px;
+}
+.box .info .stars i{
+color: #f7ce05;
+}
+.image{
+height: 75px;
+width: 75px;
+padding: 3px;
+background: #f7ce05;
+border-radius: 50%;
+}
+.image img{
+height: 100%;
+width: 100%;
+object-fit: cover;
+border-radius: 50%;
+border: 2px solid #fff;
+}
+.box_ratings_content:hover .content_ratings_content .image img{
+border-color: #fff;
+}
+@media (max-width: 1045px) {
+.wrapper .box{
+  width: calc(50% - 10px);
+  margin: 10px 0;
+}
+}
+@media (max-width: 702px) {
+.wrapper .box{
+  width: 100%;
+}
+}

@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
 
-function App() {
+
+import {Footer, Header} from './components';
+import {Homepage_User, TalkToUs_User, Announcements_User, Ratings_User, Sidebar_User} from './userpage';
+
+function App  ()  {
+  let User
+  switch (window.location.pathname) {
+    case "/":
+      User = <Homepage_User />
+      break;
+    case "/Talktous_User":
+      User = <TalkToUs_User/>
+      break;
+    case "/Announcements_User":
+      User = <Announcements_User/>
+      break
+    case "/Ratings_User":
+      User = <Ratings_User/>
+      break
+   
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div className='User'>
+      <Header/>
+      <Sidebar_User/>
+      {User} 
+      <Footer/>
+     </div>
+  )
 }
 
-export default App;
+export default App
+
+
+
+

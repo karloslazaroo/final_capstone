@@ -1,0 +1,140 @@
+
+
+.announcement_body{
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-bottom:20%;
+    
+    
+}
+
+.content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.button_announcement_user button {
+    display: inline-block;
+      margin-top: 8%;
+      padding: 8px 10px;
+      background: #f7ce05;
+      color: rgb(0, 0, 0);
+      border-radius: 0px;
+      font-weight: 500px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+      margin-left: 10px;
+      
+}
+
+.button_add_content a {
+    display: inline-block;
+    margin-top: 3%;
+    padding: 8px 10px;
+    background: #f7ce05;
+    color: rgb(0, 0, 0);
+    border-radius: 0px;
+    font-weight: 500px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+    margin-left: 10px;
+    
+      
+      
+  }
+
+
+.textBox {
+    position: relative;
+    max-width: 600px;
+
+}
+
+.textBox h2 {
+    color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500px;
+}
+
+.wrapper_questions{
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2%;
+  }
+  .box_questions_superadmin{
+    background: #fff;
+    width: 1500px;
+    padding: 25px;
+    border-radius: 3px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+    margin-top: 2%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    
+  }
+  .box_questions_admin i.quote{
+    font-size: 20px;
+    color: #f7ce05;
+  }
+  .content_questions{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+ .name{
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .job{
+    font-size: 16px;
+    font-weight: 500;
+    color: #f7ce05;
+    font-style: italic;
+  }
+  .box_questions_admin .info .stars{
+    margin-top: 2px;
+  }
+  .box_questions_admin .info .stars i{
+    color: #f7ce05;
+  }
+  .box_questions_admin .content_questions .image{
+    height: 75px;
+    width: 75px;
+    padding: 3px;
+    background: #f7ce05;
+    border-radius: 50%;
+  }
+  .content_questions .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  .box_questions_admin:hover .content_questions .image img{
+    border-color: #fff;
+  }
+  @media (max-width: 1045px) {
+    .wrapper .box{
+      width: calc(50% - 10px);
+      margin: 10px 0;
+    }
+  }
+  @media (max-width: 702px) {
+    .wrapper .box{
+      width: 100%;
+    }
+  }

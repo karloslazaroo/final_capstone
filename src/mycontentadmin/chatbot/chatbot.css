@@ -1,0 +1,16 @@
+.chatbot_body_content {
+    margin-left: 15%;
+}
+
+.container_chatbot {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.container_chatbot div {
+    margin: 20px;
+    align-items: center;
+    width: 100%;
+    background-color: azure;
+}
