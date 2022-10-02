@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './announcements.css';
 import Profile from '../../assets/profile1.jpg';
-
+import Swal from 'sweetalert2';
 
 function App() {
   const [title, setTitle] = useState('');
@@ -17,6 +17,13 @@ function App() {
     }, [announceList]);
 
     const addToList = () => {
+      Swal.fire(
+        'Thank you!',
+        'Your Announcement has been posted!',
+        'success'
+      )
+
+
       Axios.post("http://localhost:3001/insert", {
         title: title,
         body: body,
@@ -52,9 +59,6 @@ function App() {
        <div className="textBox">
       <h2>Announcements<br></br></h2>
       </div>
-       
-          
-        
         <div className="button_add_content">
           <a href='#' onClick={toggleModal}>New Announcements!</a>
         </div>
@@ -78,8 +82,8 @@ function App() {
                 }}
               />
               <div className="button_announcement_content">
-                <a onClick={() => updateTitle(val._id)}> Update </a>
-                <a onClick={() => deleteAnnounce(val._id)}> Delete </a>
+                <a href="#" onClick={() => updateTitle(val._id)}> Update </a>
+                <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
               </div>
               </div>
               <div class="image">
