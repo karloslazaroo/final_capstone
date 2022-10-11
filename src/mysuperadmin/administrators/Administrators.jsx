@@ -1,13 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import Axios from 'axios';
 import './administrators.css'
-const Administrators = () => {
+
+function App() {
+  const [email, setEmail] = useState('');
+  const [office, setOffice] = useState(''); //0 pag integer/number
+  const [adminList, setAdminList] = useState([]);
+
+  useEffect(() => {
+    Axios.get('http://localhost:3001/readAdmin').then((response) => {
+      setAdminList(response.data);
+    });
+  }, [adminList]);
+
+  const addToList = () => {
+    Axios.post("http://localhost:3001/insertAdmin", {
+      email: email,
+      office: office,
+    });
+  };
+
+  const deleteAnnounce = (id) => {
+    Axios.delete(`http://localhost:3001/deleteAdmin/${id}`)
+  };
+
   return (
     <div className='body_administrator'>
           <div className='parent_div'>
             <div className='textBox_administrators'>
               <h2>Administrators</h2>
+              <label>Email: </label>
+            <input 
+            type="text" 
+            onChange={(event) => {
+                setEmail(event.target.value);
+            }}
+            />
+            <label>Office: </label>
+            <input 
+            type="text"
+            onChange={(event) => {
+                setOffice(event.target.value);
+            }}
+            />
+            <button onClick={addToList}>Submit</button>
             </div>
               <div>
+
                 <button className="button" onClick="openForm()"><h1 className = "button_font">Add Administrators</h1></button>
                 <div className="form-popup" id="myForm">
                   <form className="form_container">
@@ -25,22 +64,31 @@ const Administrators = () => {
                 </div>
               </div>
           </div>
-          <div className="summary_parent">
-            <div className='summary_form'>
-                <h1 className='summary_font'>Summary</h1>
-                <p className='content_font'>OFAD</p>
-                <p className='content_font'>CICS</p>
-                <p className='content_font'>EDUC</p>
-                <p className='content_font'>ENGR</p>
-                <button className="view_button_1"><h1 className = "view_font">View All</h1></button>
-             </div>
-             <div className='user_management'>
-                <h1 className='summary_font'>User Management</h1>
-                <button className="view_button_2"><h1 className = "view_font">View All</h1></button>
-             </div>
-          </div>
+          {adminList.map((val, key) => {
+              return (
+                
+                <div key={key} className="admin">
+                  <div className="summary_parent">
+                  <div className='summary_form'>
+                  <h1 className='summary_font'>Summary</h1>
+                  <p className='content_font'>{val.office}</p>
+                  <p className='content_font'>{val.email}</p>
+                  <button onClick={() => deleteAnnounce(val._id)}> Delete </button>
+                  
+                  <button className="view_button_1"><h1 className = "view_font">View All</h1></button>
+                  </div>
+                  <div className='user_management'>
+                    <h1 className='summary_font'>User Management</h1>
+                    
+                    
+                    <button className="view_button_2"><h1 className = "view_font">View All</h1></button>
+                  </div>
+                </div>
+                </div>
+              );
+            })}
         </div>
   )
 }
 
-export default Administrators
+export default App;

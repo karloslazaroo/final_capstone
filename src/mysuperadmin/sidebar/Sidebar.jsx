@@ -13,7 +13,7 @@ const sidebar = () => {
                 <img src={ust} class="logo-img"/>
             </a>
             <div class="nav-links_admin">
-                <li><a href="/"><i class="fa-solid fa-house-user"></i><p>Dashboard</p></a></li>
+                <li><a href="/super"><i class="fa-solid fa-house-user"></i><p>Dashboard</p></a></li>
                 <li><a href="/Announcements_Admin"><i class="fa-solid fa-bullhorn"></i><p>Announcements</p></a></li>
                 <li><a href="/Administrators_Admin"><i class="fa-solid fa-users"></i><p>Administrators</p></a></li>
                 <li><a href="/Chatbot_Admin"><i class="fa-solid fa-headset"></i><p>Chatbot Interface</p></a></li>

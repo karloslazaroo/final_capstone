@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './announcements.css';
 import Profile from '../../assets/profile1.jpg';
+import { UserAuth } from '../../context/AuthContext';
 
 
 function App() {
+  const {  user } = UserAuth();
   const [title, setTitle] = useState('');
     const [body, setBody] = useState(''); //0 pag integer/number
     const[newTitle, setNewTitle] = useState('');

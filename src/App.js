@@ -8,7 +8,7 @@ import {Homepage_User, TalkToUs_User, Announcements_User, Ratings_User, Sidebar_
 function App  ()  {
   let User
   switch (window.location.pathname) {
-    case "/":
+    case "/user":
       User = <Homepage_User />
       break;
     case "/Talktous_User":

@@ -65,12 +65,12 @@ function App () {
             <h2><span>Question</span></h2>
             </div>
             <label>Question: </label>  
-            <input className="name_ratings_user" type="text" placeholder="Type your title..." onChange={(event) => {setTitle(event.target.value);}}
+            <input className="name_ratings_user" type="text" placeholder="Type your title..." /*onChange={(event) => {setTitle(event.target.value);}}*/
             />
              <label>Answer: </label> 
-            <textarea className="message_user"  placeholder="Write something.."  onChange={(event) => {
+            <textarea className="message_user"  placeholder="Write something.."  /*onChange={(event) => {
                 setBody(event.target.value);
-            }}></textarea>
+            }}*/></textarea>
             <div className="buttons_reviews_user">
       <a href='#' >Answer</a>
       <a href='#'onClick={toggleModal} >Close</a>

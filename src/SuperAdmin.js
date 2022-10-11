@@ -11,7 +11,7 @@ import {Sidebar_Admin, Announcements_Admin, Chatbot_Admin, Homepage_Admin, Ratin
 function SuperAdmin  ()  {
     let SuperAdmin
     switch (window.location.pathname) {
-      case "/":
+      case "/super":
         SuperAdmin = <Homepage_Admin/>
         break;
       case "/Announcements_Admin":

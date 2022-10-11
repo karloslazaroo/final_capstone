@@ -6,12 +6,13 @@ const app = express();
 const AnnounceModel = require("./models/Announcement");
 const TalkModel = require("./models/TalkToUs");
 const ReviewModel = require("./models/Review");
+const AdminModel = require("./models/manageAdmin");
 
 app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
-    "mongodb+srv://karloslazaroo:101400karlo@cluster0.0vb2pbu.mongodb.net/chatbot?retryWrites=true&w=majority", //Link for Mongo DB, .net/announce yung DB name
+    "mongodb+srv://admin:admin123@cluster0.u5hncyq.mongodb.net/announce?retryWrites=true&w=majority", //Link for Mongo DB, .net/announce yung DB name
 {
     useNewUrlParser: true,
 });
@@ -151,6 +152,50 @@ app.put('/updateReviewDis', async (req, res) => {
     } catch(err) {
         console.log(err);
     }
+});
+
+app.post('/insertAdmin', async (req, res) => {
+    const email = req.body.email;
+    const office = req.body.office;
+
+    const admin = new AdminModel({email: email, office: office});
+
+    try {
+        await admin.save();
+        res.send("inserted data");
+    } catch(err) {
+        console.log(err)
+    }
+});
+
+app.get('/readAdmin', async (req, res) => {
+    AdminModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
+
+        res.send(result);
+    })
+});
+
+app.get("/readAdminLogin/:email", async (req, res) => {
+    const email = req.params.email;
+    AdminModel.findOne({ email: email} , (err, result) =>{
+        if (err) {
+            res.send("False");
+        }else{
+
+            res.send(result);
+        }
+
+    })
+}); 
+
+app.delete("/deleteAdmin/:id", async (req, res) => {
+    const id = req.params.id;
+    
+    await AdminModel.findByIdAndRemove(id).exec();
+    res.send("deleted");
 });
 
 app.listen(3001, () => {

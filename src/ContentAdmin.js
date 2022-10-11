@@ -8,10 +8,10 @@ import {Sidebar_Content, Announcements_Content, Chatbot_Content, Homepage_Conten
 
 
 
-function ContentAdmin  ()  {
+function ContentAdmin()  {
     let ContentAdmin
     switch (window.location.pathname) {
-      case "/":
+      case "/content":
         ContentAdmin = <Homepage_Content/>
         break;
       case "/Announcements_Content":
@@ -41,4 +41,4 @@ function ContentAdmin  ()  {
     )
 }
 
-export default ContentAdmin
+export default ContentAdmin;

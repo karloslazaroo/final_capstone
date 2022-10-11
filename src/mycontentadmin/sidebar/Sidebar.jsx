@@ -13,7 +13,7 @@ const sidebar = () => {
                 <img src={ust} class="logo-img"/>
             </a>
             <div class="nav-links">
-                <li><a href="/"><i class="fa-solid fa-house-user"></i><p>Dashboard</p></a></li>
+                <li><a href="/content"><i class="fa-solid fa-house-user"></i><p>Dashboard</p></a></li>
                 <li><a href="/Announcements_Content"><i class="fa-solid fa-bullhorn"></i><p>Announcements</p></a></li>
                 <li><a href="Chatbot_Content"><i class="fa-solid fa-headset"></i><p>Chatbot Interface</p></a></li>
                 <li><a href="/Unanswered_Content"><i class="fa-solid fa-address-book"></i><p>Questions</p></a></li>
