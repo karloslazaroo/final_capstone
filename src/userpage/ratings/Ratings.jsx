@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './ratings.css';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 
 import Profile from '../../assets/profile1.jpg'
 
@@ -19,11 +19,11 @@ function App() {
   
     const addToList = () => {
       
-      Swal.fire(
+      /* Swal.fire(
         'Thank you!',
         'Your message has been submitted!',
         'success'
-      )
+      ) */
 
       Axios.post("http://localhost:3001/insertReview", {
         name: name,

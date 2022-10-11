@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './talktous.css';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 
 function App() {
   const [name, setName] = useState('');
@@ -11,11 +11,11 @@ function App() {
 
   const addToList = () => {
 
-    Swal.fire(
+    /* Swal.fire(
       'Thank you!',
       'Your message has been submitted!',
       'success'
-    )
+    ) */
     
 
     Axios.post("http://localhost:3001/insertTalk", {
