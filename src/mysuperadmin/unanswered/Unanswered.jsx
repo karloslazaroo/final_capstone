@@ -17,6 +17,7 @@ function App() {
     <div className="body_Questions">
       <div className="textBox">
       <h2>Unanswered Questions<br></br></h2>
+      <div className="divider"></div>
       </div>
       <div class="wrapper_questions_admin">
       {talkList.map((val, key) => {

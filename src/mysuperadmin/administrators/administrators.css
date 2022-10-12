@@ -26,5 +26,50 @@
     border-top: 3px dashed #bbb;
     width: 1200px;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
 
+  .divider_admin {
+    border-top: 3px solid #bbb;
+    width: 1610px;
+    margin-bottom: 25px;
+  }
+
+  .superadmin a {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 8px 10px;
+    background: #f7ce05;
+    color: rgb(0, 0, 0);
+    border-radius: 0px;
+    font-weight: 500px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+    margin-left: 10px;
+    
+  }
+
+  .email {
+    float: left;
+  }
+
+  .department {
+   margin-left: 60%;
+  }
+
+  .button_add_administrators a {
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 5%;
+    padding: 8px 10px;
+    background: #f7ce05;
+    color: rgb(0, 0, 0);
+    border-radius: 0px;
+    font-weight: 500px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+    margin-left: 10px;
+
+  }

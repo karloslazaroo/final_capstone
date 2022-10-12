@@ -71,26 +71,31 @@ function App() {
           <div className='parent_div'>
             <div className='textBox_super'>
               <h2>Administrators</h2>
+              <div className="divider"></div>
               </div>
               
 
-              <div className="button_add_content">
+              <div className="button_add_administrators">
       <a href='#'onClick={toggleModal}>Add Content Managers</a>
       </div>
       <h1 className='summary_font'>List of Accounts</h1>
-                  <div className="divider"></div>
+                  <div className="divider_admin"></div>
              
             
           </div>
           {adminList.map((val, key) => {
               return (
                 
-                <div key={key} className="admin">
+                <div key={key} className="superadmin">
                   <div className="summary_parent">
-                  <div className='summary_form'>
-                  <p className='superadmin_dept'>{val.office}</p>
-                  <p className='superadmin_email'>{val.email}</p>
-                  <button onClick={() => deleteAnnounce(val._id)}> Delete </button>
+                  <div className='summary_form'>  
+                    <div className="email">
+                  <p>{val.email}</p>
+                    </div>
+                    <div className="department">
+                      <p>{val.office}</p>
+                    </div>
+                  <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
                   <div className="dashed"></div>
                   </div>
                 </div>

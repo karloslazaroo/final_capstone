@@ -91,7 +91,7 @@ function App() {
   return (
     
     <div className='announcement_body'>
-       <div className="announcement">
+       <div className="announcement_admin">
             <h2><span>Announcements</span></h2>
             </div>
         <div className='divider'></div>
