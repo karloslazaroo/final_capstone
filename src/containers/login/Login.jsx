@@ -32,20 +32,8 @@ function Signin (){
       
       const email = user.email;
       
-<<<<<<< Updated upstream
-      /*switch (email) {
-        case "geromeeleubert.rosal.cics@ust.edu.ph":
-          navigate('/super');
-          break;
-        default:
-          navigate('/content');
-          break;
-      }*/
-      if(email == "geromeeleubert.rosal.cics@ust.edu.ph"){
-=======
     
       if(email == "karlosandrew.lazaro.iics@ust.edu.ph"){
->>>>>>> Stashed changes
           navigate('/super');
       } else  {
         Axios.get(`http://localhost:3001/readAdminLogin/${email}`).then((response) => {
