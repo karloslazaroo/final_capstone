@@ -42,6 +42,11 @@
     margin-bottom: 30px;
     text-align: center;
 }
+.formLogin a{
+    display: flex;
+    justify-content: center;
+    
+}
 .inputContainer {
     position: relative;
     height: 48px;

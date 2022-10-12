@@ -32,6 +32,7 @@ function Signin (){
       
       const email = user.email;
       
+<<<<<<< Updated upstream
       /*switch (email) {
         case "geromeeleubert.rosal.cics@ust.edu.ph":
           navigate('/super');
@@ -41,6 +42,10 @@ function Signin (){
           break;
       }*/
       if(email == "geromeeleubert.rosal.cics@ust.edu.ph"){
+=======
+    
+      if(email == "karlosandrew.lazaro.iics@ust.edu.ph"){
+>>>>>>> Stashed changes
           navigate('/super');
       } else  {
         Axios.get(`http://localhost:3001/readAdminLogin/${email}`).then((response) => {
@@ -51,8 +56,6 @@ function Signin (){
         }
       }); 
       } 
-      //navigate('/content');
-      //navigate('/super');
   }
   }, [user])
 
@@ -67,8 +70,9 @@ function Signin (){
     <div className='login'>
       <div className='formLogin'>
         <h1>Welcome</h1>
+        <h1></h1>
         <a>
-        <GoogleButton onClick={handleGoogleSignIn} />
+        <GoogleButton className='google' onClick={handleGoogleSignIn} />
        </a>
       </div>
       
