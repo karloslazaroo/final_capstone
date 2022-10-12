@@ -1,5 +1,13 @@
-.ratings_content {
-    margin-left: 15%;
+.textBox_admin {
+  margin-left: 15%;
+}
+
+.textBox_admin h2 {
+  color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500px;
+
 }
 
 .textBox h2 {

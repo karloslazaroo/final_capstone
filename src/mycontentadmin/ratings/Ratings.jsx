@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className='ratings_content'>
-      <div className="textBox">
+      <div className="textBox_content">
       <h2>Ratings & Reviews<br></br></h2>
       </div>
     <div className='ratings_body'>

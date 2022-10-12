@@ -1,7 +1,15 @@
-.ratings_content {
+.textBox_content {
   margin-left: 15%;
-  
 }
+
+.textBox_content h2 {
+  color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500px;
+
+}
+
 
 
 
