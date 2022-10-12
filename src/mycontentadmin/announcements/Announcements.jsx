@@ -64,6 +64,12 @@ function App() {
      
     };
 
+    const success = () => {
+      addToList();
+      toggleModal();
+      
+    }
+
 
     const [modal, setModal] = useState(false);
 
@@ -139,7 +145,7 @@ function App() {
                 setBody(event.target.value);
             }}></textarea>
             <div className="buttons_reviews_user">
-      <a href='#'onClick={addToList} >Submit</a>
+      <a href='#'onClick={success} >Submit</a>
       <a href='#'onClick={toggleModal} >Close</a>
       </div>
           </div>

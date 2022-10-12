@@ -3,6 +3,7 @@ import Axios from 'axios';
 import './announcements.css';
 import Profile from '../../assets/profile1.jpg';
 import { UserAuth } from '../../context/AuthContext';
+import Swal from 'sweetalert2';
 
 
 function App() {
@@ -19,13 +20,27 @@ function App() {
     }, [announceList]);
 
     const addToList = () => {
+      Swal.fire(
+        'Thank you!',
+        'Your Announcement has been posted!',
+        'success'
+      ) 
       Axios.post("http://localhost:3001/insert", {
         title: title,
         body: body,
       });
+      
     };
 
     const updateTitle = (id) => {
+      Swal.fire(
+
+        'Thank you!',
+        'Your Announcement has been updated!',
+
+        'success'
+      )
+      
       Axios.put("http://localhost:3001/update", {
         id: id, 
         newTitle: newTitle,
@@ -33,8 +48,32 @@ function App() {
     };
 
     const deleteAnnounce = (id) => {
-      Axios.delete(`http://localhost:3001/delete/${id}`)
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Axios.delete(`http://localhost:3001/delete/${id}`)
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+     
     };
+
+    const success = () => {
+      addToList();
+      toggleModal();
+      
+    }
 
 
     const [modal, setModal] = useState(false);
@@ -80,9 +119,9 @@ function App() {
                       setNewTitle(event.target.value);
                     }}
                   />
-                      <div className="button_announcement_user">
-                        <button onClick={() => updateTitle(val._id)}> Update </button>
-                        <button onClick={() => deleteAnnounce(val._id)}> Delete </button>
+                      <div className="button_announcement_superadmin">
+                      <a href="#" onClick={() => updateTitle(val._id)}> Update </a>
+                      <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
                       </div>
                     </div>
                     <div class="image">
@@ -115,7 +154,7 @@ function App() {
                 setBody(event.target.value);
             }}></textarea>
             <div className="buttons_reviews_user">
-      <a href='#'onClick={addToList} >Submit</a>
+      <a href='#'onClick={success} >Submit</a>
       <a href='#'onClick={toggleModal} >Close</a>
       </div>
           </div>

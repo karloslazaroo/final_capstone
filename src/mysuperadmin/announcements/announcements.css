@@ -16,18 +16,18 @@
     
 }
 
-.button_announcement_user button {
-    display: inline-block;
-      margin-top: 8%;
-      padding: 8px 10px;
-      background: #f7ce05;
-      color: rgb(0, 0, 0);
-      border-radius: 0px;
-      font-weight: 500px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
-      margin-left: 10px;
+.button_announcement_superadmin a {
+  display: inline-block;
+  margin-top: 8%;
+  padding: 8px 10px;
+  background: #f7ce05;
+  color: rgb(0, 0, 0);
+  border-radius: 0px;
+  font-weight: 500px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+  margin-left: 10px;
       
 }
 
