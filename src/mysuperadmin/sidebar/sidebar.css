@@ -84,25 +84,30 @@
 }
 
 .nav-links_admin li:nth-child(2):hover ~ .active {
-    top: 16.28%;
+    top: 14.5%;
 }
 
 .nav-links_admin li:nth-child(3):hover ~ .active {
-    top: 30.56%;
+    top: 27%;
 }
 
 .nav-links_admin li:nth-child(4):hover ~ .active {
-    top: 44.84%;
+    top: 39.5%;
 }
 
 .nav-links_admin li:nth-child(5):hover ~ .active {
-    top: 59.12%;
+    top: 52%;
 }
 
 .nav-links_admin li:nth-child(6):hover ~ .active {
-    top: 73.4%;
+    top: 64.5%;
 }
 
 .nav-links_admin li:nth-child(7):hover ~ .active {
-    top: 87.68%;
+    top: 77%;
 }
+
+.nav-links_admin li:nth-child(8):hover ~ .active {
+    top: 89.5%;
+}
+

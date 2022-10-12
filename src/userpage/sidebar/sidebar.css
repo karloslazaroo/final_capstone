@@ -84,14 +84,18 @@
 }
 
 .nav-links_user li:nth-child(2):hover ~ .active {
-    top: 27%;
+    top: 22%;
 }
 
 .nav-links_user li:nth-child(3):hover ~ .active {
-    top: 52%;
+    top: 42%;
 }
 
 .nav-links_user li:nth-child(4):hover ~ .active {
-    top: 77%;
+    top: 67%;
+}
+
+.nav-links_user li:nth-child(5):hover ~ .active {
+    top: 82%;
 }
 

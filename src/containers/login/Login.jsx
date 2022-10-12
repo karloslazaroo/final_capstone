@@ -32,7 +32,7 @@ function Signin (){
           navigate('/content');
           break;
       }*/
-      if(email == "karlosandrew.lazaro.iics@ust.edu.ph"){
+      if(email == "geromeeleubert.rosal.cics@ust.edu.ph"){
           navigate('/super');
       } else  {
         Axios.get(`http://localhost:3001/readAdminLogin/${email}`).then((response) => {
