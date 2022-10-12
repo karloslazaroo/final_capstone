@@ -7,7 +7,15 @@ import './login.css';
 
 
 function Signin (){
-
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
   const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
 
@@ -32,7 +40,7 @@ function Signin (){
           navigate('/content');
           break;
       }*/
-      if(email == "karlosandrew.lazaro.iics@ust.edu.ph"){
+      if(email == "geromeeleubert.rosal.cics@ust.edu.ph"){
           navigate('/super');
       } else  {
         Axios.get(`http://localhost:3001/readAdminLogin/${email}`).then((response) => {
@@ -50,7 +58,12 @@ function Signin (){
 
   return (
     <div className='bodyLogin'>
-      
+      <df-messenger
+  intent="WELCOME"
+  chat-title="Heart"
+  agent-id="beb564f0-4454-458b-bb19-8af15b20608b"
+  language-code="en"
+></df-messenger>
     <div className='login'>
       <div className='formLogin'>
         <h1>Welcome</h1>
