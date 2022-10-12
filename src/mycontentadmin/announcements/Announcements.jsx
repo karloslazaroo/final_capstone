@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './announcements.css';
 import Profile from '../../assets/profile1.jpg';
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 function App() {
   const [title, setTitle] = useState('');
@@ -17,11 +17,11 @@ function App() {
     }, [announceList]);
 
     const addToList = () => {
-      /* Swal.fire(
+       Swal.fire(
         'Thank you!',
         'Your Announcement has been posted!',
         'success'
-      ) */
+      ) 
 
 
       Axios.post("http://localhost:3001/insert", {
@@ -31,6 +31,11 @@ function App() {
     };
 
     const updateTitle = (id) => {
+      Swal.fire(
+        'Thank you!',
+        'Your Announcement has been updated!',
+        'success'
+      ) 
       Axios.put("http://localhost:3001/update", {
         id: id, 
         newTitle: newTitle,

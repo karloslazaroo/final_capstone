@@ -8,7 +8,7 @@
 
 
 
-.content {
+.contentadmin {
     position: relative;
     display: flex;
     
@@ -16,30 +16,30 @@
     align-items: center;
 }
 
-.textBox_content {
+.textBox_contentadmin {
     position: relative;
     max-width: 600px;
 
 }
 
-.textBox_content h2 {
+.textBox_contentadmin h2 {
     color: #333;
     font-size: 3em;
     line-height: 1.4em;
     font-weight: 500px;
 }
 
-.textBox_content span {
+.textBox_contentadmin span {
     color: #f7ce05;
     font-size: 1.2em;
     font-weight: 900px;
 }
 
-.textBox_content p {
+.textBox_contentadmin p {
     color: rgb(187, 182, 182);
 }
 
-.textBox_content a {
+.textBox_contentadmin a {
     display: inline-block;
     margin-top: 20px;
     padding: 8px 20px;
