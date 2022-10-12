@@ -16,30 +16,30 @@
     align-items: center;
 }
 
-.textBox_admin {
+.textBox_superadmin {
     position: relative;
     max-width: 600px;
 
 }
 
-.textBox_admin h2 {
+.textBox_superadmin h2 {
     color: #333;
     font-size: 3em;
     line-height: 1.4em;
     font-weight: 500px;
 }
 
-.textBox_admin span {
+.textBox_superadmin span {
     color: #f7ce05;
     font-size: 1.2em;
     font-weight: 900px;
 }
 
-.textBox_admin p {
+.textBox_superadmin p {
     color: rgb(187, 182, 182);
 }
 
-.textBox_admin a {
+.textBox_superadmin a {
     display: inline-block;
     margin-top: 20px;
     padding: 8px 20px;
