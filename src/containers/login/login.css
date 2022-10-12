@@ -112,4 +112,9 @@
     border: 1px solid #252629;
 }
 
-
+df-messenger {
+    --df-messenger-bot-message: #f7ce05;
+    --df-messenger-button-titlebar-color: #f7ce05;
+    --df-messenger-chat-background-color: #fafafa;
+    --df-messenger-send-icon: #f7ce05;
+   }

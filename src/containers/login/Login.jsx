@@ -4,6 +4,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import './login.css';
+import chathead from '../../assets/chathead.png';
 
 
 function Signin (){
@@ -51,9 +52,10 @@ function Signin (){
     <div className='bodyLogin'>
       <df-messenger
   intent="WELCOME"
-  chat-title="Heart"
+  chat-title="TOM"
   agent-id="beb564f0-4454-458b-bb19-8af15b20608b"
   language-code="en"
+  chat-icon= {chathead}
 ></df-messenger>
     <div className='login'>
       <div className='formLogin'>

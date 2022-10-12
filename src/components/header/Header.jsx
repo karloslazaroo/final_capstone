@@ -1,6 +1,7 @@
 import React, { useEffect  } from 'react';
 import './header.css';
 import logo from '../../assets/header.jpg';
+import chathead from '../../assets/chathead.png';
 
 
 const Header = () => {
@@ -21,9 +22,10 @@ const Header = () => {
 </div>
 <df-messenger
   intent="WELCOME"
-  chat-title="Heart"
+  chat-title="TOM"
   agent-id="beb564f0-4454-458b-bb19-8af15b20608b"
   language-code="en"
+  chat-icon= {chathead}
 ></df-messenger>
     </div>
   )
