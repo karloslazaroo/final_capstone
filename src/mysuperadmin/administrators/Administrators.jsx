@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './administrators.css'
+import Swal from 'sweetalert2';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -14,6 +15,11 @@ function App() {
   }, [adminList]);
 
   const addToList = () => {
+    Swal.fire(
+      'Thank you!',
+      'Your account has been added!',
+      'success'
+    )
     Axios.post("http://localhost:3001/insertAdmin", {
       email: email,
       office: office,
@@ -21,48 +27,60 @@ function App() {
   };
 
   const deleteAnnounce = (id) => {
-    Axios.delete(`http://localhost:3001/deleteAdmin/${id}`)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Axios.delete(`http://localhost:3001/deleteAdmin/${id}`)
+        Swal.fire(
+          'Deleted!',
+          'Your account has been deleted.',
+          'success'
+        )
+      }
+    })
+    
   };
+
+  const success = () => {
+    addToList();
+    toggleModal();
+    
+  }
+
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if(modal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
 
   return (
     <div className='body_administrator'>
           <div className='parent_div'>
-            <div className='textBox_administrators'>
+            <div className='textBox_super'>
               <h2>Administrators</h2>
-              <label>Email: </label>
-            <input 
-            type="text" 
-            onChange={(event) => {
-                setEmail(event.target.value);
-            }}
-            />
-            <label>Office: </label>
-            <input 
-            type="text"
-            onChange={(event) => {
-                setOffice(event.target.value);
-            }}
-            />
-            <button onClick={addToList}>Submit</button>
-            </div>
-              <div>
-
-                <button className="button" onClick="openForm()"><h1 className = "button_font">Add Administrators</h1></button>
-                <div className="form-popup" id="myForm">
-                  <form className="form_container">
-                    <h1>Add Administrator</h1>
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required></input>
-  
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required></input>
-  
-                    <button type="submit" class="btn">Login</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-                      
-                  </form>
-                </div>
               </div>
+              
+
+              <div className="button_add_content">
+      <a href='#'onClick={toggleModal}>Add Content Managers</a>
+      </div>
+      <h1 className='summary_font'>List of Accounts</h1>
+                  <div className="divider"></div>
+             
+            
           </div>
           {adminList.map((val, key) => {
               return (
@@ -70,23 +88,37 @@ function App() {
                 <div key={key} className="admin">
                   <div className="summary_parent">
                   <div className='summary_form'>
-                  <h1 className='summary_font'>Summary</h1>
-                  <p className='content_font'>{val.office}</p>
-                  <p className='content_font'>{val.email}</p>
+                  <p className='superadmin_dept'>{val.office}</p>
+                  <p className='superadmin_email'>{val.email}</p>
                   <button onClick={() => deleteAnnounce(val._id)}> Delete </button>
-                  
-                  <button className="view_button_1"><h1 className = "view_font">View All</h1></button>
-                  </div>
-                  <div className='user_management'>
-                    <h1 className='summary_font'>User Management</h1>
-                    
-                    
-                    <button className="view_button_2"><h1 className = "view_font">View All</h1></button>
+                  <div className="dashed"></div>
                   </div>
                 </div>
                 </div>
               );
             })}
+
+{modal && (
+        <div className="modal">
+          <div className="modal-content">
+          <div className="announcement">
+            <h2><span>Add new account</span></h2>
+            </div>
+            <label>Email </label>  
+            <input 
+            className="office" type="text" placeholder="" onChange={(event) => {setEmail(event.target.value);}}
+            />
+             <label>Department </label> 
+            <input className="office" type="text" onChange={(event) => {
+                setOffice(event.target.value);
+            }}></input>
+            <div className="buttons_reviews_user">
+      <a href='#'onClick={success} >Submit</a>
+      <a href='#'onClick={toggleModal} >Close</a>
+      </div>
+          </div>
+        </div>
+      )}
         </div>
   )
 }
