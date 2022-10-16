@@ -34,7 +34,7 @@ function Signin (){
       const email = user.email;
       
     
-      if(email == "vincentrussell.sobreviga.cics@ust.edu.ph"){
+      if(email == "karlosandrew.lazaro.iics@ust.edu.ph"){
           navigate('/super');
       } else  {
         Axios.get(`http://localhost:3001/readAdminLogin/${email}`).then((response) => {

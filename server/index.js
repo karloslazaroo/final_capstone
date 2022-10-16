@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
-    "mongodb+srv://Vincent:N4U4VjkW4Tp3UFvL@cluster0.o4bkbrm.mongodb.net/test", //Link for Mongo DB, .net/announce yung DB name
+    "mongodb+srv://admin:admin123@cluster0.u5hncyq.mongodb.net/announce?retryWrites=true&w=majority", //Link for Mongo DB, .net/announce yung DB name
 {
     useNewUrlParser: true,
 });
