@@ -7,14 +7,55 @@ const AnnounceModel = require("./models/Announcement");
 const TalkModel = require("./models/TalkToUs");
 const ReviewModel = require("./models/Review");
 const AdminModel = require("./models/manageAdmin");
+const AnalyticsModel = require("./models/ForAnalytics");
 
 app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
-    "mongodb+srv://admin:admin123@cluster0.u5hncyq.mongodb.net/announce?retryWrites=true&w=majority", //Link for Mongo DB, .net/announce yung DB name
+    "mongodb+srv://Vincent:N4U4VjkW4Tp3UFvL@cluster0.o4bkbrm.mongodb.net/test", //Link for Mongo DB, .net/announce yung DB name
 {
     useNewUrlParser: true,
+});
+
+//route for inserting data used for analytics
+app.post('/analyticsdata', (req , res) =>{
+    const data = req.body;
+    const newAnalyticsModel = new AnalyticsModel(data);
+
+    newAnalyticsModel.save((error) =>{
+        if (error) {
+            res.status(500).json({ msg: 'Sorry, internal server errors' });
+            return;
+        }
+        // Inquiry
+        return res.json({
+            msg: 'Your data has been saved!!!!!!'
+        });
+    });
+});
+
+//route for getting analytics data and count for talk to us
+
+app.get('/readanalytics', (req , res) =>{
+    
+    AnalyticsModel.aggregate([
+        {
+            $match: { source : "Talk to Us"},
+        },
+        //count not appearing
+        {
+            $group: {
+                _id: '$date',
+                count : {$sum : 1}
+        }}]
+    ).then((result) => {
+        console.log('result: ', result);
+        res.send(result);
+    })
+    .catch((error)=>{
+        console.log('error: ', dataerror);
+    }) 
 });
 
 app.post('/insert', async (req, res) => {

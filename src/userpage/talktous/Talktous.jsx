@@ -9,6 +9,15 @@ function App() {
   const [phone, setPhone] = useState(0);
   const [message, setMessage] = useState('');
 
+  const state = {
+    source: ''
+  };
+
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  };
+
   const addToList = () => {
 
     /* Swal.fire(
@@ -16,6 +25,8 @@ function App() {
       'Your message has been submitted!',
       'success'
     ) */
+
+
     
 
     Axios.post("http://localhost:3001/insertTalk", {
@@ -24,7 +35,14 @@ function App() {
       phone: phone,
       message: message,
     });
+
+    Axios.post("http://localhost:3001/analyticsdata",{
+      source: state.source
+    });
+
   };
+
+ 
 
   return (
     <div className="body_talktous">
@@ -54,6 +72,16 @@ function App() {
             onChange={(event) => {
               setMessage(event.target.value);
             }}></textarea>
+
+
+            <input 
+              type="hidden"
+              name="source"
+              placeholder="source"
+              value={state.source = "Talk to Us"}
+              onChange={handleChange}
+            />
+
             <button class="btn" onClick={addToList}>Send</button>
         </div>
     </div>
