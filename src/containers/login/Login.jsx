@@ -8,6 +8,7 @@ import chathead from '../../assets/chathead.png';
 import logo from '../../assets/logo.png'
 
 
+
 function Signin (){
   useEffect(() => {
     const script = document.createElement('script');
@@ -50,7 +51,8 @@ function Signin (){
   }, [user])
 
   return (
-    <div className='bodyLogin'>
+    <div className='bodyLogin' >
+      
       <df-messenger
   intent="WELCOME"
   chat-title="TOM"
@@ -70,6 +72,7 @@ function Signin (){
       
     </div>
     </div>
+    
   )
 }
 
