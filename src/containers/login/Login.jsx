@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import './login.css';
 import chathead from '../../assets/chathead.png';
+import logo from '../../assets/logo.png'
 
 
 function Signin (){
@@ -59,8 +60,9 @@ function Signin (){
 ></df-messenger>
     <div className='login'>
       <div className='formLogin'>
-        <h1>Welcome</h1>
-        <h1></h1>
+        <div className="picture">
+      <img src= {logo} className='login_logo'></img>
+      </div>
         <a>
         <GoogleButton className='google' onClick={handleGoogleSignIn} />
        </a>
