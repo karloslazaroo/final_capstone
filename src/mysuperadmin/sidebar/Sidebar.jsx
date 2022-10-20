@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const sidebar = () => {
+function App() {
 
   const {logOut} = UserAuth()
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const sidebar = () => {
                 <li><a href="/Unanswered_Admin"><i class="fa-solid fa-address-book"></i><p>Questions</p></a></li>
                 <li><a href="/Analytics_Admin"><i class="fa-solid fa-chart-line"></i><p>Analytics</p></a></li>
                 <li><a href="/Ratings_Admin"><i class="fa-solid fa-star"></i><p>Ratings & Reviews</p></a></li>
-                <li><a href="/" onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i><p>Logout</p></a></li>
+                <li><a onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i><p>Logout</p></a></li>
                 <div class="active"></div>
             </div>
             
@@ -45,4 +45,4 @@ const sidebar = () => {
   )
 }
 
-export default sidebar
+export default App;
