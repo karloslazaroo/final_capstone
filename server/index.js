@@ -107,10 +107,9 @@ app.delete("/delete/:id", async (req, res) => {
 app.post('/insertTalk', async (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
-    const phone = req.body.phone;
     const message = req.body.message;
 
-    const talk = new TalkModel({name: name, email: email, phone: phone, message: message});
+    const talk = new TalkModel({name: name, email: email, message: message});
 
     try {
         await talk.save();

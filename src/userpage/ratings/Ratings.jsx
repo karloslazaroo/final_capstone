@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
+import { UserAuth } from '../../context/AuthContext';
 import './ratings.css';
 import Swal from 'sweetalert2';
 
 import Profile from '../../assets/profile1.jpg'
 
 function App() {
-    const [name, setName] = useState('');
+    const {user} = UserAuth();
+    const name = user.displayName;
     const [message, setMessage] = useState(''); //0 pag integer/number
     const [approval] = useState('Disapprove');
     const [reviewList, setReviewList] = useState([]);
@@ -95,15 +97,6 @@ function App() {
           <div className="announcement">
             <h2><span>Write a review!</span></h2>
             </div>
-            <label>Name: </label>  
-            <input 
-            className="name_ratings_user"
-            type="text"
-            placeholder="Type your name..." 
-            onChange={(event) => {
-                setName(event.target.value);
-            }}
-            />
              <label>Message: </label> 
             <textarea className="message_user"  placeholder="Write something.."  onChange={(event) => {
                 setMessage(event.target.value);

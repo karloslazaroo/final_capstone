@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { UserAuth } from '../../context/AuthContext';
 import Axios from 'axios';
 import './talktous.css';
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 function App() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState(''); //0 pag integer/number
-  const [phone, setPhone] = useState(0);
+  const {user} = UserAuth();
+  const name = user.displayName;
+  const email = user.email; //0 pag integer/number
   const [message, setMessage] = useState('');
 
   const state = {
@@ -20,19 +21,15 @@ function App() {
 
   const addToList = () => {
 
-    /* Swal.fire(
+    Swal.fire(
       'Thank you!',
       'Your message has been submitted!',
       'success'
-    ) */
-
-
-    
+    ) 
 
     Axios.post("http://localhost:3001/insertTalk", {
       name: name,
       email: email,
-      phone: phone,
       message: message,
     });
 
@@ -56,18 +53,6 @@ function App() {
         <div class="left"></div>
         <div class="right">
             <h2>Contact Us</h2>
-            <input type="text" class="field" placeholder="Your Name"
-            onChange={(event) => {
-              setName(event.target.value);
-            }}/>
-            <input type="text" class="field" placeholder="Your Email"
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}/>
-            <input type="text" class="field" placeholder="Phone"
-            onChange={(event) => {
-              setPhone(event.target.value);
-            }}/>
             <textarea placeholder="Message" class="field"
             onChange={(event) => {
               setMessage(event.target.value);
