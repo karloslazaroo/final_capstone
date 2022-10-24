@@ -14,7 +14,7 @@ ChartJS.register(
 
 
 class Analytics extends React.Component {
-  state = {talktousdata : []};
+  state = {talktousdata : []};//to be deleted
   labelscontainer = [];
   datacontainer = [];
   //talk to us pa lang
@@ -85,24 +85,15 @@ class Analytics extends React.Component {
     this.getTalktoUsData();
   }
 
+  //to be deleted
   displayTalktoUsData = (talktousdata) =>{
-
-
- 
-
-    return talktousdata.map((ttsdata, index) => (
-     
+    console.log(typeof(talktousdata));
+    return talktousdata.map((ttsdata, index) => ( 
       <div key = {index} className='talktousdata_display' >
-          <p>date: {ttsdata._id} count: {ttsdata.count}</p>
-          
-              
-      </div>
+          <p>date: {ttsdata._id} count: {ttsdata.count}</p> 
+  </div>
       )
     )
-     
-    
-    
-    
   }
 
 
@@ -113,10 +104,12 @@ class Analytics extends React.Component {
         <h2>Analytics<br></br></h2>
         </div> }
         {this.displayTalktoUsData(this.state.talktousdata)}
+       
         {/* {this.datacontainer} */}
         <div className='graph_container' style={{width:'1200px', height:'1200px'}}>
           <Line data={this.data} options={this.options}></Line>
           {/* <Line data={this.data}></Line> */}
+         
         </div>
 
       </div>
