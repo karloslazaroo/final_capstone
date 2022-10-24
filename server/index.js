@@ -8,6 +8,7 @@ const TalkModel = require("./models/TalkToUs");
 const ReviewModel = require("./models/Review");
 const AdminModel = require("./models/manageAdmin");
 const AnalyticsModel = require("./models/ForAnalytics");
+const ChatbotModel = require("./models/Chatbot");
 
 app.use(express.json());
 app.use(cors());
@@ -236,6 +237,32 @@ app.delete("/deleteAdmin/:id", async (req, res) => {
     
     await AdminModel.findByIdAndRemove(id).exec();
     res.send("deleted");
+});
+
+app.post('/insertBot', async (req, res) => {
+    const mail = req.body.mail;
+    const projId = req.body.projId;
+    const name = req.body.name;
+    const time = req.body.time;
+
+    const chatbot = new ChatbotModel({mail: mail, projId: projId,name: name, time: time});
+
+    try {
+        await chatbot.save();
+        res.send("inserted data");
+    } catch(err) {
+        console.log(err)
+    }
+});
+
+app.get('/readBot', async (req, res) => {
+    ChatbotModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
+
+        res.send(result);
+    })
 });
 
 app.listen(3001, () => {
