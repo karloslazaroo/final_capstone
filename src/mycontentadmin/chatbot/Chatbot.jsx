@@ -1,99 +1,139 @@
-// import React from 'react'
-// import './chatbot.css'
-// import gapi  from 'gapi';
-// // "AIzaSyC8npgx-FL391Pv_v91L7x0A2iFCw98uQ0"
-
-// const Chatbot = () => {
-//   /**
-//    * Sample JavaScript code for dialogflow.projects.agent.intents.create
-//    * See instructions for running APIs Explorer code samples locally:
-//    * https://developers.google.com/explorer-help/code-samples#javascript
-//    */
-//   const apikey = "AIzaSyC8npgx-FL391Pv_v91L7x0A2iFCw98uQ0";
+import React from 'react'
+import './chatbot.css'
+import axios from 'axios';
 
 
-//    function loadClient() {
-//     gapi.client.setApiKey(apikey);
-//     return gapi.client.load("https://dialogflow.googleapis.com/$discovery/rest?version=v2")
-//         .then(function() { console.log("GAPI client loaded for API"); },
-//               function(err) { console.error("Error loading GAPI client for API", err); });
-//   }
-//     // Make sure the client is loaded and sign-in is complete before calling this method.
-//     function execute() {
-//       return gapi.client.dialogflow.projects.agent.intents.create({
-//         "parent": "projects/isidore-lfji/agent",
-//         "intentView": "INTENT_VIEW_FULL",
-//         "resource": {
-//           "trainingPhrases": [
-//             {
-//               "parts": [
-//                 {
-//                   "text": "Hi"
-//                 }
-//               ]
-//             }
-//           ],
-//           "displayName": "Hi",
-//           "messages": [
-//             {
-//               "simpleResponses": {
-//                 "simpleResponses": [
-//                   {
-//                     "displayText": "Hello there"
-//                   }
-//                 ]
-//               }
-//             }
-//           ]
-//         }
-//       })
-//           .then(function(response) {
-//                   // Handle the results here (response.result has the parsed body).
-//                   console.log("Response", response);
-//                 },
-//                 function(err) { console.error("Execute error", err); });
-//     }
-//     gapi.load("client")
-//   return (
-//     <div className='chatbot_body_content'>
-//        {/* <div className="textBox">
-//       <h2>Chatbots!<br></br></h2>
-//       </div>
-//       <div className="container_chatbot">
-//         <div className="create_intents">
-//         CREATE INTENTS<br></br>
-//         <label for="fname">Name: </label><br></br>
-//         <input type="text" id="fname" placeholder='"Name of your Intent"' name="fname"></input><br></br>
-  
-//         TRAINING PHRASES<br></br>
-//         <input type="text" id="fname" placeholder='"1. I need your help"' name="fname"></input><br></br>
-//         <input type="text" id="fname" placeholder='"2. Add user expression"' name="fname"></input><br></br>
-//         RESPONSES<br></br>
-//         <input type="text" id="fname" placeholder='"1. How can I help you"' name="fname"></input><br></br>
-//         <input type="text" id="fname" placeholder='"2. Add your response here"' name="fname"></input><br></br>
-//         </div>
-        
-//         <div className="your_intents">
-//         YOUR INTENTS
-//         </div>
+class Chatbot extends React.Component {
 
-//         <div className="history">
-//         HISTORY
-//         </div>
-//     </div> */}
-//     <script src="https://apis.google.com/js/api.js"></script>
-//     <script>
-//       {loadClient()}
-//       {execute()}
-//     </script>
+  apikey = "AIzaSyC8npgx-FL391Pv_v91L7x0A2iFCw98uQ0";
+  intentdisplaycontainer = [];
+  responsecontainer = [];
+  state = {detectintentdata: [], agentdata : []};
+  token = "ya29.a0Aa4xrXNih4t_HOTve2AvPGQHH57qpwHk0MQSJJbqMmFMrVvttBdPqkzCKASOiHbRcCUCaAVWNSEevBmDifIvE712Vue3Z70Rb9-r-3ppNWk9w5GbZ6zAGUqvCFYui_UvtRUdBdsziIKyXCEktferF19DFVH4sQaCgYKATASARMSFQEjDvL9PIGvr0R7iEPwK2Kue9gfYA0165";
+  urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
-//     <button onclick="loadclient()">load</button>
-//     <button onclick="execute()">execute</button>
-
-
+  componentDidMount = () => {
+    this.getIntents();
+    this.getAgents();
     
-//   </div>
-//   )
-// }
+  }
 
-// export default Chatbot
+  getAgents = () =>{
+    
+    axios.get('http://localhost:3001/readBot').then((response) => {
+        this.setState({agentdata: response.data});
+      });
+  }
+
+  
+
+  
+  getIntents = () => {
+ 
+
+    var config = {
+      method: 'get',
+      url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token='+ this.token,
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+ this.token
+     }
+    };
+
+    axios(config)
+    .then((response) => {
+      const data = JSON.stringify(response.data.intents);
+      console.log(data);
+      // console.log('data received');
+      // const testvariable = data[1].messages[0].simpleResponses.simpleResponses[0].displayText;
+      //   this.intentdisplaycontainer.push(testvariable);
+     
+      // this.intentdisplaycontainer.push(data);
+
+      // console.log('data dded to state');
+      // console.log(data[1].messages[0].simpleResponses.simpleResponses[0].displayText, 'from axios code');
+      this.setState({detectintentdata : data})
+
+
+      
+    })
+    .catch((error) => {
+      console.log(error);
+      alert('error on axios')
+    });
+
+  };
+  
+  displayIntentData = (detectintentdata) =>{
+   console.log(typeof(detectintentdata));
+    return (
+        <div >
+            {detectintentdata}
+        </div>
+    
+        )  
+  }
+
+  displayagents = (agentdata) => {
+    console.log(agentdata);
+    return agentdata.map((val, key) => {
+        return (
+          <div key={key}>
+          <div className="box_questions">
+            <i className="fas fa-quote-left quote"></i>
+            <h1> {val.name} </h1>
+            <p>
+              {val.projId}<br></br>
+              {val.mail}
+            </p>
+          </div>
+        </div>
+            )
+        }
+    )
+  }
+
+  render(){
+    return (
+            <div className='chatbot_body_content'>
+                
+            <p>{this.displayIntentData(this.state.detectintentdata)}</p>
+
+          
+            <p><button onclick={()=> createIntent()} className='execute'>execute</button></p>
+            
+            <p>{this.displayagents(this.state.agentdata)} </p>
+
+
+        
+        </div>
+        ) 
+  }
+ 
+  
+  
+}
+
+function createIntent(){
+    var data = '{\r\n        "displayName": "Testing",\r\n        "trainingPhrases": [\r\n          {\r\n            "parts": [\r\n              {\r\n                "text": "Testing"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        "messages": [\r\n          {\r\n            "simpleResponses": {\r\n              "simpleResponses": [\r\n                {\r\n                  "displayText": "Test complete"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      }\r\n\r\n';
+
+    var config = {
+    method: 'post',
+    url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token=ya29.a0Aa4xrXNih4t_HOTve2AvPGQHH57qpwHk0MQSJJbqMmFMrVvttBdPqkzCKASOiHbRcCUCaAVWNSEevBmDifIvE712Vue3Z70Rb9-r-3ppNWk9w5GbZ6zAGUqvCFYui_UvtRUdBdsziIKyXCEktferF19DFVH4sQaCgYKATASARMSFQEjDvL9PIGvr0R7iEPwK2Kue9gfYA0165',
+    headers: { 
+        'Content-Type': 'text/plain'
+    },
+    data : data
+    };
+
+    axios(config)
+    .then(function (response) {
+    console.log(JSON.stringify(response.data));
+    console.log('create intent success');
+    })
+    .catch(function (error) {
+    console.log(error);
+    });
+}
+
+export default Chatbot;
