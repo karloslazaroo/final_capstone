@@ -72,7 +72,7 @@ class Chatbot extends React.Component {
 
     var config = {
       method: 'get',
-      url: this.urlcontainer+ this.token,
+      url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token='+ this.token,
       headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+ this.token
