@@ -1,4 +1,5 @@
 
+
 .talktous_user{
 	color: #f7ce05;
     font-size: 4em;
@@ -30,9 +31,7 @@
 	max-width: 850px;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+	
 	background-color: #fff;
 	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
 }
@@ -45,12 +44,23 @@
 
 .right{
 	padding: 25px 40px;
+	
+}
+
+.right p{
+	color: rgb(187, 182, 182);
+	margin-bottom: 8px;
+
+	
 }
 
 .right h2{
 	position: relative;
 	padding: 0 0 10px;
 	margin-bottom: 10px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
 .right h2:after{
@@ -67,6 +77,7 @@
 
 .field{
 	width: 100%;
+	height: 250px;
 	border: 2px solid rgba(0, 0, 0, 0);
 	outline: none;
 	background-color: rgba(230, 230, 230, 0.6);
@@ -103,4 +114,80 @@
 .field:focus{
     border: 2px solid rgba(30,85,250,0.47);
     background-color: #fff;
+}
+
+.faq_body{
+	margin-left: 15%;
+	font-family:'Quicksand', sans-serif;
+	background: #fff;
+	color: rgb(0, 0, 0);
+}
+
+.section_faq {
+	min-height: 800px;
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	font-size: 3rem;
+	margin: 2rem 0rem;
+}
+
+.faq {
+	max-width: 700px;
+	margin-top: 2rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid rgb(0, 0, 0);
+	cursor: pointer;
+}
+
+.question {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.question h3{
+	font-size: 1.8rem;
+	
+}
+
+.answer {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 1.4s ease;
+}
+
+.answer p{
+	padding-top: 1rem;
+	line-height: 1.6;
+	font-size: 1.4rem;
+}
+
+.faq._active .answer {
+	max-height: 300px;
+	animation: fade 1s ease-in-out;
+}
+
+.faq._active svg {
+	transform: rotate(180deg);
+}
+
+svg{
+	transition: transform .5s ease-in;
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0px);
+	}
 }

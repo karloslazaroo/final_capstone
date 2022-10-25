@@ -3,6 +3,7 @@ import { UserAuth } from '../../context/AuthContext';
 import Axios from 'axios';
 import './talktous.css';
 import Swal from 'sweetalert2';
+import '../../index.css'
 
 function App() {
   const {user} = UserAuth();
@@ -39,6 +40,13 @@ function App() {
 
   };
 
+  const faqs = document.querySelectorAll(".faq");
+
+  faqs.forEach(faq =>{
+    faq.addEventListener("click",()=>{
+      faq.classList.toggle("_active");
+    });
+  });
  
 
   return (
@@ -53,6 +61,8 @@ function App() {
         <div class="left"></div>
         <div class="right">
             <h2>Contact Us</h2>
+            <p>Name:  <span>{user?.displayName}</span></p>
+            <p>Email:  <span>{user?.email}</span></p>
             <textarea placeholder="Message" class="field"
             onChange={(event) => {
               setMessage(event.target.value);
@@ -72,7 +82,28 @@ function App() {
     </div>
     
 </div>
+<div className="faq_body">
+<section className="section_faq">
+  <h2 className="title">FAQs</h2>
+  <div className="faq">
+    <div className="question">
+      <h3>What is your Objective?</h3>
+      <svg width="15" height="10" viewBox="0 0 42 25">
+        <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div className="answer">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, fugit ex culpa cumque esse aspernatur 
+        blanditiis id rerum dignissimos consequatur, similique pariatur molestiae! 
+        Aliquid quidem quo pariatur vero placeat natus!
+      </p>
+    </div>
+  </div>
+  
+</section>
 
+</div>
 
 </div>
 
