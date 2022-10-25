@@ -5,16 +5,22 @@ import axios from 'axios';
 
 class Chatbot extends React.Component {
 
-  apikey = "AIzaSyC8npgx-FL391Pv_v91L7x0A2iFCw98uQ0";
+ 
   intentdisplaycontainer = [];
   responsecontainer = [];
-  state = {detectintentdata: [], agentdata : []};
-  token = "ya29.a0Aa4xrXNih4t_HOTve2AvPGQHH57qpwHk0MQSJJbqMmFMrVvttBdPqkzCKASOiHbRcCUCaAVWNSEevBmDifIvE712Vue3Z70Rb9-r-3ppNWk9w5GbZ6zAGUqvCFYui_UvtRUdBdsziIKyXCEktferF19DFVH4sQaCgYKATASARMSFQEjDvL9PIGvr0R7iEPwK2Kue9gfYA0165";
-  urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
+  state = {
+    detectintentdata: [],
+    agentdata : [],
+    inputtrainingphrase: '',
+    inputbotresponse: ''
+  };
+
+  token = "ya29.a0Aa4xrXMm9o1kEgphh_LRuwmrRVAhOaiCLCsVbIE2DtRsxfwWtp2NykUAIS1c0oTyDxCJzZExu_bpgCTEzdjyF34X-sA5k-p-1WCkKS3ur45ewoRY6i78KV4PklITNPfvj8_fbIqQrUXIzCNL3sVZndNa98dxOAaCgYKATASARMSFQEjDvL9Lv7Q6MFxRd4pdZNTsEOAWw0165";
+  // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   componentDidMount = () => {
     this.getIntents();
-    this.getAgents();
+    // this.getAgents();
     
   }
 
@@ -25,7 +31,40 @@ class Chatbot extends React.Component {
       });
   }
 
-  
+  createIntent = (event) =>{
+    event.preventDefault();
+    const trainingphrasecontainer = this.state.inputtrainingphrase;
+    const responsecontainer = this.state.inputbotresponse;
+
+    const displayname = '"displayName" : '+ '"'+trainingphrasecontainer+ '"';
+    const trainingphrase = '"text" : '+ '"'+trainingphrasecontainer+ '"';
+    const displaytext = '"displayText" : '+ '"'+responsecontainer+ '"';
+    var data = '{'+displayname+', "trainingPhrases": [ { "parts": [ {'+trainingphrase+'}]}],"messages": [{"simpleResponses": {"simpleResponses": [{'+displaytext +'}]}}]}';
+
+    var config = {
+    method: 'post',
+    url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token='+ this.token,
+    headers: { 
+        'Content-Type': 'text/plain'
+    },
+    data : data
+    };
+
+    axios(config)
+    .then(function (response) {
+    console.log(JSON.stringify(response.data));
+    console.log('create intent success');
+    })
+    .catch(function (error) {
+    console.log(error);
+    });
+  }
+
+  handleChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  };
+
 
   
   getIntents = () => {
@@ -33,7 +72,7 @@ class Chatbot extends React.Component {
 
     var config = {
       method: 'get',
-      url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token='+ this.token,
+      url: this.urlcontainer+ this.token,
       headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+ this.token
@@ -94,15 +133,48 @@ class Chatbot extends React.Component {
   }
 
   render(){
+    console.log('State response: ', this.state.inputbotresponse);
+    console.log('State trainingphrase: ', this.state.inputtrainingphrase);
     return (
             <div className='chatbot_body_content'>
                 
             <p>{this.displayIntentData(this.state.detectintentdata)}</p>
 
-          
-            <p><button onclick={()=> createIntent()} className='execute'>execute</button></p>
-            
-            <p>{this.displayagents(this.state.agentdata)} </p>
+            <div className='createintentform'>
+              <form onSubmit={this.createIntent}>
+              
+              <div className="form-input">
+                <input 
+                  type="text"
+                  name="inputtrainingphrase"
+                  placeholder="Title"
+                  value={this.state.inputtrainingphrase}
+                  onChange={this.handleChange}
+                />
+              </div>
+
+
+              <div className="form-input">
+                <textarea
+                  placeholder="body"
+                  name="inputbotresponse"
+                  cols="30"
+                  rows="10"
+                  value={this.state.inputbotresponse}
+                  onChange={this.handleChange}
+                >
+                  
+                </textarea>
+              </div>
+         
+                <p><button>Submit</button></p>   
+              </form>
+
+
+              
+            </div>
+           
+            {/* <p>{this.displayagents(this.state.agentdata)} </p> */}
 
 
         
@@ -114,26 +186,5 @@ class Chatbot extends React.Component {
   
 }
 
-function createIntent(){
-    var data = '{\r\n        "displayName": "Testing",\r\n        "trainingPhrases": [\r\n          {\r\n            "parts": [\r\n              {\r\n                "text": "Testing"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        "messages": [\r\n          {\r\n            "simpleResponses": {\r\n              "simpleResponses": [\r\n                {\r\n                  "displayText": "Test complete"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ]\r\n      }\r\n\r\n';
-
-    var config = {
-    method: 'post',
-    url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token=ya29.a0Aa4xrXNih4t_HOTve2AvPGQHH57qpwHk0MQSJJbqMmFMrVvttBdPqkzCKASOiHbRcCUCaAVWNSEevBmDifIvE712Vue3Z70Rb9-r-3ppNWk9w5GbZ6zAGUqvCFYui_UvtRUdBdsziIKyXCEktferF19DFVH4sQaCgYKATASARMSFQEjDvL9PIGvr0R7iEPwK2Kue9gfYA0165',
-    headers: { 
-        'Content-Type': 'text/plain'
-    },
-    data : data
-    };
-
-    axios(config)
-    .then(function (response) {
-    console.log(JSON.stringify(response.data));
-    console.log('create intent success');
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
-}
 
 export default Chatbot;
