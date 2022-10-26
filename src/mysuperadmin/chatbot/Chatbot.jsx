@@ -39,45 +39,57 @@ const addChatbot = (/** ${projId} */) => {
 
 
   return (
-    <div className='bodyLogin'>
-    <div className='login'>
-      <div className='formLogin'>
-        <h1>CHATBOT</h1>
+    <div className='chatbot_body'>
+      
+    <div className='chatbot_admin'>
+      <div className='formChatbot_admin'>
+      <div className="textBox">
+        <h2>CHATBOT<br></br></h2>
+        </div>
+        <div className="divider"></div>
+        <div className="chatbot_inputs">
         <label>Email of Content Admin: </label>  
             <input 
-            className="name_ratings_user"
+            className="chatbot_creation"
             type="text"
-            placeholder="Type your title..." 
+            placeholder="Type your email..." 
             onChange={(event) => {
               setMail(event.target.value);
             }}
             />
        <label>Project ID: </label>  
             <input 
-            className="name_ratings_user"
+            className="chatbot_creation"
             type="text"
-            placeholder="Type your title..." 
+            placeholder="Type your project ID..." 
             onChange={(event) => {
               setID(event.target.value);
             }}
             />
        <label>Name of Chatbot: </label>  
             <input 
-            className="name_ratings_user"
+            className="chatbot_creation"
             type="text"
-            placeholder="Type your title..." 
+            placeholder="Type the name of your chatbot..." 
             onChange={(event) => {
               setName(event.target.value);
             }}
             />
-            <button onClick={addChatbot} >Create Chatbot</button>
-       
+            <div className="button_add_content">
+      <a href='#' onClick={addChatbot} >Create Chatbot!</a>
       </div>
+      </div>
+            
+      </div>
+      <div className="divider_chatbot"></div>
       {datas.map((val, key) => {
           return (
+            
             <div key={key}>
-            <div className="box_questions">
-              <i className="fas fa-quote-left quote"></i>
+
+            <div className="chatbotbox_admin">
+    
+              
               <h1> {val.name} </h1>
               <p>
                 {val.projId}<br></br>
@@ -87,8 +99,12 @@ const addChatbot = (/** ${projId} */) => {
           </div>
           );
         })}
+
+        
     </div>
+    
     </div>
+
   )
 }
 

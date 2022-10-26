@@ -15,3 +15,33 @@
     color: black;
     margin-left: 190px;
 }
+
+
+.chatbot_body {
+    margin-left: 15%;
+}
+
+.divider_chatbot {
+    
+    border-top: 3px dashed #bbb;
+    width: 1610px;
+    margin-top: 15px;
+}
+
+.chatbot_creation {
+    display: flex;
+    width: 50%;
+    height: 25px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    resize: none;
+    margin-bottom: 5px;
+    
+}
+
+.chatbot_inputs {
+    margin-top: 25px;
+}
