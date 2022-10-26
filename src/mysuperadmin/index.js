@@ -6,3 +6,4 @@ export {default as Homepage_Admin} from './homepage/Homepage';
 export {default as Ratings_Admin} from './ratings/Ratings';
 export {default as Unanswered_Admin} from './unanswered/Unanswered';
 export {default as Analytics_Admin} from  './analytics/Analytics';
+export {default as Faqs_Admin} from  './faq/Faq';

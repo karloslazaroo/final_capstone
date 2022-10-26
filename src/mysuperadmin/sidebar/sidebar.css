@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Manrope';
+    font-family: 'Poppins';
 }
 
 
@@ -84,30 +84,34 @@
 }
 
 .nav-links_admin li:nth-child(2):hover ~ .active {
-    top: 14.5%;
+    top: 13.11%;
 }
 
 .nav-links_admin li:nth-child(3):hover ~ .active {
-    top: 27%;
+    top: 24.22%;
 }
 
 .nav-links_admin li:nth-child(4):hover ~ .active {
-    top: 39.5%;
+    top: 35.33%;
 }
 
 .nav-links_admin li:nth-child(5):hover ~ .active {
-    top: 52%;
+    top: 46.44%;
 }
 
 .nav-links_admin li:nth-child(6):hover ~ .active {
-    top: 64.5%;
+    top: 57.55%;
 }
 
 .nav-links_admin li:nth-child(7):hover ~ .active {
-    top: 77%;
+    top: 68.66%;
 }
 
 .nav-links_admin li:nth-child(8):hover ~ .active {
-    top: 89.5%;
+    top: 79.77%;
+}
+
+.nav-links_admin li:nth-child(9):hover ~ .active {
+    top: 90.88%;
 }
 

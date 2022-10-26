@@ -3,7 +3,7 @@ import './SuperAdmin.css';
 
 
 import {Footer, Header} from './components';
-import {Sidebar_Admin, Announcements_Admin, Chatbot_Admin, Homepage_Admin, Ratings_Admin, Unanswered_Admin, Administrators_Admin, Analytics_Admin } from './mysuperadmin'
+import {Sidebar_Admin, Announcements_Admin, Chatbot_Admin, Homepage_Admin, Ratings_Admin, Unanswered_Admin, Administrators_Admin, Analytics_Admin, Faqs_Admin } from './mysuperadmin'
 
 
 
@@ -31,6 +31,9 @@ function SuperAdmin  ()  {
         break
     case "/Administrators_Admin":
         SuperAdmin = <Administrators_Admin/>
+        break
+    case "/Faqs_Admin":
+        SuperAdmin = <Faqs_Admin/>
         break
 
     }

@@ -32,6 +32,7 @@ function App() {
                 <li><a href="/Unanswered_Content"><i class="fa-solid fa-address-book"></i><p>Questions</p></a></li>
                 <li><a href="/Analytics_Content"><i class="fa-solid fa-chart-line"></i><p>Analytics</p></a></li>
                 <li><a href="/Ratings_Content"><i class="fa-solid fa-star"></i><p>Ratings & Reviews</p></a></li>
+                <li><a href="/Faqs_Content"><i class="fa-solid fa-question"></i><p>FAQs</p></a></li>
                 <li><a onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i><p>Logout</p></a></li>
                 <div class="active"></div>
             </div>

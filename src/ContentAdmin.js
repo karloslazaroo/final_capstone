@@ -3,7 +3,7 @@ import './ContentAdmin.css';
 
 
 import {Footer, Header} from './components';
-import {Sidebar_Content, Announcements_Content, Chatbot_Content, Homepage_Content, Ratings_Content, Unanswered_Content, Analytics_Content} from './mycontentadmin';
+import {Sidebar_Content, Announcements_Content, Chatbot_Content, Homepage_Content, Ratings_Content, Unanswered_Content, Analytics_Content, Faqs_Content} from './mycontentadmin';
 
 
 
@@ -29,6 +29,10 @@ function ContentAdmin()  {
       case "/Unanswered_Content":
         ContentAdmin = <Unanswered_Content/>
         break
+      case "/Faqs_Content":
+        ContentAdmin = <Faqs_Content/>
+        break
+        
     }
     return (
       
