@@ -42,6 +42,8 @@ function App() {
         newTitle: newTitle,
         newBody: newBody,
       });
+
+      document.getElementById(id).value = '';
     };
 
     const deleteAnnounce = (id) => {
@@ -106,14 +108,14 @@ function App() {
               <div class="info_questions">
               <div class="name">Administrator</div>
               <div class="job">College of Information and Computing Sciences</div>
-              <input 
-                type="text" placeholder="New Title..." value={val.title}
+              <input id={val._id}
+                type="text" placeholder="New Title..." required
                 onChange={(event) => {
                   setNewTitle(event.target.value);
                 }}
               />
-              <input 
-                    type="text" placeholder="New Body..." value={val.body}
+              <input id={val._id}
+                    type="text" placeholder="New Body..." required
                     onChange={(event) => {
                       setNewBody(event.target.value);
                     }}
