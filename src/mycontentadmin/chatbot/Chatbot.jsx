@@ -1,40 +1,63 @@
-import React from 'react'
+import React , {useEffect, useState} from 'react'
 import './chatbot.css'
 import axios from 'axios';
+import { UserAuth } from '../../context/AuthContext';
 
 
-class Chatbot extends React.Component {
 
+function Chatbot (){
+
+  const {user} = UserAuth();
+  const intentdisplaycontainer = [];
+  const responsecontainer = [];
  
-  intentdisplaycontainer = [];
-  responsecontainer = [];
-  state = {
-    detectintentdata: [],
-    agentdata : [],
-    inputtrainingphrase: '',
-    inputbotresponse: ''
-  };
+    const [detectintentdata, setdetectintentdata] = useState([]);
+    const [agentdata, setAgentdata] = useState([]) ;
+    const [projectiddata, setprojectiddata]= useState('');
+    const [inputtrainingphrase, setinputtrainingphrase] = useState('');
+    const [inputbotresponse, setinputbotresponse] = useState('');
+ 
 
-  token = "ya29.a0Aa4xrXNHmGIcuS1jJb_reyR-LOOY5dh0IkIw44DjSvC-Bs43jUGMx6hMf_H9keO--AxZgIEzbr-dDtzVfHKSw3XYg-3u-EXsHnfscWKiLNn8S-2zQWISkYMHquUA3F7_9x5yNEHFlqNUNC15HpQInrTMzP9_JgaCgYKATASARASFQEjDvL95dget6stTC839gMco76qUA0165";
+
+
+
+  const token = "ya29.a0Aa4xrXPvuLtlQTblycwU6tV_6pRYurFrp2l6U0k3PLh4ZRqPYpxMUZ6vcISH-r5AlCXwqvJK1UlPLUFS9lwomVMowO3qt84sc-4HAV6MuJMClf4EznU0MqeLGclZYh1E5aKC2kQkHwlU6vVFmo0W8_ew_V-8kAaCgYKATASARMSFQEjDvL9TxJ3s9tY-fBjSSgNw0JyEA0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
-  componentDidMount = () => {
-    this.getIntents();
-    // this.getAgents();
-    
+  useEffect(() => {
+    getIntents();
+    // getAgents();
+    getprojectId();
+  }
+  ,[]
+  );
+
+  //get specific project id, store project id to variable, use variable to get intents
+  //project id also used for creating intent
+
+  const getprojectId = () =>{
+    const mail = user.email;
+    console.log('email',user.email);
+    axios.get(`http://localhost:3001/readBot/${mail}`).then((response) => {
+      // console.log('getproject id', response.data.projId);
+      // setState( {projectiddata : response.data});
+      // console.log(projectiddata);
+      setprojectiddata(response.data.projId);
+    });
   }
 
-  getAgents = () =>{
-    
-    axios.get('http://localhost:3001/readBot').then((response) => {
-        this.setState({agentdata: response.data});
-      });
-  }
 
-  createIntent = (event) =>{
+  // getAgents = () =>{
+    
+  //   axios.get('http://localhost:3001/readBot').then((response) => {
+  //       setState({agentdata: response.data});
+  //     });
+  // }
+
+  const createIntent = (event) =>{
     event.preventDefault();
-    const trainingphrasecontainer = this.state.inputtrainingphrase;
-    const responsecontainer = this.state.inputbotresponse;
+    const trainingphrasecontainer = inputtrainingphrase;
+    const responsecontainer = inputbotresponse;
 
     const displayname = '"displayName" : '+ '"'+trainingphrasecontainer+ '"';
     const trainingphrase = '"text" : '+ '"'+trainingphrasecontainer+ '"';
@@ -43,7 +66,7 @@ class Chatbot extends React.Component {
 
     var config = {
     method: 'post',
-    url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token='+ this.token,
+    url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents?access_token='+ token,
     headers: { 
         'Content-Type': 'text/plain'
     },
@@ -53,29 +76,42 @@ class Chatbot extends React.Component {
     axios(config)
     .then(function (response) {
     console.log(JSON.stringify(response.data));
-    console.log('create intent success');
+    // console.log('create intent success');
+    alert('Create intent success!');
+    resetuserInputs();
+    getIntents();
     })
     .catch(function (error) {
     console.log(error);
+    alert('Create intent failed')
     });
   }
 
-  handleChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState({ [name]: value });
-  };
+  const resetuserInputs = () =>{
+    setinputtrainingphrase('');
+    setinputbotresponse('');
+    // const texttraining = document.getElementById("inputtrainingphrase");
+    // const textbotresponse = document.getElementById("inputbotresponse");
+    // texttraining.innerHTML('');
+    // textbotresponse.innerHTML('');
+  }
+
+  // const handleChange = ({ target }) => {
+  //   const { name, value } = target;
+  //   useState({ [name]: value });
+  // };
 
 
   
-  getIntents = () => {
+  const getIntents = () => {
  
 
     var config = {
       method: 'get',
-      url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token='+ this.token,
+      url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token='+ token,
       headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ this.token
+      'Authorization': 'Bearer '+ token
      }
     };
 
@@ -85,13 +121,14 @@ class Chatbot extends React.Component {
       console.log(data);
       // console.log('data received');
       // const testvariable = data[1].messages[0].simpleResponses.simpleResponses[0].displayText;
-      //   this.intentdisplaycontainer.push(testvariable);
+      //   intentdisplaycontainer.push(testvariable);
      
-      // this.intentdisplaycontainer.push(data);
+      // intentdisplaycontainer.push(data);
 
       // console.log('data dded to state');
       // console.log(data[1].messages[0].simpleResponses.simpleResponses[0].displayText, 'from axios code');
-      this.setState({detectintentdata : data})
+      // setState({detectintentdata : data})
+      setdetectintentdata(data);
 
 
       
@@ -103,7 +140,7 @@ class Chatbot extends React.Component {
 
   };
   
-  displayIntentData = (detectintentdata) =>{
+  const displayIntentData = (detectintentdata) =>{
    console.log(typeof(detectintentdata));
     return (
         <div >
@@ -113,7 +150,7 @@ class Chatbot extends React.Component {
         )  
   }
 
-  displayagents = (agentdata) => {
+  const displayagents = (agentdata) => {
     console.log(agentdata);
     return agentdata.map((val, key) => {
         return (
@@ -132,36 +169,42 @@ class Chatbot extends React.Component {
     )
   }
 
-  render(){
-    console.log('State response: ', this.state.inputbotresponse);
-    console.log('State trainingphrase: ', this.state.inputtrainingphrase);
+  
+  console.log('State response: ', inputbotresponse);
+  console.log('State trainingphrase: ', inputtrainingphrase);
     return (
             <div className='chatbot_body_content'>
                 
-            <p>{this.displayIntentData(this.state.detectintentdata)}</p>
+            <p>{displayIntentData(detectintentdata)}</p>
 
             <div className='createintentform'>
-              <form onSubmit={this.createIntent}>
+              <form onSubmit={createIntent}>
               
               <div className="form-input">
                 <input 
                   type="text"
                   name="inputtrainingphrase"
-                  placeholder="Title"
-                  value={this.state.inputtrainingphrase}
-                  onChange={this.handleChange}
+                  placeholder="Enter training phrase"
+                  id='inputtrainingphrase'
+                  value={inputtrainingphrase}
+                  onChange={(event) => {
+                    setinputtrainingphrase(event.target.value);
+                  }}
                 />
               </div>
 
 
               <div className="form-input">
                 <textarea
-                  placeholder="body"
+                  placeholder="Enter chatbot response"
                   name="inputbotresponse"
                   cols="30"
                   rows="10"
-                  value={this.state.inputbotresponse}
-                  onChange={this.handleChange}
+                  id='inputbotresponse'
+                  value={inputbotresponse}
+                  onChange={(event) => {
+                    setinputbotresponse(event.target.value);
+                  }}
                 >
                   
                 </textarea>
@@ -174,9 +217,9 @@ class Chatbot extends React.Component {
               
             </div>
            
-            {/* <p>{this.displayagents(this.state.agentdata)} </p> */}
+            {/* <p>{displayagents(agentdata)} </p> */}
 
-
+          
         
         </div>
         ) 
@@ -184,7 +227,20 @@ class Chatbot extends React.Component {
  
   
   
-}
+
+
+
+// function getprojectId(){
+//   // console.log(UserAuth());
+
+//   const mail = user.email;
+//       axios.get(`http://localhost:3001/readBot/${mail}`).then((response) => {
+//         console.log('getproject id', response.data);
+//         // setState( {projectiddata : response.data});
+//         // console.log(projectiddata);
+//       });
+
+// }
 
 
 export default Chatbot;

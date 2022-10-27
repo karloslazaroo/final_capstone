@@ -9,7 +9,7 @@ function App() {
   const [mail, setMail] = useState('');
   const [time] = useState('Asia/Hong_Kong');
   //Generate new token every 1 hour in Postman
-  const token = 'ya29.a0Aa4xrXO5N-Bnx8_83cy4hB5U9Y0f85K7apVvrs9i-c7SLZ7ULtlsXydrK5lICSdiG5O83FfR61ooaLLLcG0BIbV1KQvMRLLtedRW5jCHGyz_oiA6tCJ0-ugGnS3taHvHUtwsHqM_840IURlLGVcQgJqYeO6z7gaCgYKATASARASFQEjDvL9M42D6f605nsFZHK0oa8keA0165';
+  const token = 'ya29.a0Aa4xrXPcPoTSIIwRtAmsce7vlFMENEbbFV5MuPs2SVwzQNI-vAeX5mNraDotErkujYHgkwCKT3do4ORRo1xgNm1a67ip8SOQlCWujAxAAK59vANNOL_74sk7xRoJllodRHRYy_I6jeLEQv8yzXZkVmjA1BPXrQaCgYKATASARMSFQEjDvL9dva46U6ERtUVgnbodsaMqA0165';
 
   /* const getData = ( ${projId} ) =>  {
   Axios.get(`https://dialogflow.googleapis.com/v2/projects/archie-fcoa/agent?access_token=${token}`).then((response) => {
@@ -18,10 +18,18 @@ function App() {
   });
 }; */
 useEffect(() => {
+  getBots();
+
+}
+, []
+);
+
+function getBots(){
   Axios.get('http://localhost:3001/readBot').then((response) => {
     setData(response.data);
+    console.log('readbot ',response.data);
   });
-}, [setData]);
+}
 
 const addChatbot = (/** ${projId} */) => {
   Axios.post(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${token}`, {
@@ -33,10 +41,31 @@ const addChatbot = (/** ${projId} */) => {
     projId: projId,
     name: name,
     time: time,
-  });
+  },
+  getBots()
+  );
  });
 };
 
+function displayBots(){
+  return(
+    datas.map((val, key) => {
+      return (
+        <div key={key}>
+        <div className="box_questions">
+          <i className="fas fa-quote-left quote"></i>
+          <h1> {val.name} </h1>
+          <p>
+            {val.projId}<br></br>
+            {val.mail}
+          </p>
+        </div>
+      </div>
+      );
+    })
+  );
+
+}
 
   return (
     <div className='chatbot_body'>
@@ -81,7 +110,6 @@ const addChatbot = (/** ${projId} */) => {
       </div>
             
       </div>
-      <div className="divider_chatbot"></div>
       {datas.map((val, key) => {
           return (
             
@@ -99,8 +127,6 @@ const addChatbot = (/** ${projId} */) => {
           </div>
           );
         })}
-
-        
     </div>
     
     </div>

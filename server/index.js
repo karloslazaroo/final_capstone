@@ -36,6 +36,20 @@ app.post('/analyticsdata', (req , res) =>{
     });
 });
 
+//route for getting chatbot project id
+app.get("/readBot/:mail", async (req, res) => {
+    const mail = req.params.mail;
+    ChatbotModel.findOne({ mail: mail} , (err, result) =>{
+        if (err) {
+            res.send("False");
+        }else{
+
+            res.send(result);
+        }
+
+    })
+}); 
+
 //route for getting analytics data and count for talk to us
 
 app.get('/readanalytics', (req , res) =>{
