@@ -38,6 +38,8 @@ function App() {
       source: state.source
     });
 
+    document.getElementById('inputs').value = '';
+
   };
 
   const faqs = document.querySelectorAll(".faq");
@@ -63,7 +65,7 @@ function App() {
             <h2>Contact Us</h2>
             <p>Name:  <span>{user?.displayName}</span></p>
             <p>Email:  <span>{user?.email}</span></p>
-            <textarea placeholder="Message" class="field"
+            <textarea id="inputs" placeholder="Message" class="field"
             onChange={(event) => {
               setMessage(event.target.value);
             }}></textarea>

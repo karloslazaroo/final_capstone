@@ -15,7 +15,7 @@ class Chatbot extends React.Component {
     inputbotresponse: ''
   };
 
-  token = "ya29.a0Aa4xrXMm9o1kEgphh_LRuwmrRVAhOaiCLCsVbIE2DtRsxfwWtp2NykUAIS1c0oTyDxCJzZExu_bpgCTEzdjyF34X-sA5k-p-1WCkKS3ur45ewoRY6i78KV4PklITNPfvj8_fbIqQrUXIzCNL3sVZndNa98dxOAaCgYKATASARMSFQEjDvL9Lv7Q6MFxRd4pdZNTsEOAWw0165";
+  token = "ya29.a0Aa4xrXNHmGIcuS1jJb_reyR-LOOY5dh0IkIw44DjSvC-Bs43jUGMx6hMf_H9keO--AxZgIEzbr-dDtzVfHKSw3XYg-3u-EXsHnfscWKiLNn8S-2zQWISkYMHquUA3F7_9x5yNEHFlqNUNC15HpQInrTMzP9_JgaCgYKATASARASFQEjDvL95dget6stTC839gMco76qUA0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   componentDidMount = () => {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './ratings.css';
 import Profile from '../../assets/profile1.jpg';
+import Swal from 'sweetalert2';
 
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
     }, [reviewList]);
 
     const updateApproval = (id) => {
+      Swal.fire(
+        'Review Approved!'
+      )
       Axios.put("http://localhost:3001/updateReview", {
         id: id, 
         newApproval: newApproval,
@@ -23,6 +27,9 @@ function App() {
     };
 
     const updateDisapproval = (id) => {
+      Swal.fire(
+        'Review Disapproved!'
+      )
       Axios.put("http://localhost:3001/updateReviewDis", {
         id: id, 
         newDisapproval: newDisapproval,

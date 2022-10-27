@@ -265,6 +265,19 @@ app.get('/readBot', async (req, res) => {
     })
 });
 
+/* app.get("/readBot/:mail", async (req, res) => {
+    const mail = req.params.mail;
+    ChatbotModel.findOne({ mail: mail} , (err, result) =>{
+        if (err) {
+            res.send("False");
+        }else{
+
+            res.send(result);
+        }
+
+    })
+});  */
+
 app.listen(3001, () => {
     console.log("Server running on port 3001...");
 });

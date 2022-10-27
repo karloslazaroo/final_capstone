@@ -41,6 +41,11 @@ function App() {
     setModal(!modal);
   };
 
+  const Restart = () => {
+    addToList();
+    toggleModal();
+  };
+
   if(modal) {
     document.body.classList.add('active-modal')
   } else {
@@ -102,7 +107,7 @@ function App() {
                 setMessage(event.target.value);
             }}></textarea>
             <div className="buttons_reviews_user">
-      <a href='#'onClick={addToList} >Submit</a>
+      <a href='#'onClick={Restart} >Submit</a>
       <a href='#'onClick={toggleModal} >Close</a>
       </div>
           </div>
