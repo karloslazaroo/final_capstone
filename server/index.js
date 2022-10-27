@@ -9,6 +9,7 @@ const ReviewModel = require("./models/Review");
 const AdminModel = require("./models/manageAdmin");
 const AnalyticsModel = require("./models/ForAnalytics");
 const ChatbotModel = require("./models/Chatbot");
+const FaqsModel = require("./models/FAQs");
 
 app.use(express.json());
 app.use(cors());
@@ -293,6 +294,54 @@ app.get('/readBot', async (req, res) => {
 
     })
 });  */
+
+app.post('/insertFaqs', async (req, res) => {
+    const question = req.body.question;
+    const answer = req.body.answer;
+
+    const faqs = new FaqsModel({question: question, answer: answer});
+
+    try {
+        await faqs.save();
+        res.send("inserted data");
+    } catch(err) {
+        console.log(err)
+    }
+});
+
+app.get('/readFaqs', async (req, res) => {
+    FaqsModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
+
+        res.send(result);
+    })
+});
+
+app.put('/updateFaqs', async (req, res) => {
+    const newQuestion = req.body.newQuestion;
+    const newAnswer = req.body.newAnswer;
+    const id = req.body.id;
+
+    try {
+        await FaqsModel.findById(id, (err, updatedTitle) => {
+            updatedTitle.question = newQuestion;
+            updatedTitle.answer = newAnswer;
+            updatedTitle.save();
+            res.send("update");
+        });
+    } catch(err) {
+        console.log(err);
+    }
+});
+
+app.delete("/deleteFaqs/:id", async (req, res) => {
+    const id = req.params.id;
+    
+    await FaqsModel.findByIdAndRemove(id).exec();
+    res.send("deleted");
+});
 
 app.listen(3001, () => {
     console.log("Server running on port 3001...");

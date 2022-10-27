@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserAuth } from '../../context/AuthContext';
 import Axios from 'axios';
 import './talktous.css';
@@ -10,10 +10,17 @@ function App() {
   const name = user.displayName;
   const email = user.email; //0 pag integer/number
   const [message, setMessage] = useState('');
+  const [faqsList, setFaqsList] = useState([]);
 
   const state = {
     source: ''
   };
+
+  useEffect(() => {
+    Axios.get('http://localhost:3001/readFaqs').then((response) => {
+      setFaqsList(response.data);
+    });
+  }, [faqsList]);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -84,27 +91,32 @@ function App() {
     </div>
     
 </div>
+
 <div className="faq_body">
 <section className="section_faq">
   <h2 className="title">FAQs</h2>
   <div className="faq">
-    <div className="question">
-      <h3>What is your Objective?</h3>
-      <svg width="15" height="10" viewBox="0 0 42 25">
-        <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div className="answer">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, fugit ex culpa cumque esse aspernatur 
-        blanditiis id rerum dignissimos consequatur, similique pariatur molestiae! 
-        Aliquid quidem quo pariatur vero placeat natus!
-      </p>
-    </div>
-  </div>
-  
-</section>
 
+{faqsList.map((val, key) => {
+              return (
+                <div key={key}>
+                  <div className="question">
+                    <h3>{val.question}</h3>
+                    <svg width="15" height="10" viewBox="0 0 42 25">
+                      <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div className="answer">
+                    <p>
+                    {val.answer}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+
+  </div>
+</section>
 </div>
 
 </div>
