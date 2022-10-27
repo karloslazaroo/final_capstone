@@ -21,7 +21,7 @@ function Chatbot (){
 
 
 
-  const token = "ya29.a0Aa4xrXPvuLtlQTblycwU6tV_6pRYurFrp2l6U0k3PLh4ZRqPYpxMUZ6vcISH-r5AlCXwqvJK1UlPLUFS9lwomVMowO3qt84sc-4HAV6MuJMClf4EznU0MqeLGclZYh1E5aKC2kQkHwlU6vVFmo0W8_ew_V-8kAaCgYKATASARMSFQEjDvL9TxJ3s9tY-fBjSSgNw0JyEA0165";
+  const token = "ya29.a0Aa4xrXNqmD8lPp48-yvJlKWBHL_2JEVNJqw1gmP34Af1csU8SNqlSvBSQUEovroS6ERVF2peZ-LQaP462upZxMdt4bSd9U9MfjqW6t0iYPc-abwZ-bc2h2n1cgomTayWFs4GwRgttk5e51N_coF19SI126MYcgaCgYKATASARASFQEjDvL9WLv1SXITjVamp0t8URameg0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
@@ -42,6 +42,7 @@ function Chatbot (){
       // console.log('getproject id', response.data.projId);
       // setState( {projectiddata : response.data});
       // console.log(projectiddata);
+      console.log(response.data.projId);
       setprojectiddata(response.data.projId);
     });
   }
@@ -108,7 +109,7 @@ function Chatbot (){
 
     var config = {
       method: 'get',
-      url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token='+ token,
+      url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents?access_token='+ token,
       headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+ token
@@ -135,7 +136,7 @@ function Chatbot (){
     })
     .catch((error) => {
       console.log(error);
-      alert('error on axios')
+      alert('error on axios');
     });
 
   };
