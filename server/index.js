@@ -85,11 +85,13 @@ app.get('/read', async (req, res) => {
 
 app.put('/update', async (req, res) => {
     const newTitle = req.body.newTitle;
+    const newBody = req.body.newBody;
     const id = req.body.id;
 
     try {
         await AnnounceModel.findById(id, (err, updatedTitle) => {
             updatedTitle.title = newTitle;
+            updatedTitle.body = newBody;
             updatedTitle.save();
             res.send("update");
         });

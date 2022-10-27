@@ -8,6 +8,7 @@ function App() {
   const [title, setTitle] = useState('');
     const [body, setBody] = useState(''); //0 pag integer/number
     const[newTitle, setNewTitle] = useState('');
+    const[newBody, setNewBody] = useState('');
     const [announceList, setAnnounceList] = useState([]);
 
     useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
       Axios.put("http://localhost:3001/update", {
         id: id, 
         newTitle: newTitle,
+        newBody: newBody,
       });
     };
 
@@ -105,11 +107,17 @@ function App() {
               <div class="name">Administrator</div>
               <div class="job">College of Information and Computing Sciences</div>
               <input 
-                type="text" placeholder="New Title..." 
+                type="text" placeholder="New Title..." value={val.title}
                 onChange={(event) => {
                   setNewTitle(event.target.value);
                 }}
               />
+              <input 
+                    type="text" placeholder="New Body..." value={val.body}
+                    onChange={(event) => {
+                      setNewBody(event.target.value);
+                    }}
+                  />
               <div className="button_announcement_content">
                 <a href="#" onClick={() => updateTitle(val._id)}> Update </a>
                 <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>

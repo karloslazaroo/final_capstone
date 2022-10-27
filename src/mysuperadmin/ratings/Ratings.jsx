@@ -56,15 +56,7 @@ function App() {
       <div class="content_ratings_content">
         <div class="info">
           <div class="name">{val.name}</div>
-          <div class="job">Designer | Developer</div>
           <div class="name">{val.approval}</div>
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
         </div>
         <div class="image">
           <img src={Profile} alt=""/>
