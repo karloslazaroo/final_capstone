@@ -200,7 +200,7 @@ function Chatbot (){
                   placeholder="Enter chatbot response"
                   name="inputbotresponse"
                   cols="30"
-                  rows="10"
+                  rows="5"
                   id='inputbotresponse'
                   value={inputbotresponse}
                   onChange={(event) => {
