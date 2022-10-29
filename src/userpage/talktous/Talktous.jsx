@@ -95,11 +95,10 @@ function App() {
 <div className="faq_body">
 <section className="section_faq">
   <h2 className="title">FAQs</h2>
-  <div className="faq">
-
-{faqsList.map((val, key) => {
+  {faqsList.map((val, key) => {
               return (
                 <div key={key}>
+              <div className="faq">
                   <div className="question">
                     <h3>{val.question}</h3>
                     <svg width="15" height="10" viewBox="0 0 42 25">
@@ -112,10 +111,11 @@ function App() {
                     </p>
                   </div>
                 </div>
+                </div>
               );
             })}
 
-  </div>
+  
 </section>
 </div>
 
