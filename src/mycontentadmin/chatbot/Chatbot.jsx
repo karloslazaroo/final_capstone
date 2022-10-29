@@ -23,7 +23,7 @@ function Chatbot (){
 
 
 
-  const token = "ya29.a0Aa4xrXMdTEd-BXAvjSkGh6mqrzQWEqPwanwPpv_jBtYn1_kwnTyG6lWXVF77U-IWJEUqIWEYN8ehn0kw6AQIRzmOi7l9PnR1aXC-X5CVrBqH7OY8mOSrQS1Gu2tlMST0PLp6py1iEg0ufhDUTeBeR8cMX3sDZgaCgYKATASARASFQEjDvL9wLIYwn4BKIC-4a33lBv3hQ0165";
+  const token = "ya29.a0Aa4xrXN48z6XpYbHBvv05XmmTXuhjg7swgx4kSER2vA7qmOzGoYdkgL4o_8kNAIBCuX2q_nM0pWwjC-Q3OUCouuKRUMjHQVZEeP9QXY1G8B3COeNgiuX-tWNn1Cubl13Rs_jwDDts36Sl9fuMmMRVwJyvG-NLAaCgYKATASARMSFQEjDvL9coyZIXzlwRHDNn5-d0IZ7g0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
@@ -31,15 +31,16 @@ function Chatbot (){
     // getAgents();
     const mail = user.email;
     console.log('email',user.email);
-    axios.get(`http://localhost:3001/readBot/${mail}`).then((response) => {
+    axios.get(`http://localhost:3001/readBot/${mail}`).then( async (response) => {
       // console.log('getproject id', response.data.projId);
       // setState( {projectiddata : response.data});
       // console.log(projectiddata);
       console.log(response.data.projId);
       setprojectiddata(response.data.projId);
-      ListIntent();
+      
     });
-  });
+    ListIntent();
+  }, []);
 
   //get specific project id, store project id to variable, use variable to get intents
   //project id also used for creating intent
@@ -74,8 +75,9 @@ function Chatbot (){
 
     const displayname = '"displayName" : '+ '"'+trainingphrasecontainer+ '"';
     const trainingphrase = '"text" : '+ '"'+trainingphrasecontainer+ '"';
-    const displaytext = '"displayText" : '+ '"'+responsecontainer+ '"';
-    var data = '{'+displayname+', "trainingPhrases": [ { "parts": [ {'+trainingphrase+'}]}],"messages": [{"simpleResponses": {"simpleResponses": [{'+displaytext +'}]}}]}';
+    const displaytext = '"'+responsecontainer+ '"';
+    var data = '{'+displayname+', "trainingPhrases": [ { "parts": [ {'+trainingphrase+'}]}],"messages": [{"text": {"text": ['+displaytext+']}}]}';
+
 
     var config = {
     method: 'post',
@@ -116,42 +118,42 @@ function Chatbot (){
 
 
   
-  /* const getIntents = () => {
+  // const getIntents = () => {
  
 
-    var config = {
-      method: 'get',
-      url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents?intentView=INTENT_VIEW_FULL&access_token='+ token,
-      headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ token
-     }
-    };
+  //   var config = {
+  //     method: 'get',
+  //     url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents?intentView=INTENT_VIEW_FULL&access_token='+ token,
+  //     headers: {
+  //     'Content-Type': 'application/json',
+  //     'Authorization': 'Bearer '+ token
+  //    }
+  //   };
 
-    axios(config)
-    .then((response) => {
-      const data = JSON.stringify(response.data.intents);
-      console.log(data);
-      // console.log('data received');
-      // const testvariable = data[1].messages[0].simpleResponses.simpleResponses[0].displayText;
-      //   intentdisplaycontainer.push(testvariable);
+  //   axios(config)
+  //   .then((response) => {
+  //     const data = JSON.stringify(response.data.intents);
+  //     console.log(data);
+  //     // console.log('data received');
+  //     // const testvariable = data[1].messages[0].simpleResponses.simpleResponses[0].displayText;
+  //     //   intentdisplaycontainer.push(testvariable);
      
-      // intentdisplaycontainer.push(data);
+  //     // intentdisplaycontainer.push(data);
 
-      // console.log('data dded to state');
-      // console.log(data[1].messages[0].simpleResponses.simpleResponses[0].displayText, 'from axios code');
-      // setState({detectintentdata : data})
-      setdetectintentdata(data);
+  //     // console.log('data dded to state');
+  //     // console.log(data[1].messages[0].simpleResponses.simpleResponses[0].displayText, 'from axios code');
+  //     // setState({detectintentdata : data})
+  //     setdetectintentdata(data);
 
 
       
-    })
-    .catch((error) => {
-      console.log(error);
-      alert('error on axios');
-    });
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     alert('error on axios');
+  //   });
 
-  }; */
+  // }; 
   
   const displayIntentData = (detectintentdata) =>{
    console.log(typeof(detectintentdata));
@@ -162,6 +164,30 @@ function Chatbot (){
     
         )  
   }
+
+  const updateIntent = () =>{
+    var data = '{"displayName": "hephep","trainingPhrases": [ {"parts":[  {"text": "hephpehpehpe"}]}, {"parts": [{"text": "waku waku"}]}  ],"messages": [ {"text": {"text": ["memes","eelelelel"] }}  ] }';
+
+    var config = {
+      method: 'patch',
+      url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents/63ea4933-bd5a-407a-ae31-7b928e712c26?access_token='+token ,
+      headers: { 
+        'Content-Type': 'text/plain'
+      },
+      data : data
+    };
+
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      alert("update success");
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert("update failure");
+    });
+
+  };
 
   const displayagents = (agentdata) => {
     console.log(agentdata);
@@ -182,7 +208,7 @@ function Chatbot (){
     )
   }
 
-  
+    
   console.log('State response: ', inputbotresponse);
   console.log('State trainingphrase: ', inputtrainingphrase);
     return (
@@ -241,6 +267,7 @@ function Chatbot (){
          
                 <p><button>Submit</button></p>   
               </form>
+              <p><button  onClick={()=> updateIntent()}>Test Update</button></p>
 
 
               
