@@ -28,7 +28,9 @@ function App() {
   };
 
   const addToList = () => {
-
+    if(message == ""){
+      alert('All fields are required.')
+    } else{
     Swal.fire(
       'Thank you!',
       'Your message has been submitted!',
@@ -46,7 +48,7 @@ function App() {
     });
 
     document.getElementById('inputs').value = '';
-
+  }
   };
 
   const faqs = document.querySelectorAll(".faq");

@@ -20,18 +20,21 @@ function App() {
     }, [reviewList]);
   
     const addToList = () => {
-      
-       Swal.fire(
-        'Thank you!',
-        'Your message has been submitted!',
-        'success'
-      )
-
-      Axios.post("http://localhost:3001/insertReview", {
-        name: name,
-        message: message,
-        approval: approval,
-      });
+      if(message == ""){
+        alert('All fields are required.')
+      } else{
+        Swal.fire(
+          'Thank you!',
+          'Your message has been submitted!',
+          'success'
+        )
+  
+        Axios.post("http://localhost:3001/insertReview", {
+          name: name,
+          message: message,
+          approval: approval,
+        });
+      }
     };
 
 
