@@ -40,7 +40,9 @@ function App() {
     <div className='ratings_content'>
       <div className="textBox_content">
       <h2>Ratings & Reviews<br></br></h2>
+      <div className="divider"></div>
       </div>
+      
     <div className='ratings_body'>
       
     <div class="wrapper_ratings_content">
@@ -48,7 +50,7 @@ function App() {
     {reviewList.map((val, key) => {
       return (
                 <div key={key}>
-                  <div class="box_ratings_content">
+                  <div class="box_ratings_contents">
       <i class="fas fa-quote-left quote"></i><i onClick={() => updateDisapproval(val._id)} class="fa-solid fa-thumbs-down thumbsdown" id='thumbsdown'></i><i onClick={() => updateApproval(val._id)} class="fa-solid fa-thumbs-up thumbsup" id="thumbsup"></i>
       <p>{val.message}</p>
       <div class="content_ratings_content">

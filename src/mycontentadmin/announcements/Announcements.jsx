@@ -119,6 +119,7 @@ function App() {
        <div className="textBox">
       <h2>Announcements<br></br></h2>
       </div>
+      <div className='divider'></div>
         <div className="button_add_content">
           <a href='#' onClick={toggleModal}>New Announcements!</a>
         </div>

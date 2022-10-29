@@ -27,30 +27,31 @@ align-items: center;
 justify-content: space-between;
 margin-top: 2%;
 }
-.box_ratings_content{
+
+.box_ratings_contents{
 background: #fff;
-width: 350px;
+width: 360px;
 
 padding: 25px;
-border-radius: 3px;
+border-radius: 25px;
 box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
 margin-top: 2%;
 margin-bottom: 5%;
 
 }
-.box_ratings_content i.quote{
+.box_ratings_contents i.quote{
 font-size: 20px;
 color: #f7ce05;
 }
 
-.box_ratings_content i.thumbsup{
+.box_ratings_contents i.thumbsup{
   font-size: 20px;
   color: #000000;
   float: right;
   
 }
 
-.box_ratings_content i.thumbsdown{
+.box_ratings_contents i.thumbsdown{
   font-size: 20px;
   color: #000000;
   float: right;
@@ -69,7 +70,7 @@ padding-top: 10px;
 font-weight: 600;
 font-size: 17px;
 }
-.box_ratings_content .info .job{
+.box_ratings_contents .info .job{
 font-size: 16px;
 font-weight: 500;
 color: #f7ce05;
@@ -94,7 +95,7 @@ object-fit: cover;
 border-radius: 50%;
 border: 2px solid #fff;
 }
-.box_ratings_content:hover .content_ratings_content .image img{
+.box_ratings_contents:hover .content_ratings_content .image img{
 border-color: #fff;
 }
 @media (max-width: 1045px) {

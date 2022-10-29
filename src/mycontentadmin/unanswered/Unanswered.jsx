@@ -30,6 +30,7 @@ function App () {
       <div className="textBox">
       <h2>Unanswered Questions<br></br></h2>
       </div>
+      <div className='divider'></div>
       <div class="wrapper_questions">
       {talkList.map((val, key) => {
           return (
