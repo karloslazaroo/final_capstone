@@ -85,11 +85,7 @@ function App() {
       
     }
 
-    const success2 = (id) => {
-      updateTitle(id);
-      toggleModal();
-      
-    }
+    
 
 
     const [modal, setModal] = useState(false);
@@ -140,8 +136,6 @@ function App() {
               <div class="name">Administrator</div>
               <div class="job">College of Information and Computing Sciences</div>
 
-              
-
               <div className="button_announcement_content">
                 <a href="#" onClick={() => myFunction(val._id)}> Edit </a>
                 <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
@@ -150,9 +144,8 @@ function App() {
               <div class="image">
                 <img src={Profile} alt=""/>
               </div>
-
-              
               </div>
+
               <div id={val._id} className="edit_content">
               <textarea
             className="title_content"

@@ -31,11 +31,12 @@ function App() {
     if(message == ""){
       alert('All fields are required.')
     } else{
-    Swal.fire(
-      'Thank you!',
-      'Your message has been submitted!',
-      'success'
-    ) 
+    Swal.fire({
+      title:'Thank you!',
+      text:'Your message has been submitted!',
+      icon: 'success',
+      confirmButtonColor: '#f7ce05'
+    }) 
 
     Axios.post("http://localhost:3001/insertTalk", {
       name: name,

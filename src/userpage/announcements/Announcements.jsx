@@ -35,9 +35,7 @@ function Announce() {
                     <div class="info_questions">
                       <div class="name">Administrator</div>
                       <div class="job">College of Information and Computing Sciences</div>
-                      <div className="button_announcement_user">
-                  <a href='#'>View more!</a>
-                  </div>
+                     
                     </div>
                     <div class="image">
                       <img src={Profile} alt=""/>
