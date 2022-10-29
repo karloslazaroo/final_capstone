@@ -16,26 +16,19 @@ function Chatbot (){
     const [projectiddata, setprojectiddata]= useState('');
     const [inputtrainingphrase, setinputtrainingphrase] = useState('');
     const [inputbotresponse, setinputbotresponse] = useState('');
+    const [datas, setData] = useState([]);
+    const [dataaa, setDataaa] = useState([]);
  
 
 
 
 
-  const token = "ya29.a0Aa4xrXNqmD8lPp48-yvJlKWBHL_2JEVNJqw1gmP34Af1csU8SNqlSvBSQUEovroS6ERVF2peZ-LQaP462upZxMdt4bSd9U9MfjqW6t0iYPc-abwZ-bc2h2n1cgomTayWFs4GwRgttk5e51N_coF19SI126MYcgaCgYKATASARASFQEjDvL9WLv1SXITjVamp0t8URameg0165";
+  const token = "ya29.a0Aa4xrXMdTEd-BXAvjSkGh6mqrzQWEqPwanwPpv_jBtYn1_kwnTyG6lWXVF77U-IWJEUqIWEYN8ehn0kw6AQIRzmOi7l9PnR1aXC-X5CVrBqH7OY8mOSrQS1Gu2tlMST0PLp6py1iEg0ufhDUTeBeR8cMX3sDZgaCgYKATASARASFQEjDvL9wLIYwn4BKIC-4a33lBv3hQ0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
-    getIntents();
+    //getIntents();
     // getAgents();
-    getprojectId();
-  }
-  ,[]
-  );
-
-  //get specific project id, store project id to variable, use variable to get intents
-  //project id also used for creating intent
-
-  const getprojectId = () =>{
     const mail = user.email;
     console.log('email',user.email);
     axios.get(`http://localhost:3001/readBot/${mail}`).then((response) => {
@@ -44,10 +37,29 @@ function Chatbot (){
       // console.log(projectiddata);
       console.log(response.data.projId);
       setprojectiddata(response.data.projId);
+      ListIntent();
     });
+  });
+
+  //get specific project id, store project id to variable, use variable to get intents
+  //project id also used for creating intent
+
+  /* const getprojectId = () =>{
+    
+  } */
+
+  function ListIntent() {
+        axios.get(`https://dialogflow.googleapis.com/v2/projects/`+projectiddata+`/agent/intents?intentView=INTENT_VIEW_FULL&access_token=${token}`).then((responses) => {
+        const intentss = responses.data.intents.length;
+
+        const intentsss = [];
+        for(var i = 0; i < intentss; i++) {
+            intentsss.push(responses.data.intents[i])
+        }
+        console.log(intentsss);
+        setDataaa(intentsss);
+        });
   }
-
-
   // getAgents = () =>{
     
   //   axios.get('http://localhost:3001/readBot').then((response) => {
@@ -80,7 +92,7 @@ function Chatbot (){
     // console.log('create intent success');
     alert('Create intent success!');
     resetuserInputs();
-    getIntents();
+    //getIntents();
     })
     .catch(function (error) {
     console.log(error);
@@ -104,12 +116,12 @@ function Chatbot (){
 
 
   
-  const getIntents = () => {
+  /* const getIntents = () => {
  
 
     var config = {
       method: 'get',
-      url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents?access_token='+ token,
+      url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents?intentView=INTENT_VIEW_FULL&access_token='+ token,
       headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+ token
@@ -139,7 +151,7 @@ function Chatbot (){
       alert('error on axios');
     });
 
-  };
+  }; */
   
   const displayIntentData = (detectintentdata) =>{
    console.log(typeof(detectintentdata));
@@ -177,6 +189,22 @@ function Chatbot (){
             <div className='chatbot_body_content'>
                 
             <p>{displayIntentData(detectintentdata)}</p>
+            <div>
+    {dataaa.map((val, key) => {
+      return (
+        <div key={key}>
+        <div className="box_questions">
+          <i className="fas fa-quote-left quote"></i>
+          <center><h1> {val.displayName} {val.name} </h1></center>
+          <p>
+            {/* {val.projId}<br></br>
+            {val.mail} */}
+          </p>
+        </div>
+      </div>
+      );
+    })}
+    </div>
 
             <div className='createintentform'>
               <form onSubmit={createIntent}>

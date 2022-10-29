@@ -15,6 +15,9 @@ function App() {
   }, [adminList]);
 
   const addToList = () => {
+    if(email == "" || office == "") {
+      alert('All fields required.')
+    } else {
     Swal.fire(
       'Thank you!',
       'Your account has been added!',
@@ -24,6 +27,7 @@ function App() {
       email: email,
       office: office,
     });
+  }
   };
 
   const deleteAnnounce = (id) => {

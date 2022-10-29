@@ -18,20 +18,26 @@ function App() {
     }, [announceList]);
 
     const addToList = () => {
-       Swal.fire(
-        'Thank you!',
-        'Your Announcement has been posted!',
-        'success'
-      ) 
-
-
-      Axios.post("http://localhost:3001/insert", {
-        title: title,
-        body: body,
-      });
+      if(title == "" || body == "") {
+        alert('All fields required.')
+      } else {
+        Swal.fire(
+          'Thank you!',
+          'Your Announcement has been posted!',
+          'success'
+        ) 
+  
+        Axios.post("http://localhost:3001/insert", {
+          title: title,
+          body: body,
+        });
+      }
     };
 
     const updateTitle = (id) => {
+      if(newTitle == "" || newBody == "") {
+        alert('All fields required.')
+      } else {
       Swal.fire(
         'Thank you!',
         'Your Announcement has been updated!',
@@ -44,6 +50,7 @@ function App() {
       });
 
       document.getElementById(id).value = '';
+      }
     };
 
     const deleteAnnounce = (id) => {

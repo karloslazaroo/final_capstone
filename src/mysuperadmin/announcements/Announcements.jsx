@@ -21,6 +21,9 @@ function App() {
     }, [announceList]);
 
     const addToList = () => {
+      if(title == "" || body == "") {
+        alert('All fields required.')
+      } else {
       Swal.fire(
         'Thank you!',
         'Your Announcement has been posted!',
@@ -30,10 +33,13 @@ function App() {
         title: title,
         body: body,
       });
-      
+    }
     };
 
     const updateTitle = (id) => {
+      if(newTitle == "" || newBody == "") {
+        alert('All fields required.')
+      } else {
       Swal.fire(
 
         'Thank you!',
@@ -49,6 +55,7 @@ function App() {
       });
 
       document.getElementById(id).value = '';
+    }
     };
 
     const deleteAnnounce = (id) => {

@@ -17,6 +17,9 @@ function App() {
   }, [faqsList]);
 
   const addToList = () => {
+    if(question == "" || answer == "") {
+      alert('All fields required.')
+    } else {
     Swal.fire(
       'FAQs Added!',
     ) 
@@ -24,10 +27,13 @@ function App() {
       question: question,
       answer: answer,
     });
-    
+  }
   };
 
   const updateTitle = (id) => {
+    if(newQuestion == "" || newAnswer == "") {
+      alert('All fields required.')
+    } else {
     Swal.fire(
 
       'FAQs Updated!',
@@ -40,6 +46,7 @@ function App() {
     });
 
     document.getElementById(id).value = '';
+  }
   };
 
   const deleteAnnounce = (id) => {

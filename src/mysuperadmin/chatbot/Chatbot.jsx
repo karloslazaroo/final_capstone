@@ -1,6 +1,7 @@
 import './chatbot.css';
 import Axios from 'axios';
 import React, {useEffect, useState} from 'react';
+import Swal from 'sweetalert2';
 
 function App() {
   const [name, setName] = useState('');
@@ -9,7 +10,7 @@ function App() {
   const [mail, setMail] = useState('');
   const [time] = useState('Asia/Hong_Kong');
   //Generate new token every 1 hour in Postman
-  const token = 'ya29.a0Aa4xrXNqmD8lPp48-yvJlKWBHL_2JEVNJqw1gmP34Af1csU8SNqlSvBSQUEovroS6ERVF2peZ-LQaP462upZxMdt4bSd9U9MfjqW6t0iYPc-abwZ-bc2h2n1cgomTayWFs4GwRgttk5e51N_coF19SI126MYcgaCgYKATASARASFQEjDvL9WLv1SXITjVamp0t8URameg0165';
+  const token = 'ya29.a0Aa4xrXMdTEd-BXAvjSkGh6mqrzQWEqPwanwPpv_jBtYn1_kwnTyG6lWXVF77U-IWJEUqIWEYN8ehn0kw6AQIRzmOi7l9PnR1aXC-X5CVrBqH7OY8mOSrQS1Gu2tlMST0PLp6py1iEg0ufhDUTeBeR8cMX3sDZgaCgYKATASARASFQEjDvL9wLIYwn4BKIC-4a33lBv3hQ0165';
 
   /* const getData = ( ${projId} ) =>  {
   Axios.get(`https://dialogflow.googleapis.com/v2/projects/archie-fcoa/agent?access_token=${token}`).then((response) => {
@@ -32,19 +33,57 @@ function getBots(){
 }
 
 const addChatbot = (/** ${projId} */) => {
-  Axios.post(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${token}`, {
-   displayName: name,
-   timeZone: time,
- }).then(() => {
-  Axios.post('http://localhost:3001/insertBot' , {
-    mail: mail,
-    projId: projId,
-    name: name,
-    time: time,
-  },
-  getBots()
-  );
- });
+  if(name == "" || projId == "" || mail == "") {
+    alert('All fields required.');
+  } else {
+    Axios.post(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${token}`, {
+    displayName: name,
+    timeZone: time,
+  }).then(() => {
+    Axios.post('http://localhost:3001/insertBot' , {
+      mail: mail,
+      projId: projId,
+      name: name,
+      time: time,
+    },
+    getBots()
+    );
+    Swal.fire(
+      'Thank you!',
+      'Chatbot Has been Created!',
+      'success'
+    );
+    document.getElementById("email").value = '';
+    document.getElementById("projId").value = '';
+    document.getElementById("bot").value = '';
+    });
+  }
+};
+
+const deleteBot = (id, projId) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Axios.delete(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${token}`).then(() => {
+        Axios.delete(`http://localhost:3001/deleteBot/${id}`,
+        getBots(),
+        );
+      });
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
+ 
 };
 
 function displayBots(){
@@ -78,7 +117,7 @@ function displayBots(){
         <div className="divider"></div>
         <div className="chatbot_inputs">
         <label>Email of Content Admin: </label>  
-            <input 
+            <input id="email"
             className="chatbot_creation"
             type="text"
             placeholder="Type your email..." 
@@ -87,7 +126,7 @@ function displayBots(){
             }}
             />
        <label>Project ID: </label>  
-            <input 
+            <input id="projId"
             className="chatbot_creation"
             type="text"
             placeholder="Type your project ID..." 
@@ -96,7 +135,7 @@ function displayBots(){
             }}
             />
        <label>Name of Chatbot: </label>  
-            <input 
+            <input id="bot"
             className="chatbot_creation"
             type="text"
             placeholder="Type the name of your chatbot..." 
@@ -124,6 +163,7 @@ function displayBots(){
                 {val.mail}
               </p>
             </div>
+            <a href="#" onClick={() => deleteBot(val._id, val.projId)}> Delete </a>
           </div>
           );
         })}

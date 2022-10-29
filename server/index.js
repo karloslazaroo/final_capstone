@@ -104,6 +104,7 @@ app.put('/update', async (req, res) => {
     const id = req.body.id;
 
     try {
+        
         await AnnounceModel.findById(id, (err, updatedTitle) => {
             updatedTitle.title = newTitle;
             updatedTitle.body = newBody;
@@ -340,6 +341,13 @@ app.delete("/deleteFaqs/:id", async (req, res) => {
     const id = req.params.id;
     
     await FaqsModel.findByIdAndRemove(id).exec();
+    res.send("deleted");
+});
+
+app.delete("/deleteBot/:id", async (req, res) => {
+    const id = req.params.id;
+    
+    await ChatbotModel.findByIdAndRemove(id).exec();
     res.send("deleted");
 });
 
