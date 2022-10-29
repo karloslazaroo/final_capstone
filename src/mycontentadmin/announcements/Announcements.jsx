@@ -21,11 +21,12 @@ function App() {
       if(title == "" || body == "") {
         alert('All fields required.')
       } else {
-        Swal.fire(
-          'Thank you!',
-          'Your Announcement has been posted!',
-          'success'
-        ) 
+        Swal.fire({
+          title:'Thank you!',
+          text:'Your Announcement has been posted!',
+          icon:'success',
+          confirmButtonColor: '#f7ce05'
+      }) 
   
         Axios.post("http://localhost:3001/insert", {
           title: title,
@@ -38,11 +39,12 @@ function App() {
       if(newTitle == "" || newBody == "") {
         alert('All fields required.')
       } else {
-      Swal.fire(
-        'Thank you!',
-        'Your Announcement has been updated!',
-        'success'
-      ) 
+      Swal.fire({
+        title:'Thank you!',
+        text:'Your Announcement has been updated!',
+        icon:'success',
+        confirmButtonColor: '#f7ce05',
+      }) 
       Axios.put("http://localhost:3001/update", {
         id: id, 
         newTitle: newTitle,
@@ -50,6 +52,7 @@ function App() {
       });
 
       document.getElementById(id).value = '';
+      myFunction(id);
       }
     };
 
@@ -59,17 +62,18 @@ function App() {
         text: "You won't be able to revert this!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#f7ce05',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
           Axios.delete(`http://localhost:3001/delete/${id}`)
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
+          Swal.fire({
+            title:'Deleted!',
+            text:'Your file has been deleted.',
+            icon:'success',
+            confirmButtonColor: '#f7ce05'
+        })
         }
       })
      
@@ -77,6 +81,12 @@ function App() {
 
     const success = () => {
       addToList();
+      toggleModal();
+      
+    }
+
+    const success2 = (id) => {
+      updateTitle(id);
       toggleModal();
       
     }
@@ -93,6 +103,20 @@ function App() {
     } else {
       document.body.classList.remove('active-modal')
     }
+
+   
+
+    
+
+    function myFunction(id) {
+      var x = document.getElementById(id);
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+   
 
   return (
     <div className='announcement_body'>
@@ -115,28 +139,39 @@ function App() {
               <div class="info_questions">
               <div class="name">Administrator</div>
               <div class="job">College of Information and Computing Sciences</div>
-              <input id={val._id}
-                type="text" placeholder="New Title..." required
-                onChange={(event) => {
-                  setNewTitle(event.target.value);
-                }}
-              />
-              <input id={val._id}
-                    type="text" placeholder="New Body..." required
-                    onChange={(event) => {
-                      setNewBody(event.target.value);
-                    }}
-                  />
+
+              
+
               <div className="button_announcement_content">
-                <a href="#" onClick={() => updateTitle(val._id)}> Update </a>
+                <a href="#" onClick={() => myFunction(val._id)}> Edit </a>
                 <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
               </div>
               </div>
               <div class="image">
                 <img src={Profile} alt=""/>
               </div>
+
+              
+              </div>
+              <div id={val._id} className="edit_content">
+              <textarea
+            className="title_content"
+            type="text"
+            placeholder
+            onChange={(event) => {
+              setNewTitle(event.target.value);
+            }}
+            >{val.title}</textarea>
+              <textarea className="body_content"  placeholder  onChange={(event) => {
+                setNewBody(event.target.value);
+            }}>{val.body}</textarea>
+            <div className="button_confirm_content">
+                <a href="#" onClick={() => updateTitle(val._id)}> Confirm </a>
               </div>
             </div>
+            
+            </div>
+            
           </div>
           );
         })}
@@ -146,7 +181,7 @@ function App() {
         <div className="modal">
           <div className="modal-content">
           <div className="announcement">
-            <h2><span>Announcement</span></h2>
+            <h2><span> New Announcement</span></h2>
             </div>
             <label>Title: </label>  
             <input 
@@ -168,6 +203,9 @@ function App() {
           </div>
         </div>
       )}
+
+
+      
     </div>
   )
 }

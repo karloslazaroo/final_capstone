@@ -20,9 +20,12 @@ function App() {
     if(question == "" || answer == "") {
       alert('All fields required.')
     } else {
-    Swal.fire(
-      'FAQs Added!',
-    ) 
+      Swal.fire({
+        title:'Thank you!',
+        text:'Your FAQ has been added!',
+        icon:'success',
+        confirmButtonColor: '#f7ce05',
+      }) 
     Axios.post("http://localhost:3001/insertFaqs", {
       question: question,
       answer: answer,
@@ -34,10 +37,12 @@ function App() {
     if(newQuestion == "" || setNewAnswer == "") {
       alert('All fields required.')
     } else {
-    Swal.fire(
-
-      'FAQs Updated!',
-    )
+      Swal.fire({
+        title:'Thank you!',
+        text:'Your FAQs has been updated!',
+        icon:'success',
+        confirmButtonColor: '#f7ce05',
+      }) 
     
     Axios.put("http://localhost:3001/updateFaqs", {
       id: id, 
@@ -46,6 +51,7 @@ function App() {
     });
 
     document.getElementById(id).value = '';
+    myFunction(id);
   }
   };
 
@@ -88,6 +94,15 @@ function App() {
   } else {
     document.body.classList.remove('active-modal')
   }
+
+  function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
   
   return(
     
@@ -111,22 +126,29 @@ function App() {
                   <p>
                   {val.answer}
                   </p>
-                      <input id={val._id}
-                    type="text" placeholder="New Question..." required
-                    onChange={(event) => {
-                      setNewQuestion(event.target.value);
-                    }}
-                  />
-                  <input id={val._id}
-                    type="text" placeholder="New Answer..." required
-                    onChange={(event) => {
-                      setNewAnswer(event.target.value);
-                    }}
-                  />
-                      <div className="button_announcement_superadmin">
-                      <a href="#" onClick={() => updateTitle(val._id)}> Update </a>
+                      
+                      <div className="button_faq_content">
+                      <a href="#" onClick={() => myFunction(val._id)}> Edit </a>
                       <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
                       </div>
+                    
+          
+          <div id={val._id} className="edit_content">
+              <textarea
+            className="title_content"
+            type="text"
+            placeholder
+            onChange={(event) => {
+              setNewQuestion(event.target.value);
+            }}
+            >{val.question}</textarea>
+              <textarea className="body_content"  placeholder  onChange={(event) => {
+                      setNewAnswer(event.target.value);
+                    }}>{val.answer}</textarea>
+            <div className="button_confirm_content">
+                <a href="#" onClick={() => updateTitle(val._id)}> Confirm </a>
+              </div>
+            </div>
                     </div>
                   </div>
                 </div>
