@@ -23,7 +23,7 @@ function Chatbot (){
 
 
 
-  const token = "ya29.a0Aa4xrXN48z6XpYbHBvv05XmmTXuhjg7swgx4kSER2vA7qmOzGoYdkgL4o_8kNAIBCuX2q_nM0pWwjC-Q3OUCouuKRUMjHQVZEeP9QXY1G8B3COeNgiuX-tWNn1Cubl13Rs_jwDDts36Sl9fuMmMRVwJyvG-NLAaCgYKATASARMSFQEjDvL9coyZIXzlwRHDNn5-d0IZ7g0165";
+  const token = "ya29.a0Aa4xrXPu2a77RcMrAEJ4RFogU8Me_jlfnXXMbYEeUva-8NRwsNHmo-3tNxsT1-KK4IGR487VMHdONq0md2FWKTaBRFoBYSpLcTZJFR1vmA4o9aWZ__PWw_63QhcbX8hPMCZ4DCHpvFFTt48lakMOQU2BCzIOGgaCgYKATASARASFQEjDvL9BvCEowg7zTds7AA6-WXEhQ0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
@@ -166,11 +166,11 @@ function Chatbot (){
   }
 
   const updateIntent = () =>{
-    var data = '{"displayName": "hephep","trainingPhrases": [ {"parts":[  {"text": "hephpehpehpe"}]}, {"parts": [{"text": "waku waku"}]}  ],"messages": [ {"text": {"text": ["memes","eelelelel"] }}  ] }';
+    var data = '{"displayName": "AYO","trainingPhrases": [ {"parts":[  {"text": "hephpehpehpe"}]}, {"parts": [{"text": "waku waku"}]}  ],"messages": [ {"text": {"text": ["memes","eelelelel"] }}  ] }';
 
     var config = {
       method: 'patch',
-      url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents/63ea4933-bd5a-407a-ae31-7b928e712c26?access_token='+token ,
+      url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents/293c06b5-a7fa-4155-a96e-785df0040463?access_token='+token ,
       headers: { 
         'Content-Type': 'text/plain'
       },
