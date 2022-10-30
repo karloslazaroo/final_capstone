@@ -229,15 +229,39 @@ function Chatbot (){
       document.body.classList.remove('active-modal')
     }
 
+
+    /* const toggler = document.getElementById("_toggler");
+    const toggleBox = document.getElementById("box");
+    const isHidden = () => toggleBox.classList.contains("box--hidden");
+    
+    toggleBox.addEventListener("transitionend", function () {
+      if (isHidden()) {
+        toggleBox.style.display = "none";
+      }
+    });
+    
+    toggler.addEventListener("click", function () {
+      if (isHidden()) {
+        toggleBox.style.removeProperty("display");
+        setTimeout(() => toggleBox.classList.remove("box--hidden"), 0);
+      } else {
+        toggleBox.classList.add("box--hidden");
+      }
+    }); 
+      */
+    
+
     return (
             <div className='chatbot_body_content'>
                 
             {/* <p>{displayIntentData(detectintentdata)}</p> */}
-    
-    
+            
+            
     <div className="button_add_content">
       <a href='#' onClick={toggleModal}>New Intent!</a>
     </div>
+    <button id="_toggler" className='_toggler'>Toggle visibility</button>
+    
     <div className="intents">
           <div className="intents_content">
               <h2>YOUR INTENTS</h2>
@@ -258,7 +282,7 @@ function Chatbot (){
 
           </div>
 
-          <div className="edit_intents_content">
+          <div id='box' className="box">
           <h2>EDIT YOUR INTENTS</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
               <div className="divider_content"></div>
@@ -412,7 +436,9 @@ function Chatbot (){
       )}
         
         </div>
+        
         ) 
+        
   }
  
   
