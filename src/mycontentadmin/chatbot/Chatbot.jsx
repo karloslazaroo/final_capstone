@@ -207,6 +207,25 @@ function Chatbot (){
   console.log('State editdisplayname: ', editdisplayname);
   console.log('State edittrainingphrase: ', edittrainingphrase);
   console.log('State editbotresponse: ', editbotresponse);
+
+  const success = () => {
+    createIntent();
+    toggleModal();
+    
+  }
+
+  const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+      setModal(!modal);
+    };
+  
+    if(modal) {
+      document.body.classList.add('active-modal')
+    } else {
+      document.body.classList.remove('active-modal')
+    }
+
     return (
             <div className='chatbot_body_content'>
                 
@@ -228,6 +247,44 @@ function Chatbot (){
     })}
     </div>
     
+    
+    <div className="button_add_content">
+      <a href='#' onClick={toggleModal}>New Intent!</a>
+    </div>
+    <div className="intents">
+          <div className="intents_content">
+              <h2>YOUR INTENTS</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+              <div className="divider_content"></div>
+              <div className="box_intents">
+          <center><h3> INTENT #1 </h3></center>
+              </div>
+              <div className="box_intents">
+          <center><h3> INTENT #2 </h3></center>
+              </div>
+              <div className="box_intents">
+          <center><h3> INTENT #3 </h3></center>
+              </div>
+
+          </div>
+
+          <div className="edit_intents_content">
+          <h2>EDIT YOUR INTENTS</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+              <div className="divider_content"></div>
+              <label><h3>Name:</h3></label>
+              <input className="intents_name" type="text" placeholder="Name of your intent..."/>
+              <h3>Training Phrases</h3><i class="fa-solid fa-plus intenticon"></i>
+              <input className="training" type="text" placeholder="Type your phrases..."/>
+              <input className="training" type="text" placeholder="Type your phrases..."/>
+              <h3>Responses</h3><i class="fa-solid fa-plus intenticon"></i>
+              <input className="responses" type="text" placeholder="Type your phrases..."/>
+              <input className="responses" type="text" placeholder="Type your phrases..."/>
+              <button className='save'>SAVE</button>
+              <button className='cancel'>CANCEL</button>
+          </div>
+
+    </div>
     <h3>Create Intent</h3>
             <div className='createintentform'>
               <form onSubmit={createIntent}>
@@ -321,13 +378,44 @@ function Chatbot (){
               </form>
             
 
-
+                    
               
             </div>
            
             {/* <p>{displayagents(agentdata)} </p> */}
 
-          
+{modal && (
+        <div className="modal">
+          <div className="modal-content">
+          <div className="announcement">
+            <h2><span> Create Intents!</span></h2>
+            </div>
+            <label>Name: </label>  
+            <input 
+            className="intents_name"
+            type="text"
+            placeholder="Type your title..." 
+           
+            />
+             <label>Training phrases: </label> 
+            <input className="training"  placeholder="Write something.." id='inputtrainingphrase'
+                  value={inputtrainingphrase}
+                  onChange={(event) => {
+                    setinputtrainingphrase(event.target.value);
+                  }}  ></input>
+            <label>Responses: </label> 
+            <input className="training"  placeholder="Write something.."   id='inputbotresponse'
+                  value={inputbotresponse}
+                  onChange={(event) => {
+                    setinputbotresponse(event.target.value);
+                  }}></input>
+            <div className="buttons_reviews_user">
+      <a href='#' onClick={success}>Submit</a>
+      <a href='#' onClick={toggleModal}>Close</a>
+      </div>
+          </div>
+        </div>
+      )}
         
         </div>
         ) 
