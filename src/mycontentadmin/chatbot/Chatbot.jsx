@@ -8,22 +8,23 @@ import { UserAuth } from '../../context/AuthContext';
 function Chatbot (){
 
   const {user} = UserAuth();
-  const intentdisplaycontainer = [];
-  const responsecontainer = [];
+
  
-    const [detectintentdata, setdetectintentdata] = useState([]);
-    const [agentdata, setAgentdata] = useState([]) ;
+
     const [projectiddata, setprojectiddata]= useState('');
     const [inputtrainingphrase, setinputtrainingphrase] = useState('');
     const [inputbotresponse, setinputbotresponse] = useState('');
     const [datas, setData] = useState([]);
     const [dataaa, setDataaa] = useState([]);
+    const [edittrainingphrase, setedittrainingphrase] = useState('');
+    const [editbotresponse, seteditbotresponse] = useState('');
+    const [editdisplayname, seteditdisplayname] = useState('');
  
 
 
 
 
-  const token = "ya29.a0Aa4xrXPu2a77RcMrAEJ4RFogU8Me_jlfnXXMbYEeUva-8NRwsNHmo-3tNxsT1-KK4IGR487VMHdONq0md2FWKTaBRFoBYSpLcTZJFR1vmA4o9aWZ__PWw_63QhcbX8hPMCZ4DCHpvFFTt48lakMOQU2BCzIOGgaCgYKATASARASFQEjDvL9BvCEowg7zTds7AA6-WXEhQ0165";
+  const token = "ya29.a0Aa4xrXODJSBq9hB-imF0jvXkJXL0itv0shRdSoWcp-vwLIJiGzC_K00mAZcA-R-5Gh6-Oojw6LTXrYIMKBEosgUVoqufKh6p6kg33Omp8DWRjkxOq8YgDq3EvgYZ_TWH8P5aY_FShzQANFMjCpio9O3naXklKgaCgYKATASARMSFQEjDvL9qEYeQz8u9grsKtgkXZdNbQ0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
@@ -61,22 +62,17 @@ function Chatbot (){
         setDataaa(intentsss);
         });
   }
-  // getAgents = () =>{
-    
-  //   axios.get('http://localhost:3001/readBot').then((response) => {
-  //       setState({agentdata: response.data});
-  //     });
-  // }
+
 
   const createIntent = (event) =>{
     event.preventDefault();
     const trainingphrasecontainer = inputtrainingphrase;
     const responsecontainer = inputbotresponse;
 
-    const displayname = '"displayName" : '+ '"'+trainingphrasecontainer+ '"';
-    const trainingphrase = '"text" : '+ '"'+trainingphrasecontainer+ '"';
+    const displayname = '"'+trainingphrasecontainer+ '"';
+    const trainingphrase = '{ "parts": [ {"text" : "'+trainingphrasecontainer+'"}]}';
     const displaytext = '"'+responsecontainer+ '"';
-    var data = '{'+displayname+', "trainingPhrases": [ { "parts": [ {'+trainingphrase+'}]}],"messages": [{"text": {"text": ['+displaytext+']}}]}';
+    var data = '{"displayName": '+displayname+', "trainingPhrases": [ '+trainingphrase+'],"messages": [{"text": {"text": ['+displaytext+']}}]}';
 
 
     var config = {
@@ -91,10 +87,11 @@ function Chatbot (){
     axios(config)
     .then(function (response) {
     console.log(JSON.stringify(response.data));
-    // console.log('create intent success');
+  
     alert('Create intent success!');
     resetuserInputs();
-    //getIntents();
+   
+    ListIntent();
     })
     .catch(function (error) {
     console.log(error);
@@ -105,10 +102,10 @@ function Chatbot (){
   const resetuserInputs = () =>{
     setinputtrainingphrase('');
     setinputbotresponse('');
-    // const texttraining = document.getElementById("inputtrainingphrase");
-    // const textbotresponse = document.getElementById("inputbotresponse");
-    // texttraining.innerHTML('');
-    // textbotresponse.innerHTML('');
+    seteditdisplayname('');
+    seteditbotresponse('');
+    setedittrainingphrase('');
+ 
   }
 
   // const handleChange = ({ target }) => {
@@ -155,18 +152,26 @@ function Chatbot (){
 
   // }; 
   
-  const displayIntentData = (detectintentdata) =>{
-   console.log(typeof(detectintentdata));
-    return (
-        <div >
-            {detectintentdata}
-        </div>
+  // const displayIntentData = (detectintentdata) =>{
+  //  console.log(typeof(detectintentdata));
+  //   return (
+  //       <div >
+  //           {detectintentdata}
+  //       </div>
     
-        )  
-  }
+  //       )  
+  // }
 
-  const updateIntent = () =>{
-    var data = '{"displayName": "AYO","trainingPhrases": [ {"parts":[  {"text": "hephpehpehpe"}]}, {"parts": [{"text": "waku waku"}]}  ],"messages": [ {"text": {"text": ["memes","eelelelel"] }}  ] }';
+  const updateIntent = (event) =>{
+    event.preventDefault();
+
+    const displaynamecontainer = '"'+editdisplayname+'"';
+    const trainingphrasecontainer = '{ "parts": [ {"text" : "'+edittrainingphrase+'"}]}';
+    const botrepliescontainer = '"'+editbotresponse +'"';
+    var data = '{"displayName": '+displaynamecontainer+',"trainingPhrases": ['+trainingphrasecontainer+'],"messages": [ {"text": {"text": ['+botrepliescontainer+'] }}  ] }';
+    
+    console.log(data);
+    // '{"displayName": "hephep","trainingPhrases": [ {"parts":[  {"text": "hephpehpehpe"}]}, {"parts": [{"text": "waku waku"}]}  ],"messages": [ {"text": {"text": ["memes","eelelelel"] }}  ] }';
 
     var config = {
       method: 'patch',
@@ -181,6 +186,8 @@ function Chatbot (){
     .then(function (response) {
       console.log(JSON.stringify(response.data));
       alert("update success");
+      resetuserInputs();
+      ListIntent();
     })
     .catch(function (error) {
       console.log(error);
@@ -189,32 +196,21 @@ function Chatbot (){
 
   };
 
-  const displayagents = (agentdata) => {
-    console.log(agentdata);
-    return agentdata.map((val, key) => {
-        return (
-          <div key={key}>
-          <div className="box_questions">
-            <i className="fas fa-quote-left quote"></i>
-            <h1> {val.name} </h1>
-            <p>
-              {val.projId}<br></br>
-              {val.mail}
-            </p>
-          </div>
-        </div>
-            )
-        }
-    )
-  }
+
+
+
+
 
     
   console.log('State response: ', inputbotresponse);
   console.log('State trainingphrase: ', inputtrainingphrase);
+  console.log('State editdisplayname: ', editdisplayname);
+  console.log('State edittrainingphrase: ', edittrainingphrase);
+  console.log('State editbotresponse: ', editbotresponse);
     return (
             <div className='chatbot_body_content'>
                 
-            <p>{displayIntentData(detectintentdata)}</p>
+            {/* <p>{displayIntentData(detectintentdata)}</p> */}
             <div>
     {dataaa.map((val, key) => {
       return (
@@ -231,7 +227,8 @@ function Chatbot (){
       );
     })}
     </div>
-
+    
+    <h3>Create Intent</h3>
             <div className='createintentform'>
               <form onSubmit={createIntent}>
               
@@ -267,7 +264,62 @@ function Chatbot (){
          
                 <p><button>Submit</button></p>   
               </form>
-              <p><button  onClick={()=> updateIntent()}>Test Update</button></p>
+
+
+              {/* ===========EDIT INTENT FORM================================= */}
+              <hr></hr>
+              <h3>Edit Intent</h3>
+              <form onSubmit={updateIntent}>
+              
+              <div className="form-input">
+                <input 
+                  type="text"
+                  name="editdisplayname"
+                  placeholder="Enter new display name"
+                  id='editdisplayname'
+                  value={editdisplayname}
+                  onChange={(event) => {
+                    seteditdisplayname(event.target.value);
+                  }}
+                />
+              </div>
+
+
+              <div className="form-input">
+                <textarea
+                  placeholder="Enter training phrase to be edited"
+                  name="edittrainingphrase"
+                  cols="30"
+                  rows="5"
+                  id='edittrainingphrase'
+                  value={edittrainingphrase}
+                  onChange={(event) => {
+                    setedittrainingphrase(event.target.value);
+                  }}
+                >
+                  
+                </textarea>
+              </div>
+
+              <div className="form-input">
+                <textarea
+                  placeholder="Enter bot response to be edited"
+                  name="editbotresponse"
+                  cols="30"
+                  rows="5"
+                  id='editbotresponse'
+                  value={editbotresponse}
+                  onChange={(event) => {
+                    seteditbotresponse(event.target.value);
+                  }}
+                >
+                  
+                </textarea>
+              </div>
+         
+                <p><button>Update Intent</button></p>   
+              </form>
+            
 
 
               
