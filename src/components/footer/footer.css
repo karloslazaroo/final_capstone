@@ -2,12 +2,12 @@
 .footer{
     position: absolute;
     margin-bottom: 0px;
-    background: #111;
+    background: rgb(0, 0, 0);
     height: auto;
     width: 100%;
     font-family: "Open Sans";
     padding-top:40px;
-    color: #fff;
+    color: rgb(255, 255, 255);
     z-index: -1;
     
 }
@@ -42,7 +42,7 @@
 }
 .socials a{
     text-decoration: none;
-    color: #fff;
+    color: rgb(255, 255, 255);
 }
 .socials a i{
     font-size: 1.1rem;

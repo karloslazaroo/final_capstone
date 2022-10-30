@@ -17,7 +17,7 @@ const Footer = () => {
                 <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
             </ul>
         </div>
-        
+       
     </div>
   )
 }
