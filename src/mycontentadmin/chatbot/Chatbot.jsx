@@ -14,6 +14,7 @@ function Chatbot (){
     const [projectiddata, setprojectiddata]= useState('');
     const [inputtrainingphrase, setinputtrainingphrase] = useState('');
     const [inputbotresponse, setinputbotresponse] = useState('');
+    const [inputIntentName, setInputIntentName] = useState('');
     const [datas, setData] = useState([]);
     const [dataaa, setDataaa] = useState([]);
     const [edittrainingphrase, setedittrainingphrase] = useState('');
@@ -24,7 +25,7 @@ function Chatbot (){
 
 
 
-  const token = "ya29.a0Aa4xrXODJSBq9hB-imF0jvXkJXL0itv0shRdSoWcp-vwLIJiGzC_K00mAZcA-R-5Gh6-Oojw6LTXrYIMKBEosgUVoqufKh6p6kg33Omp8DWRjkxOq8YgDq3EvgYZ_TWH8P5aY_FShzQANFMjCpio9O3naXklKgaCgYKATASARMSFQEjDvL9qEYeQz8u9grsKtgkXZdNbQ0165";
+  const token = "ya29.a0Aa4xrXOHlmnxPESt2xtQX0VVtQTp8DVHleXR1jmDf_S26umTkkvTPI8NG9MfBYuiRJVQatH-Gd4mJ2AClgRYs5uBPjnmoKuaTeO8MIVUWSVsUbS4fGD68K2bQMyCrdY-XrmCTMy_KiHukStUgk1rxGEI0trfhAaCgYKATASARASFQEjDvL9xzWmiXZ8NViihmymdQ-rJw0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
@@ -68,8 +69,9 @@ function Chatbot (){
     event.preventDefault();
     const trainingphrasecontainer = inputtrainingphrase;
     const responsecontainer = inputbotresponse;
+    const intentName = inputIntentName;
 
-    const displayname = '"'+trainingphrasecontainer+ '"';
+    const displayname = '"'+intentName+ '"';
     const trainingphrase = '{ "parts": [ {"text" : "'+trainingphrasecontainer+'"}]}';
     const displaytext = '"'+responsecontainer+ '"';
     var data = '{"displayName": '+displayname+', "trainingPhrases": [ '+trainingphrase+'],"messages": [{"text": {"text": ['+displaytext+']}}]}';
@@ -102,6 +104,7 @@ function Chatbot (){
   const resetuserInputs = () =>{
     setinputtrainingphrase('');
     setinputbotresponse('');
+    setInputIntentName('');
     seteditdisplayname('');
     seteditbotresponse('');
     setedittrainingphrase('');
@@ -230,22 +233,6 @@ function Chatbot (){
             <div className='chatbot_body_content'>
                 
             {/* <p>{displayIntentData(detectintentdata)}</p> */}
-            <div>
-    {dataaa.map((val, key) => {
-      return (
-        <div key={key}>
-        <div className="box_questions">
-          <i className="fas fa-quote-left quote"></i>
-          <center><h1> {val.displayName} {val.name} </h1></center>
-          <p>
-            {/* {val.projId}<br></br>
-            {val.mail} */}
-          </p>
-        </div>
-      </div>
-      );
-    })}
-    </div>
     
     
     <div className="button_add_content">
@@ -256,14 +243,17 @@ function Chatbot (){
               <h2>YOUR INTENTS</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
               <div className="divider_content"></div>
-              <div className="box_intents">
-          <center><h3> INTENT #1 </h3></center>
-              </div>
-              <div className="box_intents">
-          <center><h3> INTENT #2 </h3></center>
-              </div>
-              <div className="box_intents">
-          <center><h3> INTENT #3 </h3></center>
+              <div>
+              {dataaa.map((val, key) => {
+                return (
+                  <div key={key}>
+                    <div className="box_intents">
+                      <center><h3> {val.displayName} </h3></center>
+                    </div>
+                  
+                </div>
+                );
+              })}
               </div>
 
           </div>
@@ -394,7 +384,11 @@ function Chatbot (){
             <input 
             className="intents_name"
             type="text"
-            placeholder="Type your title..." 
+            placeholder="Type your title..." id='inputIntentName'
+            value={inputIntentName}
+            onChange={(event) => {
+              setInputIntentName(event.target.value);
+            }}
            
             />
              <label>Training phrases: </label> 
@@ -410,7 +404,7 @@ function Chatbot (){
                     setinputbotresponse(event.target.value);
                   }}></input>
             <div className="buttons_reviews_user">
-      <a href='#' onClick={success}>Submit</a>
+      <a href='#' onClick={createIntent}>Submit</a>
       <a href='#' onClick={toggleModal}>Close</a>
       </div>
           </div>
