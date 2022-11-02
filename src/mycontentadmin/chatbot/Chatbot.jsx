@@ -22,7 +22,7 @@ function Chatbot (){
     const [editdisplayname, seteditdisplayname] = useState('');
  
 
-  const token = "ya29.a0Aa4xrXORPFHndzO6hgWFzocjvEKbfROmthlhmAywfZMw4vAiuDk-WgnYDGadhw2qJ0g-uVPIRNww8w5DDoKBRWFNJ5FDOaIoESmvUfo_twhioi6QlP28VRzRkrfKGBcrB0urE_s_cNFmovg2aCNddivhCZ2axAaCgYKAcYSARASFQEjDvL9YXD17kVpcydCy7-NWtbVRA0165";
+  const token = "ya29.a0Aa4xrXMQNLyFkLke4BOMxEWNvRKqlWsszsNCaNFAr4XL5xI_MnDBYXphvuEjLF-2fjjsb06t4HklZODh8pFwFTB-hh0A9ctkGkVtFegQUS-bSfxRUpWSLqy-FqEikz2m0O5KDss0qMcWQ_omAr4CtFRRU-TvRwaCgYKAakSARMSFQEjDvL9DCc3TOBoMHUy34nFgjv9Kg0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
@@ -196,17 +196,64 @@ function Chatbot (){
 
   };
 
+  const deleteIntent = (projectid) => {
+    var config = {
+      method: 'delete',
+      url: 'https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents/'+projectid+'/?access_token='+token,
+      headers: { }
+    };
+
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      alert('delete success');
+      ListIntent();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
 
+  }
+
+  const getprojectID = (projectid) =>{
+    // console.log('test project id display', projectid);
+
+    var actualprojectidcontainer = "";
+    var slashcount = 0 ;
+    var stoppingindex = 0;
+    for (var i = 0; i < projectid.length ; i++ ){
+    
+      if  (projectid[i] == "/")  {
+        slashcount += 1;
+        continue;
+       
+      }
+
+      if (slashcount == 4){
+        console.log('stop at index', i);
+        stoppingindex = i;
+        break;
+      }
+    }
+
+    for (var i = stoppingindex; i <projectid.length; i++){
+      actualprojectidcontainer += projectid[i];
+    }
+    // console.log('number of slashes', slashcount);
+    console.log('actual project id', actualprojectidcontainer);
+    return actualprojectidcontainer;
+  }
 
 
 
     
-  console.log('State response: ', inputbotresponse);
-  console.log('State trainingphrase: ', inputtrainingphrase);
-  console.log('State editdisplayname: ', editdisplayname);
-  console.log('State edittrainingphrase: ', edittrainingphrase);
-  console.log('State editbotresponse: ', editbotresponse);
+  // console.log('State response: ', inputbotresponse);
+  // console.log('State trainingphrase: ', inputtrainingphrase);
+  // console.log('State editdisplayname: ', editdisplayname);
+  // console.log('State edittrainingphrase: ', edittrainingphrase);
+  // console.log('State editbotresponse: ', editbotresponse);
+
 
   const success = () => {
     createIntent();
@@ -273,6 +320,7 @@ function Chatbot (){
                   <div key={key}>
                     <div className="box_intents">
                       <center><h3> {val.displayName} </h3></center>
+                      <p><button onClick={() => deleteIntent(getprojectID(val.name))}>Delete Intent</button></p>
                     </div>
                   
                 </div>
