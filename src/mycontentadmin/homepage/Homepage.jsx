@@ -1,5 +1,5 @@
 import React from 'react';
-import img1 from '../../assets/ust students.jpeg';
+import img1 from '../../assets/tiger_ust.jpg';
 import './homepage.css';
 import Post from '../../components/post/Post';
 import { UserAuth } from '../../context/AuthContext';

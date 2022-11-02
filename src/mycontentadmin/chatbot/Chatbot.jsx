@@ -311,7 +311,7 @@ function Chatbot (){
 
           </div>
 
-          <div id='box' className="box">
+          <div  className="edit_intents">
           <h2>EDIT YOUR INTENTS</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
               <div className="divider_content"></div>
