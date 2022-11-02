@@ -22,7 +22,7 @@ function Chatbot (){
     const [editdisplayname, seteditdisplayname] = useState('');
  
 
-  const token = "ya29.a0Aa4xrXMQNLyFkLke4BOMxEWNvRKqlWsszsNCaNFAr4XL5xI_MnDBYXphvuEjLF-2fjjsb06t4HklZODh8pFwFTB-hh0A9ctkGkVtFegQUS-bSfxRUpWSLqy-FqEikz2m0O5KDss0qMcWQ_omAr4CtFRRU-TvRwaCgYKAakSARMSFQEjDvL9DCc3TOBoMHUy34nFgjv9Kg0165";
+  const token = "ya29.a0Aa4xrXPP0fTIry_2g_RWMkB-TXArVhlHGW9CW--SwO3J6_A-Ox4Fo2O5m2xLXH4EHYFMTnh9Fn4FGGlcQ2WFxhjv_mEyvTiv2UsiXcT68hbMDHj-d6CnpnzJmKjiPHqVYySNJAhNmQIF5q_EBKsISYDosTGzNwaCgYKAW4SARASFQEjDvL9wb2jhQb1cM6jzJHj2Gd1GA0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
@@ -314,7 +314,7 @@ function Chatbot (){
               <h2>YOUR INTENTS</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
               <div className="divider_content"></div>
-              <div>
+              <div className='scroll'>
               {dataaa.map((val, key) => {
                 return (
                   <div key={key}>
