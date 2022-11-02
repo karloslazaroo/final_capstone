@@ -274,25 +274,7 @@ function Chatbot (){
     }
 
 
-    /* const toggler = document.getElementById("_toggler");
-    const toggleBox = document.getElementById("box");
-    const isHidden = () => toggleBox.classList.contains("box--hidden");
     
-    toggleBox.addEventListener("transitionend", function () {
-      if (isHidden()) {
-        toggleBox.style.display = "none";
-      }
-    });
-    
-    toggler.addEventListener("click", function () {
-      if (isHidden()) {
-        toggleBox.style.removeProperty("display");
-        setTimeout(() => toggleBox.classList.remove("box--hidden"), 0);
-      } else {
-        toggleBox.classList.add("box--hidden");
-      }
-    }); 
-      */
     
 
     return (
@@ -307,7 +289,7 @@ function Chatbot (){
     <div className="button_add_content">
       <button href='#' onClick={toggleModal}>New Intent!</button>
     </div>
-    <button id="_toggler" className='_toggler'>Toggle visibility</button>
+    
     
     <div className="intents">
           <div className="intents_content">
@@ -320,9 +302,8 @@ function Chatbot (){
                   <div key={key}>
                     <div className="box_intents">
                       <center><h3> {val.displayName} </h3></center>
-                      <p><button onClick={() => deleteIntent(getprojectID(val.name))}>Delete Intent</button></p>
                     </div>
-                  
+                    <p><button onClick={() => deleteIntent(getprojectID(val.name))}>Delete Intent</button></p>
                 </div>
                 );
               })}
@@ -347,42 +328,14 @@ function Chatbot (){
           </div>
 
     </div>
-    <h3>Create Intent</h3>
+    
             <div className='createintentform'>
-              <form onSubmit={createIntent}>
               
-              <div className="form-input">
-                <input 
-                  type="text"
-                  name="inputtrainingphrase"
-                  placeholder="Enter training phrase"
-                  id='inputtrainingphrase'
-                  value={inputtrainingphrase}
-                  onChange={(event) => {
-                    setinputtrainingphrase(event.target.value);
-                  }}
-                />
-              </div>
+              
 
 
-              <div className="form-input">
-                <textarea
-                  placeholder="Enter chatbot response"
-                  name="inputbotresponse"
-                  cols="30"
-                  rows="5"
-                  id='inputbotresponse'
-                  value={inputbotresponse}
-                  onChange={(event) => {
-                    setinputbotresponse(event.target.value);
-                  }}
-                >
-                  
-                </textarea>
-              </div>
-         
-                <p><button>Submit</button></p>   
-              </form>
+              
+             
 
 
               {/* ===========EDIT INTENT FORM================================= */}
