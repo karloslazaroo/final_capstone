@@ -11,7 +11,7 @@
     
 }
 
-.button_questions a {
+.button_questions button {
     display: inline-block;
       margin-top: 8%;
       padding: 8px 10px;
@@ -22,7 +22,8 @@
       letter-spacing: 1px;
       text-decoration: none;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
-      
+      border: none;
+      cursor: pointer;
 }
 
 

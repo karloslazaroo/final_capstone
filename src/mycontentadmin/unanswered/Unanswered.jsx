@@ -45,7 +45,7 @@ function App () {
           <div class="name">{val.name}</div>
           <div class="job">Designer | Developer</div>
           <div className="button_questions">
-      <a href='#' onClick={toggleModal}>Answer now!</a>
+      <a href='Chatbot_Content'>Answer now!</a>
       </div>
         </div>
         <div class="image">
@@ -73,8 +73,8 @@ function App () {
                 setBody(event.target.value);
             }}*/></textarea>
             <div className="buttons_reviews_user">
-      <a href='#' >Answer</a>
-      <a href='#'onClick={toggleModal} >Close</a>
+      <button>Answer</button>
+      <button onClick={toggleModal} >Close</button>
       </div>
           </div>
         </div>

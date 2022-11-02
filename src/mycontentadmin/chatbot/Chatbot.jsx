@@ -253,9 +253,12 @@ function Chatbot (){
                 
             {/* <p>{displayIntentData(detectintentdata)}</p> */}
     
-    
+            <div className="textBox">
+      <h2>Chatbot<br></br></h2>
+      </div>
+      <div className="divider"></div>
     <div className="button_add_content">
-      <a href='#' onClick={toggleModal}>New Intent!</a>
+      <button href='#' onClick={toggleModal}>New Intent!</button>
     </div>
     <button id="_toggler" className='_toggler'>Toggle visibility</button>
     
@@ -425,8 +428,8 @@ function Chatbot (){
                     setinputbotresponse(event.target.value);
                   }}></input>
             <div className="buttons_reviews_user">
-      <a href='#' onClick={createIntent}>Submit</a>
-      <a href='#' onClick={toggleModal}>Close</a>
+      <button href='#' onClick={createIntent}>Submit</button>
+      <button href='#' onClick={toggleModal}>Close</button>
       </div>
           </div>
         </div>
