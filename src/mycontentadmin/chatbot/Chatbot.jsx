@@ -22,9 +22,6 @@ function Chatbot (){
     const [editdisplayname, seteditdisplayname] = useState('');
  
 
-
-
-
   const token = "ya29.a0Aa4xrXORPFHndzO6hgWFzocjvEKbfROmthlhmAywfZMw4vAiuDk-WgnYDGadhw2qJ0g-uVPIRNww8w5DDoKBRWFNJ5FDOaIoESmvUfo_twhioi6QlP28VRzRkrfKGBcrB0urE_s_cNFmovg2aCNddivhCZ2axAaCgYKAcYSARASFQEjDvL9YXD17kVpcydCy7-NWtbVRA0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
@@ -255,8 +252,8 @@ function Chatbot (){
             <div className='chatbot_body_content'>
                 
             {/* <p>{displayIntentData(detectintentdata)}</p> */}
-            
-            
+    
+    
     <div className="button_add_content">
       <a href='#' onClick={toggleModal}>New Intent!</a>
     </div>
@@ -436,9 +433,7 @@ function Chatbot (){
       )}
         
         </div>
-        
         ) 
-        
   }
  
   
