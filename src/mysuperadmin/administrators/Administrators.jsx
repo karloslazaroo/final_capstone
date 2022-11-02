@@ -80,7 +80,7 @@ function App() {
               
 
               <div className="button_add_administrators">
-      <a href='#'onClick={toggleModal}>Add Content Managers</a>
+      <button href='#'onClick={toggleModal}>Add Content Managers</button>
       </div>
       <h1 className='summary_font'>List of Accounts</h1>
                   <div className="divider_admin"></div>
@@ -99,7 +99,7 @@ function App() {
                     <div className="department">
                       <p>{val.office}</p>
                     </div>
-                  <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
+                  <button href="#" onClick={() => deleteAnnounce(val._id)}> Delete </button>
                   <div className="dashed"></div>
                   </div>
                 </div>

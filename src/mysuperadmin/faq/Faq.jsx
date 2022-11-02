@@ -115,7 +115,7 @@ function App() {
         <div className='divider'></div>
            
         <div className="button_add_content">
-      <a href='#'onClick={toggleModal}>New FAQs!</a>
+      <button href='#'onClick={toggleModal}>New FAQs!</button>
       </div>
 
       {faqsList.map((val, key) => {
@@ -130,11 +130,12 @@ function App() {
                   </p>
                       
                       <div className="button_faq_admin">
-                      <a href="#" onClick={() => myFunction(val._id)}> Edit </a>
-                      <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
+                      <button href="#" onClick={() => myFunction(val._id)}> Edit </button>
+                      <button href="#" onClick={() => deleteAnnounce(val._id)}> Delete </button>
                       </div>
 
                       <div id={val._id} className="edit_content">
+                        <label>Question:</label>
               <textarea
             className="title_content"
             type="text"
@@ -143,11 +144,12 @@ function App() {
               setNewQuestion(event.target.value);
             }}
             >{val.question}</textarea>
+            <label>Answer:</label>
               <textarea className="body_content"  placeholder  onChange={(event) => {
                       setNewAnswer(event.target.value);
                     }}>{val.answer}</textarea>
             <div className="button_confirm_content">
-                <a href="#" onClick={() => updateTitle(val._id)}> Confirm </a>
+                <button href="#" onClick={() => updateTitle(val._id)}> Confirm </button>
               </div>
             </div>
                     </div>

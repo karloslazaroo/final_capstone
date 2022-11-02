@@ -31,7 +31,7 @@ function App() {
           <div class="name">{val.name}</div>
           <div class="job">Designer | Developer</div>
           <div className="button_questions">
-      <a href='#'>Answer now!</a>
+      <a href='/Chatbot_Admin'>Answer now!</a>
       </div>
         </div>
         <div class="image">

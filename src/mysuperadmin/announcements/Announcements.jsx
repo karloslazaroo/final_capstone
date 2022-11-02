@@ -118,7 +118,7 @@ function App() {
         <div className='divider'></div>
            
         <div className="button_add_content">
-      <a href='#'onClick={toggleModal}>New Announcements!</a>
+      <button href='#'onClick={toggleModal}>New Announcements!</button>
       </div>
 
             {announceList.map((val, key) => {
@@ -136,8 +136,8 @@ function App() {
                       <div class="job">College of Information and Computing Sciences</div>
                       
                       <div className="button_announcement_superadmin">
-                      <a href="#" onClick={() => myFunction(val._id)}> Edit </a>
-                      <a href="#" onClick={() => deleteAnnounce(val._id)}> Delete </a>
+                      <button href="#" onClick={() => myFunction(val._id)}> Edit </button>
+                      <button href="#" onClick={() => deleteAnnounce(val._id)}> Delete </button>
                       </div>
                     </div>
                     <div class="image">
@@ -146,6 +146,7 @@ function App() {
                   </div>
 
                   <div id={val._id} className="edit_content">
+                    <label>Title:</label>
               <textarea
             className="title_content"
             type="text"
@@ -154,11 +155,12 @@ function App() {
               setNewTitle(event.target.value);
             }}
             >{val.title}</textarea>
+            <label>Body:</label>
               <textarea className="body_content"  placeholder  onChange={(event) => {
                 setNewBody(event.target.value);
             }}>{val.body}</textarea>
             <div className="button_confirm_content">
-                <a href="#" onClick={() => updateTitle(val._id)}> Confirm </a>
+                <button href="#" onClick={() => updateTitle(val._id)}> Confirm </button>
               </div>
             </div>
                 </div>

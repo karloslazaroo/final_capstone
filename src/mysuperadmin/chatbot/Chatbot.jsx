@@ -143,9 +143,10 @@ function displayBots(){
               setName(event.target.value);
             }}
             />
-            <div className="button_add_content">
-      <a href='#' onClick={addChatbot} >Create Chatbot!</a>
+            <div className="button_chatbot_content">
+      <button href='#' onClick={addChatbot} >Create Chatbot!</button>
       </div>
+      <div className="divider_admin"></div>
       </div>
             
       </div>
@@ -163,7 +164,9 @@ function displayBots(){
                 {val.mail}
               </p>
             </div>
-            <a href="#" onClick={() => deleteBot(val._id, val.projId)}> Delete </a>
+            <div className="button_chatbot_content">
+            <button href="#" onClick={() => deleteBot(val._id, val.projId)}> Delete </button>
+            </div>
           </div>
           );
         })}
