@@ -17,9 +17,10 @@ function App() {
     }, [reviewList]);
 
     const updateApproval = (id) => {
-      Swal.fire(
-        'Review Approved!'
-      )
+      Swal.fire({
+        title:'Review Approved!',
+        confirmButtonColor: '#f7ce05'
+    })
       Axios.put("http://localhost:3001/updateReview", {
         id: id, 
         newApproval: newApproval,
@@ -27,9 +28,10 @@ function App() {
     };
 
     const updateDisapproval = (id) => {
-      Swal.fire(
-        'Review Disapproved!'
-      )
+      Swal.fire({
+        title:'Review Disapproved!',
+        confirmButtonColor: '#f7ce05'
+    })
       Axios.put("http://localhost:3001/updateReviewDis", {
         id: id, 
         newDisapproval: newDisapproval,
