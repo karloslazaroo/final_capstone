@@ -16,13 +16,15 @@ function App() {
     const [announceList, setAnnounceList] = useState([]);
 
     useEffect(() => {
-      Axios.get('http://localhost:3001/read').then((response) => {
+      const email = user.email;
+      Axios.get(`http://localhost:3001/readContent/${email}`).then((response) => {
+        console.log(response.data);
         setAnnounceList(response.data);
       });
     }, [announceList]);
 
     const addToList = () => {
-      if(title == "" || body == "") {
+      if(title === "" || body === "") {
         alert('All fields required.')
       } else {
         Swal.fire({
@@ -42,7 +44,7 @@ function App() {
     };
 
     const updateTitle = (id) => {
-      if(newTitle == "" || newBody == "") {
+      if(newTitle === "" || newBody === "") {
         alert('All fields required.')
       } else {
       Swal.fire({
@@ -158,13 +160,12 @@ function App() {
               <textarea
             className="title_content"
             type="text"
-            placeholder
             onChange={(event) => {
               setNewTitle(event.target.value);
             }}
             >{val.title}</textarea>
              <label>Body: </label>
-              <textarea className="body_content"  placeholder  onChange={(event) => {
+              <textarea className="body_content"  onChange={(event) => {
                 setNewBody(event.target.value);
             }}>{val.body}</textarea>
             <div className="button_confirm_content">

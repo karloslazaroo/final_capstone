@@ -101,6 +101,17 @@ app.get('/read', async (req, res) => {
     }).sort(mysort);
 });
 
+app.get('/readContent/:email', async (req, res) => {
+    var mysort = {_id: -1};
+    const email = req.params.email;
+    AnnounceModel.find({ email: email} , (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
+        res.send(result);
+    }).sort(mysort);
+});
+
 app.put('/update', async (req, res) => {
     const newTitle = req.body.newTitle;
     const newBody = req.body.newBody;
@@ -291,9 +302,9 @@ app.get('/readBot', async (req, res) => {
     }).sort(mysort);
 });
 
-/* app.get("/readBot/:mail", async (req, res) => {
-    const mail = req.params.mail;
-    ChatbotModel.findOne({ mail: mail} , (err, result) =>{
+app.get("/readBots/:email", async (req, res) => {
+    const mail = req.params.email;
+    ChatbotModel.find({ mail: mail} , (err, result) =>{
         if (err) {
             res.send("False");
         }else{
@@ -302,7 +313,7 @@ app.get('/readBot', async (req, res) => {
         }
 
     })
-});  */
+});  
 
 app.post('/insertFaqs', async (req, res) => {
     const question = req.body.question;

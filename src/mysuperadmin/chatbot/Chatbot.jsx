@@ -10,7 +10,7 @@ function App() {
   const [mail, setMail] = useState('');
   const [time] = useState('Asia/Hong_Kong');
   //Generate new token every 1 hour in Postman
-  const token = 'ya29.a0Aa4xrXPP0fTIry_2g_RWMkB-TXArVhlHGW9CW--SwO3J6_A-Ox4Fo2O5m2xLXH4EHYFMTnh9Fn4FGGlcQ2WFxhjv_mEyvTiv2UsiXcT68hbMDHj-d6CnpnzJmKjiPHqVYySNJAhNmQIF5q_EBKsISYDosTGzNwaCgYKAW4SARASFQEjDvL9wb2jhQb1cM6jzJHj2Gd1GA0165';
+  const token = 'ya29.a0Aa4xrXMmxDWoSf5T1JrhBcyqlpKbXR_p3STv6f5bA6jZW_E9p_wMUZuVeKXSo4EUz4mz5uxs8wwhhx2ecb93cSK3H75Qt1k3y__yDx5FdgR135Ami-3kC7HIIQQ4tQdUa71fWZ6FIxtmONvIIepnm9aqOFKhCAaCgYKAZgSARASFQEjDvL9LQxc68jvEpf3H1XJCXcf5g0165';
 
   /* const getData = ( ${projId} ) =>  {
   Axios.get(`https://dialogflow.googleapis.com/v2/projects/archie-fcoa/agent?access_token=${token}`).then((response) => {
@@ -145,6 +145,7 @@ function displayBots(){
             />
             <div className="button_chatbot_content">
       <button href='#' onClick={addChatbot} >Create Chatbot!</button>
+      <a href='https://dialogflow.cloud.google.com/#/' target="_blank"> Manage Chatbot </a>
       </div>
       <div className="divider_admin"></div>
       </div>
