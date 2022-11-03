@@ -18,7 +18,7 @@ function Chatbot (){
     const [dataaa, setDataaa] = useState([]);
  
 
-  const token = "ya29.a0Aa4xrXMmxDWoSf5T1JrhBcyqlpKbXR_p3STv6f5bA6jZW_E9p_wMUZuVeKXSo4EUz4mz5uxs8wwhhx2ecb93cSK3H75Qt1k3y__yDx5FdgR135Ami-3kC7HIIQQ4tQdUa71fWZ6FIxtmONvIIepnm9aqOFKhCAaCgYKAZgSARASFQEjDvL9LQxc68jvEpf3H1XJCXcf5g0165";
+  const token = "ya29.a0Aa4xrXMrXt781jP-42ssWVOtTOrZ7KLZjoUQBiOu3DpDPpISkPwAsVd-E_0tIaZJ6BepRmzMysH56ksbQOOQeIXPsh0-ojbHLP0eFV8IyiFUL1tQNo1zKAN2fXQ2J7BAarAhGH42dFHDrSYnl6BUHhr9tE4uEQaCgYKAdkSARASFQEjDvL9j16Ix8fvaEJBv_7wv69mRA0165";
   // urlcontainer = "https://dialogflow.googleapis.com/v2/projects/isidore-lfji/agent/intents?access_token="
 
   useEffect(() => {
@@ -308,6 +308,7 @@ const openDialog = (projectid) => {
                     <div className="box_intents">
                       <center><h3> {val.displayName} </h3></center>
                     </div>
+                    {/* <p><button><a href={'https://dialogflow.cloud.google.com/#/agent/temporal-data-362507/editIntent/293c06b5-a7fa-4155-a96e-785df0040463/'} target="_blank">Manage Intent</a></button></p> */}
                     {/* <p><button onClick={() => deleteIntent(getprojectID(val.name))}>Delete Intent</button></p> */}
                 </div>
                 );
