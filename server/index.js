@@ -76,9 +76,11 @@ app.get('/readanalytics', (req , res) =>{
 
 app.post('/insert', async (req, res) => {
     const title = req.body.title;
+    const name = req.body.name;
+    const email = req.body.email;
     const body = req.body.body;
 
-    const announce = new AnnounceModel({title: title, body: body});
+    const announce = new AnnounceModel({title: title, body: body, name: name, email: email});
 
     try {
         await announce.save();
@@ -89,13 +91,14 @@ app.post('/insert', async (req, res) => {
 });
 
 app.get('/read', async (req, res) => {
+    var mysort = {_id: -1};
     AnnounceModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
         if (err) {
             res.send(err);
         }
 
         res.send(result);
-    })
+    }).sort(mysort);
 });
 
 app.put('/update', async (req, res) => {
@@ -139,13 +142,14 @@ app.post('/insertTalk', async (req, res) => {
 });
 
 app.get('/readTalk', async (req, res) => {
+    var mysort = {_id: -1};
     TalkModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
         if (err) {
             res.send(err);
         }
 
         res.send(result);
-    })
+    }).sort(mysort);
 });
 
 app.post('/insertReview', async (req, res) => {
@@ -164,23 +168,25 @@ app.post('/insertReview', async (req, res) => {
 });
 
 app.get('/readReview', async (req, res) => {
+    var mysort = {_id: -1};
     ReviewModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
         if (err) {
             res.send(err);
         }
 
         res.send(result);
-    })
+    }).sort(mysort);
 });
 
 app.get('/readReviewUser', async (req, res) => {
+    var mysort = {_id: -1};
     ReviewModel.find({ approval: "Approve"} , (err, result) =>{
         if (err) {
             res.send(err);
         }
 
         res.send(result);
-    })
+    }).sort(mysort);
 });
 
 app.put('/updateReview', async (req, res) => {
@@ -228,13 +234,14 @@ app.post('/insertAdmin', async (req, res) => {
 });
 
 app.get('/readAdmin', async (req, res) => {
+    var mysort = {_id: -1};
     AdminModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
         if (err) {
             res.send(err);
         }
 
         res.send(result);
-    })
+    }).sort(mysort);
 });
 
 app.get("/readAdminLogin/:email", async (req, res) => {
@@ -274,13 +281,14 @@ app.post('/insertBot', async (req, res) => {
 });
 
 app.get('/readBot', async (req, res) => {
+    var mysort = {_id: -1};
     ChatbotModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
         if (err) {
             res.send(err);
         }
 
         res.send(result);
-    })
+    }).sort(mysort);
 });
 
 /* app.get("/readBot/:mail", async (req, res) => {
@@ -311,13 +319,14 @@ app.post('/insertFaqs', async (req, res) => {
 });
 
 app.get('/readFaqs', async (req, res) => {
+    var mysort = {_id: -1};
     FaqsModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
         if (err) {
             res.send(err);
         }
 
         res.send(result);
-    })
+    }).sort(mysort);
 });
 
 app.put('/updateFaqs', async (req, res) => {

@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './announcements.css';
 import Profile from '../../assets/profile1.jpg';
+import { UserAuth } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
 
 function App() {
+  const {  user } = UserAuth();
   const [title, setTitle] = useState('');
     const [body, setBody] = useState(''); //0 pag integer/number
+    const name = user.displayName;
+    const email = user.email;
     const[newTitle, setNewTitle] = useState('');
     const[newBody, setNewBody] = useState('');
     const [announceList, setAnnounceList] = useState([]);
@@ -30,7 +34,9 @@ function App() {
   
         Axios.post("http://localhost:3001/insert", {
           title: title,
-          body: body,
+        name: name,
+        email: email,
+        body: body,
         });
       }
     };
@@ -134,8 +140,8 @@ function App() {
               </p>
               <div class="content_questions">
               <div class="info_questions">
-              <div class="name">Administrator</div>
-              <div class="job">College of Information and Computing Sciences</div>
+              <div class="name">{val.name}</div>
+              <div class="job">{val.email}</div>
 
               <div className="button_announcement_content">
                 <button href="#" onClick={() => myFunction(val._id)}> Edit </button>

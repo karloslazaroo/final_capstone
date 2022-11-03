@@ -7,8 +7,10 @@ import Swal from 'sweetalert2';
 
 
 function App() {
-  const {  user } = UserAuth();
-  const [title, setTitle] = useState('');
+    const {  user } = UserAuth();
+    const [title, setTitle] = useState('');
+    const name = user.displayName;
+    const email = user.email;
     const [body, setBody] = useState(''); //0 pag integer/number
     const[newTitle, setNewTitle] = useState('');
     const[newBody, setNewBody] = useState('');
@@ -32,6 +34,8 @@ function App() {
       }) 
       Axios.post("http://localhost:3001/insert", {
         title: title,
+        name: name,
+        email: email,
         body: body,
       });
     }
@@ -132,8 +136,8 @@ function App() {
                   </p>
                   <div class="content_questions">
                     <div class="info_questions">
-                      <div class="name">Administrator</div>
-                      <div class="job">College of Information and Computing Sciences</div>
+                      <div class="name">{val.name}</div>
+                      <div class="job">{val.email}</div>
                       
                       <div className="button_announcement_superadmin">
                       <button href="#" onClick={() => myFunction(val._id)}> Edit </button>

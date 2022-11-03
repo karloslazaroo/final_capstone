@@ -77,7 +77,6 @@ function App() {
       <div class="content">
         <div class="info">
           <div class="name">{val.name}</div>
-          <div class="name">{val.approval}</div>
         </div>
         <div class="image">
         <img src={Profile} alt=""/>

@@ -33,8 +33,8 @@ function Announce() {
                   </p>
                   <div class="content_questions">
                     <div class="info_questions">
-                      <div class="name">Administrator</div>
-                      <div class="job">College of Information and Computing Sciences</div>
+                      <div class="name">{val.name}</div>
+                      <div class="job">{val.email}</div>
                      
                     </div>
                     <div class="image">
