@@ -56,6 +56,7 @@ function App() {
       <div class="content_ratings_content">
         <div class="info">
           <div class="name">{val.name}</div>
+          <div class="job">{val.email}</div>
           <div class="name">{val.approval}</div>
         </div>
         <div class="image">

@@ -167,8 +167,8 @@ app.post('/insertReview', async (req, res) => {
     const name = req.body.name;
     const approval = req.body.approval;
     const message = req.body.message;
-
-    const review = new ReviewModel({name: name, approval: approval, message: message});
+    const email = req.body.email;
+    const review = new ReviewModel({name: name, approval: approval, message: message, email: email});
 
     try {
         await review.save();

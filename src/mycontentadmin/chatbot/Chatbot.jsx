@@ -285,10 +285,11 @@ const openDialog = (projectid) => {
               {datas.map((val, key) => {
                 return (
                   <div key={key}>
-                    <div className="box_intents">
-                      <center><h3> {val.name}</h3></center>
+                    <div className="box_yourchatbots">
+                      <h3>{val.name}</h3>
+                      <a onClick={() => ListIntent(val.projId)}><u>View Intents</u></a>
                     </div>
-                    <p><button onClick={() => ListIntent(val.projId)}>View Intents</button></p>
+                    
                     {/* <p><button onClick={() => deleteIntent(getprojectID(val.name))}>Delete Intent</button></p> */}
                 </div>
                 );
@@ -300,7 +301,7 @@ const openDialog = (projectid) => {
           <div  className="edit_intents">
           <h2>INTENTS</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-          <a href='https://dialogflow.cloud.google.com/#/' target="_blank"> Manage Intent </a>
+          <a href='https://dialogflow.cloud.google.com/#/' target="_blank"><u>Manage Intent</u> </a>
               <div className="divider_content"></div>
               <div className="scroll">
               {dataaa.map((val, key) => {

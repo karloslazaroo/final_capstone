@@ -13,6 +13,11 @@ const ReviewSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    email: {
+        type: String,
+        required: true,
+    },
+
 });
 
 const Review = mongoose.model("review", ReviewSchema);

@@ -9,6 +9,7 @@ import Profile from '../../assets/profile1.jpg'
 function App() {
     const {user} = UserAuth();
     const name = user.displayName;
+    const email = user.email;
     const [message, setMessage] = useState(''); //0 pag integer/number
     const [approval] = useState('Disapprove');
     const [reviewList, setReviewList] = useState([]);
@@ -34,6 +35,7 @@ function App() {
           name: name,
           message: message,
           approval: approval,
+          email: email,
         });
       }
     };
@@ -77,6 +79,7 @@ function App() {
       <div class="content">
         <div class="info">
           <div class="name">{val.name}</div>
+          <div class="job">{val.email}</div>
         </div>
         <div class="image">
         <img src={Profile} alt=""/>
