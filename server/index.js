@@ -230,6 +230,13 @@ app.put('/updateReviewDis', async (req, res) => {
     }
 });
 
+app.delete("/deleteReview/:id", async (req, res) => {
+    const id = req.params.id;
+    
+    await ReviewModel.findByIdAndRemove(id).exec();
+    res.send("deleted");
+});
+
 app.post('/insertAdmin', async (req, res) => {
     const email = req.body.email;
     const office = req.body.office;

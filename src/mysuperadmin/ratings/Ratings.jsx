@@ -36,6 +36,29 @@ function App() {
       });
     };
 
+    const deleteReview = (id) => {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#f7ce05',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Axios.delete(`http://localhost:3001/deleteReview/${id}`)
+          Swal.fire({
+            title:'Deleted!',
+            text:'Your file has been deleted.',
+            icon:'success',
+            confirmButtonColor: '#f7ce05'
+        })
+        }
+      })
+     
+    };
+
   return (
     <div className='ratings_admin'>
       <div className="textBox_admin">
@@ -63,7 +86,7 @@ function App() {
         
       </div>
       <div className="delete_ratings_content">
-          <button href='#' >Delete</button>
+      <button href="#" onClick={() => deleteReview(val._id)}> Delete </button>
         </div>
     </div>
               </div>
