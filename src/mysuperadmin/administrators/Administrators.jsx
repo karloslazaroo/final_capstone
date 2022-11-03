@@ -18,11 +18,12 @@ function App() {
     if(email == "" || office == "") {
       alert('All fields required.')
     } else {
-    Swal.fire(
-      'Thank you!',
-      'Your account has been added!',
-      'success'
-    )
+    Swal.fire({
+      title:'Thank you!',
+      text:'Your account has been added!',
+      icon:'success',
+      confirmButtonColor: '#f7ce05'
+    })
     Axios.post("http://localhost:3001/insertAdmin", {
       email: email,
       office: office,
@@ -36,17 +37,18 @@ function App() {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#f7ce05',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
         Axios.delete(`http://localhost:3001/deleteAdmin/${id}`)
-        Swal.fire(
-          'Deleted!',
-          'Your account has been deleted.',
-          'success'
-        )
+        Swal.fire({
+          title:'Deleted!',
+          text:'Your account has been deleted.',
+          icon:'success',
+          confirmButtonColor: '#f7ce05'
+      })
       }
     })
     

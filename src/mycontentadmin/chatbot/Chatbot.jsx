@@ -302,6 +302,7 @@ const openDialog = (projectid) => {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
           <a href='https://dialogflow.cloud.google.com/#/' target="_blank"> Manage Intent </a>
               <div className="divider_content"></div>
+              <div className="scroll">
               {dataaa.map((val, key) => {
                 return (
                   <div key={key}>
@@ -313,6 +314,7 @@ const openDialog = (projectid) => {
                 </div>
                 );
               })}
+          </div>
           </div>
 
     </div>

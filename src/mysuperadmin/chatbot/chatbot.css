@@ -37,6 +37,11 @@
     cursor: pointer;
 }
 
+.button_chatbot_content a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
 .divider_chatbot {
     
     border-top: 3px dashed #bbb;

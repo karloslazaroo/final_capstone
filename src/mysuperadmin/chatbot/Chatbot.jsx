@@ -48,11 +48,12 @@ const addChatbot = (/** ${projId} */) => {
     },
     getBots()
     );
-    Swal.fire(
-      'Thank you!',
-      'Chatbot Has been Created!',
-      'success'
-    );
+    Swal.fire({
+      title:'Thank you!',
+      text:'Chatbot Has been Created!',
+      icon:'success',
+      confirmButtonColor: '#f7ce05'
+     });
     document.getElementById("email").value = '';
     document.getElementById("projId").value = '';
     document.getElementById("bot").value = '';
@@ -76,11 +77,13 @@ const deleteBot = (id, projId) => {
         getBots(),
         );
       });
-      Swal.fire(
-        'Deleted!',
-        'Your file has been deleted.',
-        'success'
-      )
+      Swal.fire({
+        title:'Deleted!',
+        text:'Your file has been deleted.',
+        icon:'success',
+        confirmButtonColor: '#f7ce05'
+
+    })
     }
   })
  
@@ -145,6 +148,7 @@ function displayBots(){
             />
             <div className="button_chatbot_content">
       <button href='#' onClick={addChatbot} >Create Chatbot!</button>
+      <button><a href='https://dialogflow.cloud.google.com/#/' target="_blank">Manage Chatbot</a></button>
       </div>
       <div className="divider_admin"></div>
       </div>
