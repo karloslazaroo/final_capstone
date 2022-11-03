@@ -81,9 +81,7 @@ function App() {
           <div class="name">{val.name}</div>
           <div class="job">{val.email}</div>
         </div>
-        <div class="image">
-        <img src={Profile} alt=""/>
-        </div>
+        
       </div>
     </div>
               </div>

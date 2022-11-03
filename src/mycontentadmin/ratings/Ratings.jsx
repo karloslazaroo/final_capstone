@@ -59,10 +59,11 @@ function App() {
           <div class="job">{val.email}</div>
           <div class="name">{val.approval}</div>
         </div>
-        <div class="image">
-          <img src={Profile} alt=""/>
-        </div>
+        
       </div>
+      <div className="delete_ratings_content">
+          <button href='#' >Delete</button>
+        </div>
     </div>
               </div>
               );

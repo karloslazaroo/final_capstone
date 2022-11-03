@@ -11,7 +11,21 @@
 }
 
 
-
+.delete_ratings_content button {
+  border: none;
+  display: inline-block;
+  margin-top: 3%;
+  padding: 8px 10px;
+  background: #f7ce05;
+  color: rgb(0, 0, 0);
+  border-radius: 0px;
+  font-weight: 500px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  box-shadow: 0px 4px 8px rgb(0 0 0 / 15%);
+ 
+  cursor: pointer;
+}
 
 
 ::selection{
@@ -57,6 +71,7 @@ color: #f7ce05;
   float: right;
   margin-left: 5px;
 }
+
 
 
 .content_ratings_content{
