@@ -118,13 +118,20 @@ app.put('/update', async (req, res) => {
     const id = req.body.id;
 
     try {
+        if(newTitle == "") {
+            await AnnounceModel.findById(id, (err, updatedBody) => {
+                updatedBody.body = newBody;
+                updatedBody.save();
+                res.send("update");
+            });
+        } else {
+            await AnnounceModel.findById(id, (err, updatedTitle) => {
+                updatedTitle.title = newTitle;
+                updatedTitle.save();
+                res.send("update");
+            });
+        }
         
-        await AnnounceModel.findById(id, (err, updatedTitle) => {
-            updatedTitle.title = newTitle;
-            updatedTitle.body = newBody;
-            updatedTitle.save();
-            res.send("update");
-        });
     } catch(err) {
         console.log(err);
     }
@@ -353,12 +360,20 @@ app.put('/updateFaqs', async (req, res) => {
     const id = req.body.id;
 
     try {
-        await FaqsModel.findById(id, (err, updatedTitle) => {
-            updatedTitle.question = newQuestion;
-            updatedTitle.answer = newAnswer;
-            updatedTitle.save();
-            res.send("update");
-        });
+        if(newQuestion == "") {
+            await FaqsModel.findById(id, (err, updatedTitle) => {
+                updatedTitle.answer = newAnswer;
+                updatedTitle.save();
+                res.send("update");
+            });
+        } else {
+            await FaqsModel.findById(id, (err, updatedBody) => {
+                updatedBody.question = newQuestion;
+                updatedBody.save();
+                res.send("update");
+            });
+        }
+        
     } catch(err) {
         console.log(err);
     }

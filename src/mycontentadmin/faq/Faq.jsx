@@ -34,7 +34,7 @@ function App() {
   };
 
   const updateTitle = (id) => {
-    if(newQuestion == "" || setNewAnswer == "") {
+    if(newQuestion === "" && setNewAnswer === "") {
       alert('All fields required.')
     } else {
       Swal.fire({
