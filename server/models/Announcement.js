@@ -17,6 +17,10 @@ const AnnounceSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    date: {
+        type: String,
+        default: new Date(Date.now()).toLocaleString() 
+    }
 });
 
 const Announce = mongoose.model("announceData", AnnounceSchema);

@@ -57,6 +57,7 @@ function App() {
         id: id, 
         newTitle: newTitle,
         newBody: newBody,
+       
       });
 
       document.getElementById(id).value = '';
@@ -139,6 +140,9 @@ function App() {
               <h1> {val.title} </h1>
               <p>
                 {val.body}
+              </p>
+              <p>
+                {val.date}
               </p>
               <div class="content_questions">
               <div class="info_questions">
