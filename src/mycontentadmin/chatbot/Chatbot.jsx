@@ -288,6 +288,8 @@ const openDialog = (projectid) => {
                     <div className="box_yourchatbots">
                       <h3>{val.name}</h3>
                       <a onClick={() => ListIntent(val.projId)}><u>View Intents</u></a>
+                      <a>-----</a>
+                      <a href={'https://dialogflow.cloud.google.com/#/agent/'+val.projId+'/intents'} target="_blank"><u>Manage Intent</u> </a>
                     </div>
                     
                     {/* <p><button onClick={() => deleteIntent(getprojectID(val.name))}>Delete Intent</button></p> */}
@@ -301,7 +303,7 @@ const openDialog = (projectid) => {
           <div  className="edit_intents">
           <h2>INTENTS</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-          <a href='https://dialogflow.cloud.google.com/#/' target="_blank"><u>Manage Intent</u> </a>
+          
               <div className="divider_content"></div>
               <div className="scroll">
               {dataaa.map((val, key) => {

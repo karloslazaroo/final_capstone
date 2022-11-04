@@ -124,7 +124,7 @@ app.put('/update', async (req, res) => {
                 updatedBody.save();
                 res.send("update");
             });
-        } else {
+        } if(newBody == "") {
             await AnnounceModel.findById(id, (err, updatedTitle) => {
                 updatedTitle.title = newTitle;
                 updatedTitle.save();
@@ -361,15 +361,15 @@ app.put('/updateFaqs', async (req, res) => {
 
     try {
         if(newQuestion == "") {
-            await FaqsModel.findById(id, (err, updatedTitle) => {
-                updatedTitle.answer = newAnswer;
-                updatedTitle.save();
+            await FaqsModel.findById(id, (err, updatedAnswer) => {
+                updatedAnswer.answer = newAnswer;
+                updatedAnswer.save();
                 res.send("update");
             });
         } else {
-            await FaqsModel.findById(id, (err, updatedBody) => {
-                updatedBody.question = newQuestion;
-                updatedBody.save();
+            await FaqsModel.findById(id, (err, updatedQuestion) => {
+                updatedQuestion.question = newQuestion;
+                updatedQuestion.save();
                 res.send("update");
             });
         }

@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const AnnounceSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
     },
     email: {
         type: String,
@@ -15,7 +14,6 @@ const AnnounceSchema = new mongoose.Schema({
     },
     body: {
         type: String,
-        required: true,
     },
     date: {
         type: String,

@@ -114,7 +114,7 @@ class Analytics extends React.Component {
         </div> 
         }
          <div className='divider'></div>
-        {this.displayTalktoUsData(this.state.talktousdata)}
+        {/* {this.displayTalktoUsData(this.state.talktousdata)} */}
         {/* {this.datacontainer} */}
         <div className='graph_container' style={{width:'1200px', height:'600px'}}>
           <Line data={this.data} options={this.options}></Line>
