@@ -101,7 +101,7 @@
 
 @media only screen and (max-width: 600px) {
     .side-nav{
-        width: 110px;
+        width: 90px;
     }
     .logo-icon{
         display: block;
