@@ -144,3 +144,18 @@ df-messenger {
 .custom-shape-divider-bottom-1667119216 .shape-fill {
     fill: #2b2a2a;
 }
+@media only screen and (max-width: 600px) {
+    .formLogin {
+        height: 320px;
+        width: 280px;
+    }
+    .picture {
+        height: 200px;
+    }
+
+    .google {
+        width: 50px;
+    }
+
+    .custom-shape-divider-bottom-1667119216 {}
+}
