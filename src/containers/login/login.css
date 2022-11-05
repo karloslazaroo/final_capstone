@@ -157,5 +157,7 @@ df-messenger {
         width: 50px;
     }
 
-    .custom-shape-divider-bottom-1667119216 {}
+    .custom-shape-divider-bottom-1667119216 {
+        display: none;
+    }
 }
