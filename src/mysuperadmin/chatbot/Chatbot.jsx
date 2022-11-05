@@ -10,7 +10,7 @@ function App() {
   const [mail, setMail] = useState('');
   const [time] = useState('Asia/Hong_Kong');
   //Generate new token every 1 hour in Postman
-  const token = 'ya29.a0Aa4xrXMrXt781jP-42ssWVOtTOrZ7KLZjoUQBiOu3DpDPpISkPwAsVd-E_0tIaZJ6BepRmzMysH56ksbQOOQeIXPsh0-ojbHLP0eFV8IyiFUL1tQNo1zKAN2fXQ2J7BAarAhGH42dFHDrSYnl6BUHhr9tE4uEQaCgYKAdkSARASFQEjDvL9j16Ix8fvaEJBv_7wv69mRA0165';
+  const token = 'ya29.a0AeTM1ic6Hd9tPxdIztAtJBPT8lZwfpMsBWJOtiyZ-cre1nZYDSpLgUfV8OTiWTDWa6YYP47rFGGMfmuRE9s4boEpui4lxrzY3jTPNKav1GfJkHBCD7iAXAYYzL8zbBYbehsaLIGlg8IsiszbcQbi4gQ0iDgBMgaCgYKAU4SARASFQHWtWOmVMuil4yU-pykC95eu-TAhg0165';
 
   /* const getData = ( ${projId} ) =>  {
   Axios.get(`https://dialogflow.googleapis.com/v2/projects/archie-fcoa/agent?access_token=${token}`).then((response) => {

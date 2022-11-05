@@ -114,23 +114,30 @@ app.get('/readContent/:email', async (req, res) => {
 
 app.put('/update', async (req, res) => {
     const newTitle = req.body.newTitle;
-    const newBody = req.body.newBody;
     const id = req.body.id;
 
     try {
-        if(newTitle == "") {
-            await AnnounceModel.findById(id, (err, updatedBody) => {
-                updatedBody.body = newBody;
-                updatedBody.save();
-                res.send("update");
-            });
-        } if(newBody == "") {
             await AnnounceModel.findById(id, (err, updatedTitle) => {
                 updatedTitle.title = newTitle;
                 updatedTitle.save();
                 res.send("update");
             });
-        }
+        
+    } catch(err) {
+        console.log(err);
+    }
+});
+
+app.put('/updateAnnounce', async (req, res) => {
+    const newBody = req.body.newBody;
+    const id = req.body.id;
+
+    try {
+            await AnnounceModel.findById(id, (err, updatedBody) => {
+                updatedBody.body = newBody;
+                updatedBody.save();
+                res.send("update");
+            });
         
     } catch(err) {
         console.log(err);
@@ -355,25 +362,31 @@ app.get('/readFaqs', async (req, res) => {
 });
 
 app.put('/updateFaqs', async (req, res) => {
-    const newQuestion = req.body.newQuestion;
     const newAnswer = req.body.newAnswer;
     const id = req.body.id;
 
     try {
-        if(newQuestion == "") {
             await FaqsModel.findById(id, (err, updatedAnswer) => {
                 updatedAnswer.answer = newAnswer;
                 updatedAnswer.save();
                 res.send("update");
             });
-        } else {
+        
+    } catch(err) {
+        console.log(err);
+    }
+});
+
+app.put('/updateFaqsQuest', async (req, res) => {
+    const newQuestion = req.body.newQuestion;
+    const id = req.body.id;
+
+    try {
             await FaqsModel.findById(id, (err, updatedQuestion) => {
                 updatedQuestion.question = newQuestion;
                 updatedQuestion.save();
                 res.send("update");
             });
-        }
-        
     } catch(err) {
         console.log(err);
     }

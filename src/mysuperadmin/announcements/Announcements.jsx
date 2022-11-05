@@ -45,20 +45,46 @@ function App() {
       if(newTitle === "" && newBody === "") {
         alert('All fields required.')
       } else {
-      Swal.fire({
-
-        title:'Thank you!',
-        text:'Your Announcement has been updated!',
-        icon:'success',
-        confirmButtonColor: '#f7ce05'
-      })
-      
-      Axios.put("http://localhost:3001/update", {
-        id: id, 
-        newTitle: newTitle,
-        newBody: newBody,
-      });
-
+        if(newTitle === "") {
+          Swal.fire({
+            title:'Thank you!',
+            text:'Your Announcement has been updated!',
+            icon:'success',
+            confirmButtonColor: '#f7ce05',
+          }) 
+          Axios.put("http://localhost:3001/updateAnnounce", {
+            id: id, 
+            newBody: newBody,
+           
+          });
+        } else if(newBody === "") {
+          Swal.fire({
+            title:'Thank you!',
+            text:'Your Announcement has been updated!',
+            icon:'success',
+            confirmButtonColor: '#f7ce05',
+          }) 
+          Axios.put("http://localhost:3001/update", {
+            id: id, 
+            newTitle: newTitle,
+          });
+        } else {
+          Swal.fire({
+            title:'Thank you!',
+            text:'Your Announcement has been updated!',
+            icon:'success',
+            confirmButtonColor: '#f7ce05',
+          }) 
+          Axios.put("http://localhost:3001/updateAnnounce", {
+            id: id, 
+            newBody: newBody,
+           
+          });
+          Axios.put("http://localhost:3001/update", {
+            id: id, 
+            newTitle: newTitle,
+          });
+        }
       document.getElementById(id).value = '';
       myFunction(id);
     }

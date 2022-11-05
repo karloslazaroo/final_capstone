@@ -34,21 +34,49 @@ function App() {
   };
 
   const updateTitle = (id) => {
-    if(newQuestion === "" && setNewAnswer === "") {
+    if(newQuestion === "" && newAnswer === "") {
       alert('All fields required.')
     } else {
-      Swal.fire({
-        title:'Thank you!',
-        text:'Your FAQs has been updated!',
-        icon:'success',
-        confirmButtonColor: '#f7ce05',
-      }) 
-    
-    Axios.put("http://localhost:3001/updateFaqs", {
-      id: id, 
-      newQuestion: newQuestion,
-      newAnswer: newAnswer,
-    });
+        if(newQuestion === "") {
+          Swal.fire({
+            title:'Thank you!',
+            text:'Your FAQs has been updated!',
+            icon:'success',
+            confirmButtonColor: '#f7ce05',
+          }) 
+          Axios.put("http://localhost:3001/updateFaqs", {
+            id: id, 
+            newAnswer: newAnswer,
+           
+          });
+        } else if (newAnswer === ""){
+          Swal.fire({
+            title:'Thank you!',
+            text:'Your FAQs has been updated!',
+            icon:'success',
+            confirmButtonColor: '#f7ce05',
+          }) 
+          Axios.put("http://localhost:3001/updateFaqsQuest", {
+            id: id, 
+            newQuestion: newQuestion,
+          });
+        } else {
+          Swal.fire({
+            title:'Thank you!',
+            text:'Your FAQs has been updated!',
+            icon:'success',
+            confirmButtonColor: '#f7ce05',
+          }) 
+          Axios.put("http://localhost:3001/updateFaqs", {
+            id: id, 
+            newAnswer: newAnswer,
+           
+          });
+          Axios.put("http://localhost:3001/updateFaqsQuest", {
+            id: id, 
+            newQuestion: newQuestion,
+          });
+        }
 
     document.getElementById(id).value = '';
     myFunction(id);
