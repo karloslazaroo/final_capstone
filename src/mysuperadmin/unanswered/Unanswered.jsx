@@ -7,7 +7,7 @@ function App() {
   const [talkList, setTalkList] = useState([]);
 
     useEffect(() => {
-      Axios.get('http://localhost:3001/readTalk').then((response) => {
+      Axios.get('https://aust-chatbot.herokuapp.com/readTalk').then((response) => {
         setTalkList(response.data);
       });
     }, [talkList]);

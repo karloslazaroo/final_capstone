@@ -17,7 +17,7 @@ function App() {
 
     useEffect(() => {
       const email = user.email;
-      Axios.get(`http://localhost:3001/readContent/${email}`).then((response) => {
+      Axios.get(`https://aust-chatbot.herokuapp.com/readContent/${email}`).then((response) => {
         console.log(response.data);
         setAnnounceList(response.data);
       });
@@ -34,7 +34,7 @@ function App() {
           confirmButtonColor: '#f7ce05'
       }) 
   
-        Axios.post("http://localhost:3001/insert", {
+        Axios.post("https://aust-chatbot.herokuapp.com/insert", {
           title: title,
         name: name,
         email: email,
@@ -54,7 +54,7 @@ function App() {
             icon:'success',
             confirmButtonColor: '#f7ce05',
           }) 
-          Axios.put("http://localhost:3001/updateAnnounce", {
+          Axios.put("https://aust-chatbot.herokuapp.com/updateAnnounce", {
             id: id, 
             newBody: newBody,
            
@@ -66,7 +66,7 @@ function App() {
             icon:'success',
             confirmButtonColor: '#f7ce05',
           }) 
-          Axios.put("http://localhost:3001/update", {
+          Axios.put("https://aust-chatbot.herokuapp.com/update", {
             id: id, 
             newTitle: newTitle,
           });
@@ -77,12 +77,12 @@ function App() {
             icon:'success',
             confirmButtonColor: '#f7ce05',
           }) 
-          Axios.put("http://localhost:3001/updateAnnounce", {
+          Axios.put("https://aust-chatbot.herokuapp.com/updateAnnounce", {
             id: id, 
             newBody: newBody,
            
           });
-          Axios.put("http://localhost:3001/update", {
+          Axios.put("https://aust-chatbot.herokuapp.com/update", {
             id: id, 
             newTitle: newTitle,
           });
@@ -105,7 +105,7 @@ function App() {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Axios.delete(`http://localhost:3001/delete/${id}`)
+          Axios.delete(`https://aust-chatbot.herokuapp.com/delete/${id}`)
           Swal.fire({
             title:'Deleted!',
             text:'Your file has been deleted.',

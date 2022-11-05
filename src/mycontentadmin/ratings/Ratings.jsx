@@ -11,7 +11,7 @@ function App() {
     const [reviewList, setReviewList] = useState([]);
 
     useEffect(() => {
-      Axios.get('http://localhost:3001/readReview').then((response) => {
+      Axios.get('https://aust-chatbot.herokuapp.com/readReview').then((response) => {
         setReviewList(response.data);
       });
     }, [reviewList]);
@@ -21,7 +21,7 @@ function App() {
         title:'Review Approved!',
         confirmButtonColor: '#f7ce05'
     })
-      Axios.put("http://localhost:3001/updateReview", {
+      Axios.put("https://aust-chatbot.herokuapp.com/updateReview", {
         id: id, 
         newApproval: newApproval,
       });
@@ -32,7 +32,7 @@ function App() {
         title:'Review Disapproved!',
         confirmButtonColor: '#f7ce05'
     })
-      Axios.put("http://localhost:3001/updateReviewDis", {
+      Axios.put("https://aust-chatbot.herokuapp.com/updateReviewDis", {
         id: id, 
         newDisapproval: newDisapproval,
       });
@@ -49,7 +49,7 @@ function App() {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Axios.delete(`http://localhost:3001/deleteReview/${id}`)
+          Axios.delete(`https://aust-chatbot.herokuapp.com/deleteReview/${id}`)
           Swal.fire({
             title:'Deleted!',
             text:'Your file has been deleted.',

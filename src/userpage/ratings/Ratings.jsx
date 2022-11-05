@@ -15,7 +15,7 @@ function App() {
     const [reviewList, setReviewList] = useState([]);
   
     useEffect(() => {
-      Axios.get('http://localhost:3001/readReviewUser').then((response) => {
+      Axios.get('https://aust-chatbot.herokuapp.com/readReviewUser').then((response) => {
         setReviewList(response.data);
       });
     }, [reviewList]);
@@ -31,7 +31,7 @@ function App() {
           confirmButtonColor: '#f7ce05'
       })
   
-        Axios.post("http://localhost:3001/insertReview", {
+        Axios.post("https://aust-chatbot.herokuapp.com/insertReview", {
           name: name,
           message: message,
           approval: approval,

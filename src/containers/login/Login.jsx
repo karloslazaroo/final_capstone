@@ -38,7 +38,7 @@ function Signin (){
       if(email == "geromeeleubert.rosal.cics@ust.edu.ph") {
           navigate('/super');
       } else  {
-        Axios.get(`http://localhost:3001/readAdminLogin/${email}`).then((response) => {
+        Axios.get(`https://aust-chatbot.herokuapp.com/${email}`).then((response) => {
         if(response.data == "") {
           navigate('/user');
         } else {

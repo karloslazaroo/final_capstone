@@ -59,7 +59,7 @@ class Analytics extends React.Component {
 
 
   getTalktoUsData = () =>{
-    axios.get('http://localhost:3001/readanalytics')
+    axios.get('https://aust-chatbot.herokuapp.com/readanalytics')
     .then((response)=>{
       const data = response.data;
       this.setState({talktousdata : data});

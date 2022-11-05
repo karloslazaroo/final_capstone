@@ -17,7 +17,7 @@ function App() {
   };
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/readFaqs').then((response) => {
+    Axios.get('https://aust-chatbot.herokuapp.com/readFaqs').then((response) => {
       setFaqsList(response.data);
     });
   }, [faqsList]);
@@ -38,13 +38,13 @@ function App() {
       confirmButtonColor: '#f7ce05'
     }) 
 
-    Axios.post("http://localhost:3001/insertTalk", {
+    Axios.post("https://aust-chatbot.herokuapp.com/insertTalk", {
       name: name,
       email: email,
       message: message,
     });
 
-    Axios.post("http://localhost:3001/analyticsdata",{
+    Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{
       source: state.source
     });
 

@@ -9,7 +9,7 @@ function App() {
   const [adminList, setAdminList] = useState([]);
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/readAdmin').then((response) => {
+    Axios.get('https://aust-chatbot.herokuapp.com/readAdmin').then((response) => {
       setAdminList(response.data);
     });
   }, [adminList]);
@@ -24,7 +24,7 @@ function App() {
       icon:'success',
       confirmButtonColor: '#f7ce05'
     })
-    Axios.post("http://localhost:3001/insertAdmin", {
+    Axios.post("https://aust-chatbot.herokuapp.com/insertAdmin", {
       email: email,
       office: office,
     });
@@ -42,7 +42,7 @@ function App() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.delete(`http://localhost:3001/deleteAdmin/${id}`)
+        Axios.delete(`https://aust-chatbot.herokuapp.com/deleteAdmin/${id}`)
         Swal.fire({
           title:'Deleted!',
           text:'Your account has been deleted.',

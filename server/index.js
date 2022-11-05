@@ -11,6 +11,8 @@ const AnalyticsModel = require("./models/ForAnalytics");
 const ChatbotModel = require("./models/Chatbot");
 const FaqsModel = require("./models/FAQs");
 
+require('dotenv').config();
+
 app.use(express.json());
 app.use(cors());
 
@@ -406,6 +408,6 @@ app.delete("/deleteBot/:id", async (req, res) => {
     res.send("deleted");
 });
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
     console.log("Server running on port 3001...");
 });

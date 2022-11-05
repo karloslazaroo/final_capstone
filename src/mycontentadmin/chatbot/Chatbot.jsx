@@ -34,7 +34,7 @@ function Chatbot (){
     });
     ListIntent(); */
     const mail = user.email;
-    axios.get(`http://localhost:3001/readBots/${mail}`).then((response) => {
+    axios.get(`https://aust-chatbot.herokuapp.com/readBots/${mail}`).then((response) => {
     setData(response.data);
     console.log(response.data.projId);
     //setprojectiddata(response.data.projId);

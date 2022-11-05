@@ -11,7 +11,7 @@ function App() {
   const [faqsList, setFaqsList] = useState([]);
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/readFaqs').then((response) => {
+    Axios.get('https://aust-chatbot.herokuapp.com/readFaqs').then((response) => {
       setFaqsList(response.data);
     });
   }, [faqsList]);
@@ -26,7 +26,7 @@ function App() {
         icon:'success',
         confirmButtonColor: '#f7ce05',
       }) 
-    Axios.post("http://localhost:3001/insertFaqs", {
+    Axios.post("https://aust-chatbot.herokuapp.com/insertFaqs", {
       question: question,
       answer: answer,
     });
@@ -44,7 +44,7 @@ function App() {
             icon:'success',
             confirmButtonColor: '#f7ce05',
           }) 
-          Axios.put("http://localhost:3001/updateFaqs", {
+          Axios.put("https://aust-chatbot.herokuapp.com/updateFaqs", {
             id: id, 
             newAnswer: newAnswer,
            
@@ -56,7 +56,7 @@ function App() {
             icon:'success',
             confirmButtonColor: '#f7ce05',
           }) 
-          Axios.put("http://localhost:3001/updateFaqsQuest", {
+          Axios.put("https://aust-chatbot.herokuapp.com/updateFaqsQuest", {
             id: id, 
             newQuestion: newQuestion,
           });
@@ -67,12 +67,12 @@ function App() {
             icon:'success',
             confirmButtonColor: '#f7ce05',
           }) 
-          Axios.put("http://localhost:3001/updateFaqs", {
+          Axios.put("https://aust-chatbot.herokuapp.com/updateFaqs", {
             id: id, 
             newAnswer: newAnswer,
            
           });
-          Axios.put("http://localhost:3001/updateFaqsQuest", {
+          Axios.put("https://aust-chatbot.herokuapp.com/updateFaqsQuest", {
             id: id, 
             newQuestion: newQuestion,
           });

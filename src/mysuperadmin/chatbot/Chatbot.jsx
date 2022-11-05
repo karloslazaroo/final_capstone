@@ -26,7 +26,7 @@ useEffect(() => {
 );
 
 function getBots(){
-  Axios.get('http://localhost:3001/readBot').then((response) => {
+  Axios.get('https://aust-chatbot.herokuapp.com/readBot').then((response) => {
     setData(response.data);
     console.log('readbot ',response.data);
   });
@@ -40,7 +40,7 @@ const addChatbot = (/** ${projId} */) => {
     displayName: name,
     timeZone: time,
   }).then(() => {
-    Axios.post('http://localhost:3001/insertBot' , {
+    Axios.post('https://aust-chatbot.herokuapp.com/insertBot' , {
       mail: mail,
       projId: projId,
       name: name,
@@ -73,7 +73,7 @@ const deleteBot = (id, projId) => {
   }).then((result) => {
     if (result.isConfirmed) {
       Axios.delete(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${token}`).then(() => {
-        Axios.delete(`http://localhost:3001/deleteBot/${id}`,
+        Axios.delete(`https://aust-chatbot.herokuapp.com/deleteBot/${id}`,
         getBots(),
         );
       });

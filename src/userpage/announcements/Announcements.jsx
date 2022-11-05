@@ -8,7 +8,7 @@ function Announce() {
     const [announceList, setAnnounceList] = useState([]);
 
     useEffect(() => {
-      Axios.get('http://localhost:3001/read').then((response) => {
+      Axios.get('https://aust-chatbot.herokuapp.com/read').then((response) => {
         setAnnounceList(response.data);
       });
     }, [announceList]);
