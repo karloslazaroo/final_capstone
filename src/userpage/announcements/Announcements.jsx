@@ -20,7 +20,7 @@ function Announce() {
        <div className="announcement_user">
             <h2><span>Announcements</span></h2>
             </div>
-      <div className="divider"></div>
+      <div className="divider_announcement_user"></div>
 
         {announceList.map((val, key) => {
               return (
@@ -40,9 +40,7 @@ function Announce() {
                       <div class="job">{val.email}</div>
                      
                     </div>
-                    <div class="image">
-                      <img src={Profile} alt=""/>
-                    </div>
+                   
                   </div>
                 </div>
               </div>

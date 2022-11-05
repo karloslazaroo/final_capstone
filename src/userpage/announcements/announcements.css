@@ -49,7 +49,10 @@
     line-height: 1.4em;
     font-weight: 500px;
 }
-
+.divider_announcement_user{
+border-top: 3px solid rgb(0, 0, 0);
+width: 1610px;
+}
 .wrapper_questions{
     max-width: 1200px;
     margin: auto;
@@ -122,13 +125,44 @@
     border-color: #fff;
   }
   @media (max-width: 1045px) {
-    .wrapper .box{
+    .wrapper_questions .box_questions{
       width: calc(50% - 10px);
       margin: 10px 0;
     }
   }
   @media (max-width: 702px) {
-    .wrapper .box{
+    .wrapper_questions .box_questions{
       width: 100%;
     }
+  }
+
+  @media only screen and (max-width: 600px){
+    .announcement_body{
+      margin-left: 25%;
+    }
+    .announcement_user {
+      font-size: 1em;
+      font-weight: 900px;
+    }
+    .divider_announcement_user{
+      width: 100%;
+    }
+    .job {
+      font-size: 13px;
+    font-weight: 500;
+    }
+    .name {
+      font-weight: 600;
+    font-size: 14px;
+    }
+    .box_questions h1 {
+      font-size: 20px;
+    }
+    .box_questions h4{
+      font-size: 0.8em;
+    }
+    .box_questions p {
+      font-size: 13px;
+    }
+    
   }
