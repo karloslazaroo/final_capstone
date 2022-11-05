@@ -20,4 +20,9 @@
     --df-messenger-send-icon: #f7ce05;
    }
   
+   @media only screen and (max-width: 600px) {
+    .logo2{
+      display: none;
+  }
+}
  

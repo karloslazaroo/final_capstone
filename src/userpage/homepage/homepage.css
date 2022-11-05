@@ -61,7 +61,17 @@
 }
 
 @media only screen and (max-width: 600px) {
-    
+    .body_homepage {
+        margin-left: 30%;
+    }
+
+    .textBox_user {
+        max-width: 360px;
+    }
+
+    .imgBox {
+        display: none;
+    }
 }
 
 

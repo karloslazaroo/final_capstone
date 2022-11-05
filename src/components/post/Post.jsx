@@ -9,7 +9,7 @@ const post = () => {
        <div className="announcement">
             <h2><span>Latest Announcements</span></h2>
             </div>
-        <div className='divider'></div>
+        <div className='divider_user'></div>
 
         <div className='post'>
           <ul>

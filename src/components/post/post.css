@@ -127,7 +127,13 @@
     border-color: #f7ce05;
 }
 
-.divider {
+.divider_user {
     border-top: 3px solid rgb(0, 0, 0);
     width: 1610px;
+}
+
+@media only screen and (max-width: 600px) {
+    .divider_user {
+        width: 350px;
+    }
 }
