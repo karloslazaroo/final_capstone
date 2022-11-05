@@ -65,8 +65,12 @@
         margin-left: 30%;
     }
 
-    .textBox_user {
-        max-width: 360px;
+    .textBox_user h2{
+        font-size: 2em;
+    }
+
+    .textBox_user span {
+        font-size: 1em;
     }
 
     .imgBox {
