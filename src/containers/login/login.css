@@ -3,7 +3,7 @@
 .bodyLogin {
     width: 100%;
     height: 100vh;
-    background-image: url(../../assets/mainbuilding.jpg);
+    background-color: #f7ce05;
     background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -142,5 +142,5 @@ df-messenger {
 }
 
 .custom-shape-divider-bottom-1667119216 .shape-fill {
-    fill: #E9E5D2;
+    fill: #ffffff;
 }
