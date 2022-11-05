@@ -24,6 +24,7 @@ function App() {
         <div class="side-nav">
             <a href="#" class="logo">
                 <img src={ust} class="logo-img"/>
+                <img src={ust} class="logo-icon"/>
             </a>
             <div class="nav-links_user">
                 <li><a href="/user"><i class="fa-solid fa-house-user"></i><p>Dashboard</p></a></li>
