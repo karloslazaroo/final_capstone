@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import './login.css';
 import chathead from '../../assets/chathead.png';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo2.png'
 
 
 
