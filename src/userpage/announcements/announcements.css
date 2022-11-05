@@ -137,9 +137,7 @@ width: 1610px;
   }
 
   @media only screen and (max-width: 600px){
-    .announcement_body{
-      margin-left: 15%;
-    }
+  
     .announcement_user {
       font-size: 1em;
       font-weight: 900px;

@@ -146,6 +146,10 @@
 	border-bottom: 2px solid rgb(0, 0, 0);
 	cursor: pointer;
 }
+.divider_talktous_user {
+	border-top: 3px solid rgb(0, 0, 0);
+width: 1610px;
+}
 
 .question {
 	display: flex;
@@ -192,4 +196,31 @@ svg{
 		opacity: 1;
 		transform: translateY(0px);
 	}
+}
+
+@media only screen and (max-width: 600px) {
+	.talktous_user{
+		font-size: 1em;
+    	font-weight: 900px;
+	}
+	
+	.left {
+		display: none;
+	}
+	.divider_talktous_user{
+		width: 100%;
+	}
+	.contact-box{
+		display: inline-block;
+		border-radius: 15px;
+		
+	}
+	.container{
+	margin: 0px;
+	padding: 20px 75px;
+	}
+	.right{
+		padding: 10px;
+	}
+	
 }
