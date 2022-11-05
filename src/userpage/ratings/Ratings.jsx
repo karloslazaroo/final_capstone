@@ -78,8 +78,8 @@ function App() {
       <p>{val.message}</p>
       <div class="content">
         <div class="info">
-          <div class="name">{val.name}</div>
-          <div class="job">{val.email}</div>
+          <div class="name_user">{val.name}</div>
+          <div class="job_user">{val.email}</div>
         </div>
         
       </div>

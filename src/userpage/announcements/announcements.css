@@ -148,21 +148,13 @@ width: 1610px;
       width: 100%;
     }
     .job {
-      font-size: 13px;
+      font-size: 14px;
     font-weight: 500;
     }
     .name {
       font-weight: 600;
     font-size: 14px;
     }
-    .box_questions h1 {
-      font-size: 20px;
-    }
-    .box_questions h4{
-      font-size: 0.8em;
-    }
-    .box_questions p {
-      font-size: 13px;
-    }
+   
     
   }
