@@ -136,7 +136,7 @@
     .divider_user {
         width: 100%;
     }
-
+   
     .time {
        display:none;
     }
@@ -155,6 +155,7 @@
     }
     .post ul{
         padding: 5px;
+        
     }
 
     .announcement span {
