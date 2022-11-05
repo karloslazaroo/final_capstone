@@ -61,7 +61,7 @@ function App() {
     <div>
        <div className="ratings_user">
             <h2><span>Review Us!</span></h2>
-            <div className="divider"></div>
+            <div className="divider_ratings_user"></div>
             </div>
         
    <div className="button_user">
