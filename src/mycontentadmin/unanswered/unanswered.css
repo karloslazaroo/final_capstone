@@ -106,16 +106,31 @@
     border-color: #fff;
   }
   @media (max-width: 1045px) {
-    .wrapper .box{
+    .wrapper_questions .box_questions_contentadmin{
+      min-width: none;
       width: calc(50% - 10px);
       margin: 10px 0;
     }
   }
   @media (max-width: 702px) {
-    .wrapper .box{
+    .wrapper_questions .box_questions_contentadmin{
+      min-width: none;
       width: 100%;
     }
   }
+
+  @media only screen and (max-width: 600px){
+  
+    .textBox_announcement h2 {
+      color: #333;
+      font-size: 2em;
+      line-height: 1.4em;
+      font-weight: 500px;
+  }
+  .divider {
+    width: 100%;
+  }
+}
 
 
   

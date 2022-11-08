@@ -2,9 +2,42 @@
     margin-left: 15%;
 }
 
-.graph_container {
+.graph_container_content {
     border-style: solid;
     margin-top: 25px;
     margin-bottom: 25px;
+    width: 1200px; 
+    height: 600px;
     
 }
+
+.divider_analytics_content {
+    border-top: 3px solid rgb(0, 0, 0);
+    width: 1610px;
+}
+
+.textBox_analytics_content h2 {
+    color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500px;
+}
+
+@media only screen and (max-width: 600px){
+  
+    .textBox_analytics_content h2 {
+      color: #333;
+      font-size: 2em;
+      line-height: 1.4em;
+      font-weight: 500px;
+  }
+  
+  .divider_analytics_content {
+    width: 100%;
+  }
+
+  .graph_container_content {
+    width: 95%;
+    height: 100%;
+  }
+  }
