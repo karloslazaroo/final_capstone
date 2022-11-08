@@ -22,7 +22,7 @@ class Analytics extends React.Component {
     labels: this.labelscontainer ,
     datasets:[
       {
-        label:"First Dataset" ,
+        label:"Talk to Us function usage" ,
         data: this.datacontainer ,
         backgroundColor: 'yellow', // color of point
         borderColor: 'red', // color of line

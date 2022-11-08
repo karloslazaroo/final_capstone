@@ -10,6 +10,7 @@ const AdminModel = require("./models/manageAdmin");
 const AnalyticsModel = require("./models/ForAnalytics");
 const ChatbotModel = require("./models/Chatbot");
 const FaqsModel = require("./models/FAQs");
+const AnalyticsReviewsModel = require("./models/ForAnalyticsReviews");
 
 require('dotenv').config();
 
@@ -39,6 +40,8 @@ app.post('/analyticsdata', (req , res) =>{
     });
 });
 
+
+
 //route for getting chatbot project id
 app.get("/readBot/:mail", async (req, res) => {
     const mail = req.params.mail;
@@ -54,7 +57,6 @@ app.get("/readBot/:mail", async (req, res) => {
 }); 
 
 //route for getting analytics data and count for talk to us
-
 app.get('/readanalytics', (req , res) =>{
     
     AnalyticsModel.aggregate([
@@ -62,6 +64,32 @@ app.get('/readanalytics', (req , res) =>{
             $match: { source : "Talk to Us"},
         },
         //count not appearing
+        {
+            $group: {
+                _id: '$date',
+                count : {$sum : 1}
+        }}
+    //     ,{
+    //         $sort: {
+    //             date : 1   
+    //         }
+    // }
+    ]
+    ).then((result) => {
+        console.log('result: ', result);
+        res.send(result);
+    })
+    .catch((error)=>{
+        console.log('error: ', dataerror);
+    }) 
+});
+
+app.get('/readanalyticsreviews', async (req , res) =>{
+    
+    AnalyticsModel.aggregate([
+        {
+            $match: { source : "Reviews"},
+        },
         {
             $group: {
                 _id: '$date',

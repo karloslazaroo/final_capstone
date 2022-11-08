@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement} from 'chart.js';
 
 import {Line} from 'react-chartjs-2';
+import { errorPrefix } from '@firebase/util';
 
 ChartJS.register(
   LineElement, CategoryScale,
@@ -14,15 +15,21 @@ ChartJS.register(
 
 
 class Analytics extends React.Component {
-  state = {talktousdata : []};
+  
+  state = {talktousdata : [], reviewsdata: []};
   labelscontainer = [];
   datacontainer = [];
+  number = [];
+  reviewslabelscontainer = [];
+  reviewsdatacontainer = [];
+  
+  
   //talk to us pa lang
-  data = ({
+  ttudata = ({
     labels: this.labelscontainer ,
     datasets:[
       {
-        label:"First Dataset" ,
+        label:"Talk to Us Function usage" ,
         data: this.datacontainer ,
         backgroundColor: 'yellow', // color of point
         borderColor: 'red', // color of line
@@ -33,7 +40,7 @@ class Analytics extends React.Component {
     ]
   });
 
-  options = {
+  ttuoptions = {
     plugins:{
       legend: true
     },
@@ -45,7 +52,42 @@ class Analytics extends React.Component {
       },
       y:{
         min: 0, //min value scaled in graph
-        max: 10,
+        max: this.number[0],
+        ticks: {
+          stepSize: 1
+        } 
+      }
+    }
+  }
+
+  reviewsdata = ({
+    labels: this.reviewslabelscontainer ,
+    datasets:[
+      {
+        label:"Reviews Function usage" ,
+        data: this.reviewsdatacontainer ,
+        backgroundColor: 'yellow', // color of point
+        borderColor: 'red', // color of line
+        pointBorderWidth: 4, //point size
+        tension: 0.5,
+        fill: true
+      }
+    ]
+  });
+
+  reviewsoptions = {
+    plugins:{
+      legend: true
+    },
+    scales: {
+      x:{
+        grid:{
+          display: false //display x grid
+        }
+      },
+      y:{
+        min: 0, //min value scaled in graph
+        max: this.number[1],
         ticks: {
           stepSize: 1
         } 
@@ -54,6 +96,31 @@ class Analytics extends React.Component {
   }
 
 
+  getReviewsData = () =>{
+    axios.get('https://aust-chatbot.herokuapp.com/readanalyticsreviews')
+    .then((response)=>{
+      const data = response.data;
+      this.setState({reviewsdata : data});
+
+      console.log('Data from reviews received: ', data);
+
+      //code for staging date and count
+      for(var i = 0; i < data.length; i ++){
+        this.reviewslabelscontainer.push(data[i]._id);
+      
+        this.reviewsdatacontainer.push(data[i].count);
+        
+      }
+
+      this.number.push(Math.max(...this.reviewsdatacontainer)*2);
+
+    })
+    .catch(() =>{
+      alert('Error getting reviews data');
+      console.error();
+    });
+
+  };
   
   
 
@@ -69,20 +136,32 @@ class Analytics extends React.Component {
       //code for staging date and count
       for(var i = 0; i < data.length; i ++){
         this.labelscontainer.push(data[i]._id);
-        console.log('labels', this.labelscontainer);
+      
         this.datacontainer.push(data[i].count);
-        console.log('counts', this.datacontainer);
+        
       }
 
-   
+      this.number.push(Math.max(...this.datacontainer)*2);
+
+      // console.log('labels', this.labelscontainer);
+      // console.log('counts', this.datacontainer);
+      // console.log('counts max number', this.number[0]);
+      
+       
+
     })
     .catch(() =>{
       alert('Error getting talk to us data')
-    })
+    });
+   
   };
 
   componentDidMount =() =>{
     this.getTalktoUsData();
+    // this.getReviewsData();
+    // console.log('number',this.number);
+
+ 
   }
 
   displayTalktoUsData = (talktousdata) =>{
@@ -108,6 +187,7 @@ class Analytics extends React.Component {
 
   render(){
      return (
+      
       <div className='analytics_body' >
         { <div className="textBox">
         <h2>Analytics<br></br></h2>
@@ -117,10 +197,12 @@ class Analytics extends React.Component {
         {/* {this.displayTalktoUsData(this.state.talktousdata)} */}
         {/* {this.datacontainer} */}
         <div className='graph_container' style={{width:'1200px', height:'600px'}}>
-          <Line data={this.data} options={this.options}></Line>
+          <Line data={this.ttudata} options={this.ttuoptions}></Line>
           {/* <Line data={this.data}></Line> */}
         </div>
-
+         <div className='graph_container' style={{width:'1200px', height:'600px'}}>
+          <Line data={this.reviewsdata} options={this.reviewsoptions}></Line>
+        </div>
       </div>
     )
   }

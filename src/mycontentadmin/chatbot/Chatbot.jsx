@@ -2,7 +2,7 @@ import React , {useEffect, useState} from 'react'
 import './chatbot.css'
 import axios from 'axios';
 import { UserAuth } from '../../context/AuthContext';
-import {Link} from 'react-router-dom';
+
 
 
 
@@ -36,7 +36,7 @@ function Chatbot (){
     const mail = user.email;
     axios.get(`https://aust-chatbot.herokuapp.com/readBots/${mail}`).then((response) => {
     setData(response.data);
-    console.log(response.data.projId);
+    // console.log(response.data.projId);
     //setprojectiddata(response.data.projId);
   })
 }, [datas]);
@@ -113,59 +113,51 @@ function Chatbot (){
  
   }
 
-  // const handleChange = ({ target }) => {
-  //   const { name, value } = target;
-  //   useState({ [name]: value });
-  // };
+//   const testenv = async () =>{
+//     const {google} = require('googleapis');
+//     const apis = google.getSupportedAPIs();
+   
+//     var express = require('express'); 
+//     var app = express();
+//     const myclientid = "70270798745-j2leqftddodgiumh307t952c402h60sl.apps.googleusercontent.com";
 
+//     const myclientsecret = "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";
+//     const tokenurl = 'https://accounts.google.com/o/oauth2/token';
+//     const myscope = 'https://www.googleapis.com/auth/dialogflow';
+//     const myauthurl = 'https://accounts.google.com/o/oauth2/auth';
+//     const redirecturl = 'https://www.getpostman.com/oauth2/callback';
 
-  
-  // const getIntents = () => {
- 
-
-  //   var config = {
-  //     method: 'get',
-  //     url: 'https://dialogflow.googleapis.com/v2/projects/'+projectiddata+'/agent/intents?intentView=INTENT_VIEW_FULL&access_token='+ token,
-  //     headers: {
-  //     'Content-Type': 'application/json',
-  //     'Authorization': 'Bearer '+ token
-  //    }
-  //   };
-
-  //   axios(config)
-  //   .then((response) => {
-  //     const data = JSON.stringify(response.data.intents);
-  //     console.log(data);
-  //     // console.log('data received');
-  //     // const testvariable = data[1].messages[0].simpleResponses.simpleResponses[0].displayText;
-  //     //   intentdisplaycontainer.push(testvariable);
-     
-  //     // intentdisplaycontainer.push(data);
-
-  //     // console.log('data dded to state');
-  //     // console.log(data[1].messages[0].simpleResponses.simpleResponses[0].displayText, 'from axios code');
-  //     // setState({detectintentdata : data})
-  //     setdetectintentdata(data);
-
-
-      
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //     alert('error on axios');
-  //   });
-
-  // }; 
-  
-  // const displayIntentData = (detectintentdata) =>{
-  //  console.log(typeof(detectintentdata));
-  //   return (
-  //       <div >
-  //           {detectintentdata}
-  //       </div>
+//     const oauth2Client = new google.auth.OAuth2(
+//       myclientid,
+//       myclientsecret,
+//       redirecturl, 
+//     );
     
-  //       )  
-  // }
+//     // generate a url that asks permissions for Blogger and Google Calendar scopes
+//     const scopes = [
+//       'https://www.googleapis.com/auth/dialogflow'
+      
+//     ];
+    
+//     console.log('code goes b4 generateurl');
+//     const url = oauth2Client.generateAuthUrl({
+//       // 'online' (default) or 'offline' (gets refresh_token)
+//       access_type: 'offline',
+    
+//       // If you only need one scope you can pass it as a string
+//       scope: scopes
+
+
+//     });
+  
+//     // This will provide an object with the access_token and refresh_token.
+//     // Save these somewhere safe so they can be used at a later time.
+//     const {tokens} = await oauth2Client.getToken(code)
+//     oauth2Client.setCredentials(tokens);
+//     console.log(oauth2Client.getAccessToken);
+
+//   };
+//  testenv();
 
   
   const deleteIntent = (projectid) => {
