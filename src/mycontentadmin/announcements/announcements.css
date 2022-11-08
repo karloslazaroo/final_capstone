@@ -51,14 +51,17 @@
       
   }
 
-
-.textBox {
+.divider_announcement_content{
+  border-top: 3px solid rgb(0, 0, 0);
+  width: 1610px;
+}
+.textBox_announcement {
     position: relative;
     max-width: 600px;
 
 }
 
-.textBox h2 {
+.textBox_announcement h2 {
     color: #333;
     font-size: 4em;
     line-height: 1.4em;
@@ -267,4 +270,18 @@
   box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
   border: none;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px){
+  
+  .textBox_announcement h2 {
+    color: #333;
+    font-size: 2em;
+    line-height: 1.4em;
+    font-weight: 500px;
+}
+
+.divider_announcement_content {
+  width: 100%;
+}
 }

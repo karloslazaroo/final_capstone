@@ -24,8 +24,9 @@ function App() {
         <div class="side-nav">
             <a href="#" class="logo">
                 <img src={ust} class="logo-img"/>
+                <img src={ust} class="logo-icon"/>
             </a>
-            <div class="nav-links">
+            <div class="nav-links_content">
                 <li><a href="/content"><i class="fa-solid fa-house-user"></i><p>Dashboard</p></a></li>
                 <li><a href="/Announcements_Content"><i class="fa-solid fa-bullhorn"></i><p>Announcements</p></a></li>
                 <li><a href="Chatbot_Content"><i class="fa-solid fa-headset"></i><p>Chatbot Interface</p></a></li>

@@ -154,10 +154,10 @@ function App() {
 
   return (
     <div className='announcement_body'>
-       <div className="textBox">
+       <div className="textBox_announcement">
       <h2>Announcements<br></br></h2>
       </div>
-      <div className='divider'></div>
+      <div className='divider_announcement_content'></div>
         <div className="button_add_content">
           <button href='#' onClick={toggleModal}>New Announcements!</button>
         </div>
@@ -183,9 +183,7 @@ function App() {
                 <button href="#" onClick={() => deleteAnnounce(val._id)}> Delete </button>
               </div>
               </div>
-              <div class="image">
-                <img src={Profile} alt=""/>
-              </div>
+              
               </div>
 
               <div id={val._id} className="edit_content">

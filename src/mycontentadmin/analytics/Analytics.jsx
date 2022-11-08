@@ -189,11 +189,11 @@ class Analytics extends React.Component {
      return (
       
       <div className='analytics_body' >
-        { <div className="textBox">
+        { <div className="textBox_analytics_content">
         <h2>Analytics<br></br></h2>
         </div> 
         }
-         <div className='divider'></div>
+         <div className='divider_analytics_content'></div>
         {/* {this.displayTalktoUsData(this.state.talktousdata)} */}
         {/* {this.datacontainer} */}
         <div className='graph_container' style={{width:'1200px', height:'600px'}}>
