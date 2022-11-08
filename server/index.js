@@ -10,7 +10,7 @@ const AdminModel = require("./models/manageAdmin");
 const AnalyticsModel = require("./models/ForAnalytics");
 const ChatbotModel = require("./models/Chatbot");
 const FaqsModel = require("./models/FAQs");
-const AnalyticsReviewsModel = require("./models/ForAnalyticsReviews");
+/* const AnalyticsReviewsModel = require("./models/ForAnalyticsReviews"); */
 
 require('dotenv').config();
 

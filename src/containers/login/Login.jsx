@@ -35,7 +35,7 @@ function Signin (){
       
       const email = user.email;
       
-      if(email == "vaincentrussell.sobreviga.cics@ust.edu.ph") {
+      if(email == "1geromeeleubert.rosal.cics@ust.edu.ph") {
           navigate('/super');
       } else  {
         Axios.get(`https://aust-chatbot.herokuapp.com/readAdminLogin/${email}`).then((response) => {
