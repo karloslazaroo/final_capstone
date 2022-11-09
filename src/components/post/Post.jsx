@@ -22,7 +22,6 @@ const post = () => {
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum aliquid tempora mollitia at quibusdam voluptatem magnam 
                   hic minus provident quas illo adipisci, quae ratione. 
                   Ducimus architecto natus laborum soluta aperiam.</p>
-                  <a href="#">View Details</a>
               </div>
               
             </li>
