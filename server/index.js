@@ -131,6 +131,17 @@ app.get('/read', async (req, res) => {
     }).sort(mysort);
 });
 
+app.get('/readLatest', async (req, res) => {
+    var mysort = {_id: -1};
+    AnnounceModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
+
+        res.send(result);
+    }).sort(mysort).limit(1);
+});
+
 app.get('/readContent/:email', async (req, res) => {
     var mysort = {_id: -1};
     const email = req.params.email;
