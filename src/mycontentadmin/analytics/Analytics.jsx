@@ -203,6 +203,32 @@ class Analytics extends React.Component {
          <div className='graph_container_content' >
           <Line data={this.reviewsdata} options={this.reviewsoptions}></Line>
         </div>
+
+
+        <div className="textBox">
+        <h2>System Logs<br></br></h2>
+        </div>
+        <div className='divider'></div>
+        <div className="table">
+        <table>
+  <tr>
+    <th>Date & Time</th>
+    <th>Email</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Karlos Andrew Lazaro</td>
+    <td>karlosandrew.lazaro.cics@ust.edu.ph</td>
+    <td>Logout</td>
+  </tr>
+  <tr>
+    <td>Karlos Andrew Lazaro</td>
+    <td>karlosandrew.lazaro.cics@ust.edu.ph</td>
+    <td>Logout</td>
+  </tr>
+ 
+</table>
+        </div>
       </div>
     )
   }
