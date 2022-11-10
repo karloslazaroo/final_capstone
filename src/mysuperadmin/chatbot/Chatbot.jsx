@@ -9,8 +9,10 @@ function App() {
   const [projId, setID] = useState('');
   const [mail, setMail] = useState('');
   const [time] = useState('Asia/Hong_Kong');
+  const [token, setToken] = useState('');
+  const [updateToken, setUpdateToken] = useState('');
   //Generate new token every 1 hour in Postman
-  const token = 'ya29.a0AeTM1if687PcMMqijxbSfzvpDMijbfIpSNFxPT99bVtEd4UwJaRq5pqYI7iAJg5O3SXuwXw1WLYJqhlK1yWj2kdI6hHTVh2Myvu-5b7y5jD3iE-XCBUlFyMikVP_mRPeKevrS74o5ACB5OmxouwsBQmZJSDELgaCgYKATwSARASFQHWtWOmEX8lFrHgao1cCg3g1_M9TQ0165';
+  //const token = 'ya29.a0AeTM1if687PcMMqijxbSfzvpDMijbfIpSNFxPT99bVtEd4UwJaRq5pqYI7iAJg5O3SXuwXw1WLYJqhlK1yWj2kdI6hHTVh2Myvu-5b7y5jD3iE-XCBUlFyMikVP_mRPeKevrS74o5ACB5OmxouwsBQmZJSDELgaCgYKATwSARASFQHWtWOmEX8lFrHgao1cCg3g1_M9TQ0165';
 
   /* const getData = ( ${projId} ) =>  {
   Axios.get(`https://dialogflow.googleapis.com/v2/projects/archie-fcoa/agent?access_token=${token}`).then((response) => {
@@ -32,11 +34,30 @@ function getBots(){
   });
 }
 
+const addToken = (/** ${projId} */) => {
+  if(token == "") {
+    alert('Valid Access Token Required.');
+  } else {
+    setUpdateToken(token);
+    console.log(updateToken);
+
+    Swal.fire({
+      title:'Thank you!',
+      text:'Access Token Added!',
+      icon:'success',
+      confirmButtonColor: '#f7ce05'
+     });
+
+     document.getElementById("token").value = '';
+  }
+};
+
+
 const addChatbot = (/** ${projId} */) => {
   if(name == "" || projId == "" || mail == "") {
     alert('All fields required.');
   } else {
-    Axios.post(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${token}`, {
+    Axios.post(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${updateToken}`, {
     displayName: name,
     timeZone: time,
   }).then(() => {
@@ -72,7 +93,7 @@ const deleteBot = (id, projId) => {
     confirmButtonText: 'Yes, delete it!'
   }).then((result) => {
     if (result.isConfirmed) {
-      Axios.delete(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${token}`).then(() => {
+      Axios.delete(`https://dialogflow.googleapis.com/v2/projects/${projId}/agent?access_token=${updateToken}`).then(() => {
         Axios.delete(`https://aust-chatbot.herokuapp.com/deleteBot/${id}`,
         getBots(),
         );
@@ -119,6 +140,16 @@ function displayBots(){
         </div>
         <div className="divider"></div>
         <div className="chatbot_inputs">
+        <label>Acces Token from Postman: </label>  
+            <input id="token"
+            className="chatbot_creation"
+            type="text"
+            placeholder="Enter access token..." 
+            onChange={(event) => {
+              setToken(event.target.value);
+            }}
+            />
+            <button href='#' onClick={addToken} >Use Access Token!</button>
         <label>Email of Content Admin: </label>  
             <input id="email"
             className="chatbot_creation"
