@@ -54,7 +54,7 @@ function Signin (){
       const email = user.email;
       
       
-      if(email == "karlosandrew1.lazaro.cics@ust.edu.ph") {
+      if(email == "karlosandrew.lazaro.cics@ust.edu.ph") {
           navigate('/super');
           // logthelogin("super");
       } else  {
@@ -88,8 +88,11 @@ function Signin (){
       <img src= {logo} className='login_logo'></img>
       </div>
         <a>
-        <GoogleButton className='google' onClick={handleGoogleSignIn} />
+        {/* <GoogleButton className='google' onClick={handleGoogleSignIn} /> */}
        </a>
+       <div className="mema">
+       <span><a href="#" onClick={handleGoogleSignIn}></a></span>
+       </div>
       </div>
       
     </div>

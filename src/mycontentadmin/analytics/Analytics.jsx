@@ -216,21 +216,37 @@ class Analytics extends React.Component {
   }
 
   displaysystemlogs= (syslogdata)=>{
-      return syslogdata.map((data, index) =>(
-        
+     
+      
+
+       return syslogdata.map((data, index) =>{
+
+        return ( 
+          
         <div key={index} >
-         
-         
+          
+        
+            
           <tr>
             <td>{data.date}</td>
             <td>{data.email}</td>
             <td>{data.description}</td>
-          </tr>
-  
-
+            
+            </tr>
+          
+           
+         
         </div>
-      )
-      )
+        
+     )
+
+        })
+        
+         
+
+        
+      
+      
   }
 
 
@@ -245,6 +261,7 @@ class Analytics extends React.Component {
          <div className='divider_analytics_content'></div>
         {/* {this.displayTalktoUsData(this.state.talktousdata)} */}
         {/* {this.datacontainer} */}
+        <h2>Talk to Us~</h2>
         <div className='graph_container_content' style={{width:'1200px', height:'600px'}}>
           <Line data={this.ttudata} options={this.ttuoptions}></Line>
 
@@ -252,28 +269,23 @@ class Analytics extends React.Component {
         <h2>Reviews~</h2>
          <div className='graph_container_content' >
           <Line data={this.reviewsdata} options={this.reviewsoptions}></Line>
-
+          </div>
         <div className="textBox">
         <h2>System Logs<br></br></h2>
         </div>
         <div className='divider'></div>
+        <div className='button_container' >
+            <button onClick={() => this.generatePDF(this.state.syslogdata)}>Download pdf</button>
+          </div>
         <div className="table" id='my-table'>
-          <table>
-            <tr>
-              <th>Date & Time</th>
-              <th>Email</th>
-              <th>Description</th>
-            </tr>
-            {this.displaysystemlogs(this.state.syslogdata)}
-          </table>
+       
+        {this.displaysystemlogs(this.state.syslogdata)}
          
            
          
         </div>
-      </div>
-      <div className='button container' style={{textAlign: 'center'}}>
-            <button onClick={() => this.generatePDF(this.state.syslogdata)}>Download pdf</button>
-          </div>
+      
+      
         </div>
     )
   }
