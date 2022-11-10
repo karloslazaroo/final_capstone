@@ -24,7 +24,13 @@ function Signin (){
 
   const handleGoogleSignIn = async () => {
       try{
-          await googleSignIn();
+          await googleSignIn()
+          const email = user.email;
+          const description = "Logged In.";
+          Axios.post('https://aust-chatbot.herokuapp.com/insertLogs', {
+            email: email,
+            description: description,
+          });
       } catch (error){
           console.log(error);
       }
@@ -34,6 +40,7 @@ function Signin (){
     if(user != null){
       
       const email = user.email;
+      
       
       if(email == "karlosandrew.lazaro.cics@ust.edu.ph") {
           navigate('/super');

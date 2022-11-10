@@ -10,6 +10,7 @@ const AdminModel = require("./models/manageAdmin");
 const AnalyticsModel = require("./models/ForAnalytics");
 const ChatbotModel = require("./models/Chatbot");
 const FaqsModel = require("./models/FAQs");
+const LogsModel = require("./models/Logs");
 /* const AnalyticsReviewsModel = require("./models/ForAnalyticsReviews"); */
 
 require('dotenv').config();
@@ -445,6 +446,31 @@ app.delete("/deleteBot/:id", async (req, res) => {
     
     await ChatbotModel.findByIdAndRemove(id).exec();
     res.send("deleted");
+});
+
+app.post('/insertLogs', async (req, res) => {
+    const email = req.body.email;
+    const description = req.body.description;
+
+    const logs = new LogsModel({email: email, description: description});
+
+    try {
+        await logs.save();
+        res.send("inserted data");
+    } catch(err) {
+        console.log(err)
+    }
+});
+
+app.get('/readLogs', async (req, res) => {
+    var mysort = {_id: -1};
+    LogsModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
+
+        res.send(result);
+    }).sort(mysort);
 });
 
 app.listen(process.env.PORT || 3001, () => {
