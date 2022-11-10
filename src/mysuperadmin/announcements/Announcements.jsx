@@ -164,7 +164,7 @@ function App() {
                     <div class="info_questions">
                       <div class="name">{val.name}</div>
                       <div class="job">{val.email}</div>
-                      <p> {val.date} </p>
+                      <h4> {val.date} </h4>
                       
                       <div className="button_announcement_superadmin">
                       <button href="#" onClick={() => myFunction(val._id)}> Edit </button>
