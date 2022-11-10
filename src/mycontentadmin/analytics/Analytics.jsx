@@ -158,8 +158,8 @@ class Analytics extends React.Component {
 
   componentDidMount =() =>{
     this.getTalktoUsData();
-    // this.getReviewsData();
-    // console.log('number',this.number);
+     this.getReviewsData();
+     console.log('number',this.number);
 
  
   }
@@ -196,11 +196,11 @@ class Analytics extends React.Component {
          <div className='divider_analytics_content'></div>
         {/* {this.displayTalktoUsData(this.state.talktousdata)} */}
         {/* {this.datacontainer} */}
-        <div className='graph_container' style={{width:'1200px', height:'600px'}}>
+        <div className='graph_container_content'>
           <Line data={this.ttudata} options={this.ttuoptions}></Line>
           {/* <Line data={this.data}></Line> */}
         </div>
-         <div className='graph_container' style={{width:'1200px', height:'600px'}}>
+         <div className='graph_container_content' >
           <Line data={this.reviewsdata} options={this.reviewsoptions}></Line>
         </div>
       </div>

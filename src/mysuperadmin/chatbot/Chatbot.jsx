@@ -139,17 +139,23 @@ function displayBots(){
         <h2>CHATBOT<br></br></h2>
         </div>
         <div className="divider"></div>
-        <div className="chatbot_inputs">
-        <label>Acces Token from Postman: </label>  
+       <div className="token_input">
+        <label>Acces Token from Postman: </label>
+         
             <input id="token"
-            className="chatbot_creation"
+            className='tokeninput'
             type="text"
             placeholder="Enter access token..." 
             onChange={(event) => {
               setToken(event.target.value);
             }}
             />
-            <button href='#' onClick={addToken} >Use Access Token!</button>
+             <button href='#' onClick={addToken} className='token'>Use Access Token!</button>
+             </div>
+
+             <div className="divider_admin2"></div>
+
+             <div className="chatbot_inputs">
         <label>Email of Content Admin: </label>  
             <input id="email"
             className="chatbot_creation"

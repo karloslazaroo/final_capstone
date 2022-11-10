@@ -36,6 +36,23 @@
     margin-left: 10px;
     cursor: pointer;
 }
+.token {
+    border: none;
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    background: #f7ce05;
+    color: rgb(0, 0, 0);
+    border-radius: 0px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 15%);
+    margin-left: 10px;
+    cursor: pointer;
+    
+    
+}
 
 .button_chatbot_content a{
     text-decoration: none;
@@ -47,6 +64,10 @@
     border-top: 3px dashed #bbb;
     width: 1610px;
     margin-top: 15px;
+}
+.divider_admin2{
+    border-top: 3px dashed #bbb;
+    width: 50%;
 }
 
 .chatbot_creation {
@@ -61,6 +82,21 @@
     resize: none;
     margin-bottom: 5px;
     
+}
+.tokeninput{
+    display: flex;
+    width: 50%;
+    height: 25px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    resize: none;
+    margin-bottom: 5px;
+}
+.token_input {
+    margin-top: 15px;
 }
 
 .chatbot_inputs {

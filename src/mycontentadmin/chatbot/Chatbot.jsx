@@ -279,8 +279,8 @@ const openDialog = (projectid) => {
                   <div key={key}>
                     <div className="box_yourchatbots">
                       <h3>{val.name}</h3>
-                      <a onClick={() => ListIntent(val.projId)}><u>View Intents</u></a>
-                      <a>-----</a>
+                      {/* <a onClick={() => ListIntent(val.projId)}><u>View Intents</u></a>
+                      <a>-----</a> */}
                       <a href={'https://dialogflow.cloud.google.com/#/agent/'+val.projId+'/intents'} target="_blank"><u>Manage Intent</u> </a>
                     </div>
                     
@@ -292,7 +292,7 @@ const openDialog = (projectid) => {
 
           </div>
 
-          <div  className="edit_intents">
+         {/*  {<div  className="edit_intents">
           <h2>INTENTS</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
           
@@ -304,13 +304,13 @@ const openDialog = (projectid) => {
                     <div className="box_intents">
                       <center><h3> {val.displayName} </h3></center>
                     </div>
-                    {/* <p><button><a href={'https://dialogflow.cloud.google.com/#/agent/temporal-data-362507/editIntent/293c06b5-a7fa-4155-a96e-785df0040463/'} target="_blank">Manage Intent</a></button></p> */}
-                    {/* <p><button onClick={() => deleteIntent(getprojectID(val.name))}>Delete Intent</button></p> */}
+                    { <p><button><a href={'https://dialogflow.cloud.google.com/#/agent/temporal-data-362507/editIntent/293c06b5-a7fa-4155-a96e-785df0040463/'} target="_blank">Manage Intent</a></button></p> }
+                    {<p><button onClick={() => deleteIntent(getprojectID(val.name))}>Delete Intent</button></p> }
                 </div>
                 );
               })}
           </div>
-          </div>
+          </div>} */}
 
     </div>
 

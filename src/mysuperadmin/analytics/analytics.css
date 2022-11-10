@@ -1,6 +1,14 @@
 .divider_analytics {
     border-top: 3px solid rgb(0, 0, 0);
     width: 1610px;
-    margin-bottom: 100%;
+    
 }
 
+.table table, th, td {
+    
+    padding: 15px;
+  }
+
+  .table th {
+    text-align: left;
+  }

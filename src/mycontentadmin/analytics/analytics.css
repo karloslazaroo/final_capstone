@@ -7,13 +7,15 @@
     margin-top: 25px;
     margin-bottom: 25px;
     width: 1200px; 
-    height: 600px;
+    height: 6000px;
+   
     
 }
 
 .divider_analytics_content {
     border-top: 3px solid rgb(0, 0, 0);
     width: 1610px;
+    margin-bottom: 25px;
 }
 
 .textBox_analytics_content h2 {

@@ -14,15 +14,21 @@ ChartJS.register(
 
 
 class Analytics extends React.Component {
-  state = {talktousdata : []};//to be deleted
+  
+  state = {talktousdata : [], reviewsdata: []};
   labelscontainer = [];
   datacontainer = [];
+  number = [];
+  reviewslabelscontainer = [];
+  reviewsdatacontainer = [];
+  
+  
   //talk to us pa lang
-  data = ({
+  ttudata = ({
     labels: this.labelscontainer ,
     datasets:[
       {
-        label:"Talk to Us function usage" ,
+        label:"Talk to Us Function usage" ,
         data: this.datacontainer ,
         backgroundColor: 'yellow', // color of point
         borderColor: 'red', // color of line
@@ -33,7 +39,7 @@ class Analytics extends React.Component {
     ]
   });
 
-  options = {
+  ttuoptions = {
     plugins:{
       legend: true
     },
@@ -45,7 +51,42 @@ class Analytics extends React.Component {
       },
       y:{
         min: 0, //min value scaled in graph
-        max: 10,
+        max: this.number[0],
+        ticks: {
+          stepSize: 1
+        } 
+      }
+    }
+  }
+
+  reviewsdata = ({
+    labels: this.reviewslabelscontainer ,
+    datasets:[
+      {
+        label:"Reviews Function usage" ,
+        data: this.reviewsdatacontainer ,
+        backgroundColor: 'yellow', // color of point
+        borderColor: 'red', // color of line
+        pointBorderWidth: 4, //point size
+        tension: 0.5,
+        fill: true
+      }
+    ]
+  });
+
+  reviewsoptions = {
+    plugins:{
+      legend: true
+    },
+    scales: {
+      x:{
+        grid:{
+          display: false //display x grid
+        }
+      },
+      y:{
+        min: 0, //min value scaled in graph
+        max: this.number[1],
         ticks: {
           stepSize: 1
         } 
@@ -54,6 +95,31 @@ class Analytics extends React.Component {
   }
 
 
+  getReviewsData = () =>{
+    axios.get('https://aust-chatbot.herokuapp.com/readanalyticsreviews')
+    .then((response)=>{
+      const data = response.data;
+      this.setState({reviewsdata : data});
+
+      console.log('Data from reviews received: ', data);
+
+      //code for staging date and count
+      for(var i = 0; i < data.length; i ++){
+        this.reviewslabelscontainer.push(data[i]._id);
+      
+        this.reviewsdatacontainer.push(data[i].count);
+        
+      }
+
+      this.number.push(Math.max(...this.reviewsdatacontainer)*2);
+
+    })
+    .catch(() =>{
+      alert('Error getting reviews data');
+      console.error();
+    });
+
+  };
   
   
 
@@ -69,53 +135,105 @@ class Analytics extends React.Component {
       //code for staging date and count
       for(var i = 0; i < data.length; i ++){
         this.labelscontainer.push(data[i]._id);
-        console.log('labels', this.labelscontainer);
+      
         this.datacontainer.push(data[i].count);
-        console.log('counts', this.datacontainer);
+        
       }
 
-   
+      this.number.push(Math.max(...this.datacontainer)*2);
+
+      // console.log('labels', this.labelscontainer);
+      // console.log('counts', this.datacontainer);
+      // console.log('counts max number', this.number[0]);
+      
+       
+
     })
     .catch(() =>{
       alert('Error getting talk to us data')
-    })
+    });
+   
   };
 
   componentDidMount =() =>{
     this.getTalktoUsData();
+     this.getReviewsData();
+     console.log('number',this.number);
+
+ 
   }
 
-  //to be deleted
   displayTalktoUsData = (talktousdata) =>{
-    console.log(typeof(talktousdata));
-    return talktousdata.map((ttsdata, index) => ( 
+
+
+ 
+
+    return talktousdata.map((ttsdata, index) => (
+     
       <div key = {index} className='talktousdata_display' >
-          <p>date: {ttsdata._id} count: {ttsdata.count}</p> 
-  </div>
+          <p>date: {ttsdata._id} count: {ttsdata.count}</p>
+          
+              
+      </div>
       )
     )
+     
+    
+    
+    
   }
 
 
   render(){
      return (
+      
       <div className='analytics_body' >
-        {<div className="textBox">
+        { <div className="textBox_analytics_content">
         <h2>Analytics<br></br></h2>
-        </div> }
+        </div> 
+        }
+         <div className='divider_analytics_content'></div>
         {/* {this.displayTalktoUsData(this.state.talktousdata)} */}
-       
         {/* {this.datacontainer} */}
-        <div className='graph_container' style={{width:'1200px', height:'600px'}}>
-          <Line data={this.data} options={this.options}></Line>
+        <h2>Talk to Us~</h2>
+        <div className='graph_container_content' style={{width:'1200px', height:'600px'}}>
+          <Line data={this.ttudata} options={this.ttuoptions}></Line>
           {/* <Line data={this.data}></Line> */}
-         
+        </div>
+        <h2>Reviews~</h2>
+         <div className='graph_container_content' style={{width:'1200px', height:'600px'}}>
+          <Line data={this.reviewsdata} options={this.reviewsoptions}></Line>
         </div>
 
+        <div className="textBox">
+        <h2>System Logs<br></br></h2>
+        </div>
+        <div className='divider'></div>
+        <div className="table">
+        <table>
+  <tr>
+    <th>Date & Time</th>
+    <th>Email</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Karlos Andrew Lazaro</td>
+    <td>karlosandrew.lazaro.cics@ust.edu.ph</td>
+    <td>Logout</td>
+  </tr>
+  <tr>
+    <td>Karlos Andrew Lazaro</td>
+    <td>karlosandrew.lazaro.cics@ust.edu.ph</td>
+    <td>Logout</td>
+  </tr>
+ 
+</table>
+        </div>
       </div>
     )
   }
  
 }
+
 
 export default Analytics
