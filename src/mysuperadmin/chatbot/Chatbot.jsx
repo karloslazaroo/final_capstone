@@ -24,7 +24,7 @@ useEffect(() => {
   getBots();
 
 }
-, []
+, [datas]
 );
 
 function getBots(){
@@ -185,7 +185,6 @@ function displayBots(){
             />
             <div className="button_chatbot_content">
       <button href='#' onClick={addChatbot} >Create Chatbot!</button>
-      <button><a href='https://dialogflow.cloud.google.com/#/' target="_blank">Manage Chatbot</a></button>
       </div>
       <div className="divider_admin"></div>
       </div>
