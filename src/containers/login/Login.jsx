@@ -36,6 +36,18 @@ function Signin (){
       }
   };
 
+  
+
+  // const logthelogin = (string) =>{
+  //   const email = user.email;
+  //   const description = "Logged In." + string;
+  //   Axios.post('https://aust-chatbot.herokuapp.com/insertLogs', {
+  //     email: email,
+  //     description: description,
+  //   })
+
+  // }
+
   useEffect(() => {
     if(user != null){
       
@@ -44,12 +56,14 @@ function Signin (){
       
       if(email == "karlosandrew1.lazaro.cics@ust.edu.ph") {
           navigate('/super');
+          // logthelogin("super");
       } else  {
         Axios.get(`https://aust-chatbot.herokuapp.com/readAdminLogin/${email}`).then((response) => {
         if(response.data == "") {
           navigate('/user');
         } else {
           navigate('/content');
+          // logthelogin("content");
         }
       }); 
       } 

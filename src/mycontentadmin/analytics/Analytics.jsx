@@ -2,9 +2,11 @@ import React from 'react'
 import './analytics.css'
 import axios from 'axios';
 import {Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement} from 'chart.js';
-
+import autotable from 'jspdf-autotable';
+import jsPDF from 'jspdf';
 import {Line} from 'react-chartjs-2';
 import { errorPrefix } from '@firebase/util';
+
 
 ChartJS.register(
   LineElement, CategoryScale,
@@ -16,7 +18,7 @@ ChartJS.register(
 
 class Analytics extends React.Component {
   
-  state = {talktousdata : [], reviewsdata: []};
+  state = {talktousdata : [], reviewsdata: [], syslogdata : []};
   labelscontainer = [];
   datacontainer = [];
   number = [];
@@ -112,7 +114,7 @@ class Analytics extends React.Component {
         
       }
 
-      this.number.push(Math.max(...this.reviewsdatacontainer)*2);
+      this.number.push(Math.max(...this.reviewsdatacontainer));
 
     })
     .catch(() =>{
@@ -121,6 +123,18 @@ class Analytics extends React.Component {
     });
 
   };
+  
+  getSysLogData = () =>{
+    axios.get('https://aust-chatbot.herokuapp.com/readLogs')
+    .then((response)=>{
+      const data = response.data;
+      this.setState({syslogdata: data});
+      console.log('Data from system log received: ', data);
+    
+    }).catch(() =>{
+      alert('Error getting system log data')
+    });
+  }
   
   
 
@@ -146,9 +160,7 @@ class Analytics extends React.Component {
       // console.log('labels', this.labelscontainer);
       // console.log('counts', this.datacontainer);
       // console.log('counts max number', this.number[0]);
-      
-       
-
+    
     })
     .catch(() =>{
       alert('Error getting talk to us data')
@@ -158,30 +170,67 @@ class Analytics extends React.Component {
 
   componentDidMount =() =>{
     this.getTalktoUsData();
-     this.getReviewsData();
-     console.log('number',this.number);
+    this.getReviewsData();
+    this.getSysLogData();
+    //  console.log('number',this.number);
 
  
   }
 
-  displayTalktoUsData = (talktousdata) =>{
-
-
- 
-
-    return talktousdata.map((ttsdata, index) => (
+  // displayTalktoUsData = (talktousdata) =>{
+  //   return talktousdata.map((ttsdata, index) => (
      
-      <div key = {index} className='talktousdata_display' >
-          <p>date: {ttsdata._id} count: {ttsdata.count}</p>
+  //     <div key = {index} className='talktousdata_display' >
+  //         <p>date: {ttsdata._id} count: {ttsdata.count}</p>
           
               
-      </div>
+  //     </div>
+  //     )
+  //   )
+  // }
+
+  generatePDF = (syslogdata) =>{
+    const data = syslogdata;
+    const logcontainer = [];
+
+    for(var i = 0 ; i < data.length; i++){
+      logcontainer.push([data[i].date, data[i].email, data[i].description])
+    }
+    console.log(logcontainer);
+
+    const date = new Date(Date.now()).toLocaleDateString();
+    const doctitle = 'ChatbotLog '+date;
+    console.log(data[0]);
+    var doc = new jsPDF('portrait', 'px', 'a4', 'false');
+
+    autotable(doc, {
+      head: [['Date & Time', 'Email', 'Description']],
+      body: 
+        logcontainer
+      
+    }
+      
       )
-    )
-     
-    
-    
-    
+
+    doc.save(doctitle);
+  }
+
+  displaysystemlogs= (syslogdata)=>{
+      return syslogdata.map((data, index) =>(
+        
+        <div key={index} >
+         
+         
+          <tr>
+            <td>{data.date}</td>
+            <td>{data.email}</td>
+            <td>{data.description}</td>
+          </tr>
+  
+
+        </div>
+      )
+      )
   }
 
 
@@ -196,42 +245,36 @@ class Analytics extends React.Component {
          <div className='divider_analytics_content'></div>
         {/* {this.displayTalktoUsData(this.state.talktousdata)} */}
         {/* {this.datacontainer} */}
-        <h2>Talk to Us~</h2>
-        <div className='graph_container_content'>
+        <div className='graph_container_content' style={{width:'1200px', height:'600px'}}>
           <Line data={this.ttudata} options={this.ttuoptions}></Line>
-          {/* <Line data={this.data}></Line> */}
+
         </div>
         <h2>Reviews~</h2>
          <div className='graph_container_content' >
           <Line data={this.reviewsdata} options={this.reviewsoptions}></Line>
-        </div>
-
 
         <div className="textBox">
         <h2>System Logs<br></br></h2>
         </div>
         <div className='divider'></div>
-        <div className="table">
-        <table>
-  <tr>
-    <th>Date & Time</th>
-    <th>Email</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td>Karlos Andrew Lazaro</td>
-    <td>karlosandrew.lazaro.cics@ust.edu.ph</td>
-    <td>Logout</td>
-  </tr>
-  <tr>
-    <td>Karlos Andrew Lazaro</td>
-    <td>karlosandrew.lazaro.cics@ust.edu.ph</td>
-    <td>Logout</td>
-  </tr>
- 
-</table>
+        <div className="table" id='my-table'>
+          <table>
+            <tr>
+              <th>Date & Time</th>
+              <th>Email</th>
+              <th>Description</th>
+            </tr>
+            {this.displaysystemlogs(this.state.syslogdata)}
+          </table>
+         
+           
+         
         </div>
       </div>
+      <div className='button container' style={{textAlign: 'center'}}>
+            <button onClick={() => this.generatePDF(this.state.syslogdata)}>Download pdf</button>
+          </div>
+        </div>
     )
   }
  

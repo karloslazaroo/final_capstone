@@ -113,50 +113,31 @@ function Chatbot (){
  
   }
 
-//   const testenv = async () =>{
-//     const {google} = require('googleapis');
-//     const apis = google.getSupportedAPIs();
+  const testenv = async () =>{
+    // const {google} = require('googleapis');
+    // const apis = google.getSupportedAPIs();
    
-//     var express = require('express'); 
-//     var app = express();
-//     const myclientid = "70270798745-j2leqftddodgiumh307t952c402h60sl.apps.googleusercontent.com";
+    // var express = require('express'); 
+    // var app = express();
+    const myclientid = "70270798745-j2leqftddodgiumh307t952c402h60sl.apps.googleusercontent.com";
 
-//     const myclientsecret = "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";
-//     const tokenurl = 'https://accounts.google.com/o/oauth2/token';
-//     const myscope = 'https://www.googleapis.com/auth/dialogflow';
-//     const myauthurl = 'https://accounts.google.com/o/oauth2/auth';
-//     const redirecturl = 'https://www.getpostman.com/oauth2/callback';
+    const myclientsecret = "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";
+    const tokenurl = 'https://accounts.google.com/o/oauth2/token';
+    const myscope = 'https://www.googleapis.com/auth/dialogflow';
+    const myauthurl = 'https://accounts.google.com/o/oauth2/auth';
+    const redirecturl = 'https://www.getpostman.com/oauth2/callback';
 
-//     const oauth2Client = new google.auth.OAuth2(
-//       myclientid,
-//       myclientsecret,
-//       redirecturl, 
-//     );
-    
-//     // generate a url that asks permissions for Blogger and Google Calendar scopes
-//     const scopes = [
-//       'https://www.googleapis.com/auth/dialogflow'
-      
-//     ];
-    
-//     console.log('code goes b4 generateurl');
-//     const url = oauth2Client.generateAuthUrl({
-//       // 'online' (default) or 'offline' (gets refresh_token)
-//       access_type: 'offline',
-    
-//       // If you only need one scope you can pass it as a string
-//       scope: scopes
+    axios.post(myauthurl,
+    'grant_type=implicit&scope='+myscope+'&client_id='+myclientid
+    )
+    .then(function(res) {
+       console.log(res);  
+    })
+    .catch(error => {
+       console.log(error)
+    })
 
-
-//     });
-  
-//     // This will provide an object with the access_token and refresh_token.
-//     // Save these somewhere safe so they can be used at a later time.
-//     const {tokens} = await oauth2Client.getToken(code)
-//     oauth2Client.setCredentials(tokens);
-//     console.log(oauth2Client.getAccessToken);
-
-//   };
+  };
 //  testenv();
 
   

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const LogsSchema = new mongoose.Schema({
     date: {
         type: String,
-        default: new Date(Date.now()).toLocaleString() 
+        default: new Date(Date.now()).toLocaleDateString() +' '+new Date(Date.now()).toLocaleTimeString()
     },
     email: {
         type: String,
