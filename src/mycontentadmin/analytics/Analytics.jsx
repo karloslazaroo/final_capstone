@@ -196,10 +196,12 @@ class Analytics extends React.Component {
          <div className='divider_analytics_content'></div>
         {/* {this.displayTalktoUsData(this.state.talktousdata)} */}
         {/* {this.datacontainer} */}
+        <h2>Talk to Us~</h2>
         <div className='graph_container_content'>
           <Line data={this.ttudata} options={this.ttuoptions}></Line>
           {/* <Line data={this.data}></Line> */}
         </div>
+        <h2>Reviews~</h2>
          <div className='graph_container_content' >
           <Line data={this.reviewsdata} options={this.reviewsoptions}></Line>
         </div>
