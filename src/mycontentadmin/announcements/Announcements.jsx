@@ -170,9 +170,9 @@ function App() {
               <p>
                 {val.body}
               </p>
-              <p>
+              <h4>
                 {val.date}
-              </p>
+              </h4>
               <div class="content_questions">
               <div class="info_questions">
               <div class="name">{val.name}</div>
