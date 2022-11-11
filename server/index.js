@@ -264,7 +264,7 @@ app.get('/readReview', async (req, res) => {
 
 app.get('/readReviewUser', async (req, res) => {
     var mysort = {_id: -1};
-    ReviewModel.find({ approval: "Approve"} , (err, result) =>{
+    ReviewModel.find({ approval: "Approved"} , (err, result) =>{
         if (err) {
             res.send(err);
         }

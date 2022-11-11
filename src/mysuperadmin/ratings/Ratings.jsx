@@ -6,8 +6,8 @@ import Swal from 'sweetalert2';
 
 
 function App() {
-    const[newApproval] = useState('Approve');
-    const[newDisapproval] = useState('Disapprove');
+    const[newApproval] = useState('Approved');
+    const[newDisapproval] = useState('Disapproved');
     const [reviewList, setReviewList] = useState([]);
 
     useEffect(() => {
