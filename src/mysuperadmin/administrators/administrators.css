@@ -22,6 +22,30 @@
     
   }
 
+
+  .add_department {
+    margin-top: 15px;
+    height: 0px;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+  }
+  
+   
+
+  .departments {
+    width: 100%;
+  height: 25px;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  resize: none;
+  margin-bottom: 5px;
+  }
+
   .dashed {
     border-top: 3px dashed #bbb;
     width: 1200px;
@@ -52,6 +76,15 @@
     
   }
 
+  .modal-content u {
+    cursor: pointer;
+
+  }
+  .modal-content p {
+    margin-top: 13px;
+
+  }
+
   .email {
     float: left;
   }
@@ -62,8 +95,8 @@
 
   .button_add_administrators button {
     display: inline-block;
-    margin-top: 25px;
-    margin-bottom: 5%;
+    margin-top: 3%;
+    margin-bottom: 2%;
     padding: 8px 10px;
     background: #f7ce05;
     color: rgb(0, 0, 0);
@@ -77,3 +110,6 @@
     cursor: pointer;
 
   }
+
+  
+

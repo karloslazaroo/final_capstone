@@ -72,6 +72,25 @@ function App() {
     document.body.classList.remove('active-modal')
   }
 
+  function addDepartment() {
+    var x = document.getElementById("add_department");
+    if (x.style.height === "auto" && x.style.opacity==="1" && x.style.visibility==="visible" ) {
+      x.style.height = "0px"; 
+      x.style.opacity="0";
+      x.style.visibility="hidden";
+   
+    } else {
+      x.style.height = "auto"; 
+      x.style.opacity="1"; 
+      x.style.visibility="visible";
+  
+    }
+  }
+ 
+  
+  
+  
+
   return (
     <div className='body_administrator'>
           <div className='parent_div'>
@@ -80,7 +99,9 @@ function App() {
               <div className="divider"></div>
               </div>
               
-
+             
+      
+     
               <div className="button_add_administrators">
       <button href='#'onClick={toggleModal}>Add Content Managers</button>
       </div>
@@ -109,7 +130,9 @@ function App() {
               );
             })}
 
+
 {modal && (
+  
         <div className="modal">
           <div className="modal-content">
           <div className="announcement">
@@ -119,15 +142,33 @@ function App() {
             <input 
             className="office" type="text" placeholder="" onChange={(event) => {setEmail(event.target.value);}}
             />
-             <label>Department </label> 
-            <input className="office" type="text" onChange={(event) => {
+             <label>Department </label>
+              <select className="departments">
+                <option></option>
+                <option>College of Computing and Information Sciences</option>
+                <option>College of Education</option>
+              </select>
+            {/* <input className="office" type="text" onChange={(event) => {
                 setOffice(event.target.value);
-            }}></input>
+            }}></input> */}
             <div className="buttons_reviews_user">
       <a href='#'onClick={success} >Submit</a>
       <a href='#'onClick={toggleModal} >Close</a>
       </div>
+      
+        
+     
+      <p><ion-icon name="add-outline"></ion-icon>  If you don't see the designated department/offices, please <u onClick={addDepartment}>click here!</u> to add.</p>
+      <div className="add_department" id="add_department">
+      <label>New Department / Office: </label>
+              <textarea className="title_content" type="text" placeholder="enter your new department / office"></textarea>
+             
+            <div className="button_confirm_content">
+                <button href="#" > Add </button>
+              </div>
+      </div>
           </div>
+         
         </div>
       )}
         </div>
