@@ -11,7 +11,7 @@ function App() {
     const name = user.displayName;
     const email = user.email;
     const [message, setMessage] = useState(''); //0 pag integer/number
-    const [approval] = useState('Disapprove');
+    const [approval] = useState('Pending');
     const [reviewList, setReviewList] = useState([]);
     const state = {
       source: ''
