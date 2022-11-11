@@ -102,3 +102,10 @@
 .chatbot_inputs {
     margin-top: 25px;
 }
+
+.list_chatbot {
+    height: 500px;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 2%;
+}

@@ -190,10 +190,11 @@ function displayBots(){
       </div>
             
       </div>
+      <div className="list_chatbot">
       {datas.map((val, key) => {
           return (
             
-            <div key={key}>
+            <div  key={key}>
 
             <div className="chatbotbox_admin">
     
@@ -209,8 +210,10 @@ function displayBots(){
             <button> <a href={'https://dialogflow.cloud.google.com/#/agent/'+val.projId+'/intents'} target="_blank">Manage</a> </button>
             </div>
           </div>
+          
           );
         })}
+        </div>
     </div>
     
     </div>
