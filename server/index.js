@@ -27,6 +27,7 @@ mongoose.connect(
 //route for inserting data used for analytics
 app.post('/analyticsdata', (req , res) =>{
     const data = req.body;
+    
     const newAnalyticsModel = new AnalyticsModel(data);
 
     newAnalyticsModel.save((error) =>{
@@ -64,7 +65,7 @@ app.get('/readanalytics', (req , res) =>{
         {
             $match: { source : "Talk to Us"},
         },
-        //count not appearing
+        
         {
             $group: {
                 _id: '$date',
@@ -113,12 +114,8 @@ app.get('/readanalyticsreviews', async (req , res) =>{
 });
 
 app.post('/insert', async (req, res) => {
-    const title = req.body.title;
-    const name = req.body.name;
-    const email = req.body.email;
-    const body = req.body.body;
-
-    const announce = new AnnounceModel({title: title, body: body, name: name, email: email});
+    const data = req.body;
+    const announce = new AnnounceModel(data);
 
     try {
         await announce.save();
