@@ -13,15 +13,15 @@ function App() {
   const [admi, setAdmi] = useState([]);
   const [receiver, setReceiver] = useState('');
   const [faqsList, setFaqsList] = useState([]);
+  const source = "Talk to Us";
 
-  const state = {
-    source: ''
-  };
+
 
   useEffect(() => {
     Axios.get('https://aust-chatbot.herokuapp.com/readFaqs').then((response) => {
       setFaqsList(response.data);
     });
+    // getTalktoUsData();
   }, [faqsList]);
 
   useEffect(() => {
@@ -30,10 +30,7 @@ function App() {
     });
   }, [admi]);
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    this.setState({ [name]: value });
-  };
+
 
   const addToList = () => {
     if(message === "" || receiver === ""){
@@ -54,8 +51,9 @@ function App() {
     });
 
     Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{
-      source: state.source
-    });
+      source: source,
+      date: new Date(Date.now()).toLocaleDateString()
+    }).then(console.log('data logged for analytics'));
 
     document.getElementById('inputs').value = '';
   }
@@ -68,6 +66,8 @@ function App() {
       faq.classList.toggle("_active");
     });
   });
+
+
  
 
   return (
@@ -103,13 +103,6 @@ function App() {
             }}></textarea>
 
 
-            <input 
-              type="hidden"
-              name="source"
-              placeholder="source"
-              value={state.source = "Talk to Us"}
-              onChange={handleChange}
-            />
 
             <button class="btn" onClick={addToList}>Send</button>
         </div>

@@ -9,9 +9,11 @@ function App() {
   const[newQuestion, setNewQuestion] = useState('');
   const[newAnswer, setNewAnswer] = useState('');
   const [faqsList, setFaqsList] = useState([]);
+  
 
   useEffect(() => {
     Axios.get('https://aust-chatbot.herokuapp.com/readFaqs').then((response) => {
+      
       setFaqsList(response.data);
     });
   }, [faqsList]);

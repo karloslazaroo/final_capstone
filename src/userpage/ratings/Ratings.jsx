@@ -13,13 +13,8 @@ function App() {
     const [message, setMessage] = useState(''); //0 pag integer/number
     const [approval] = useState('Pending');
     const [reviewList, setReviewList] = useState([]);
-    const state = {
-      source: ''
-    };
-    const handleChange = ({ target }) => {
-      const { name, value } = target;
-      this.setState({ [name]: value });
-    };
+    const source = "Reviews";
+   
   
     useEffect(() => {
       Axios.get('https://aust-chatbot.herokuapp.com/readReviewUser').then((response) => {
@@ -46,7 +41,8 @@ function App() {
         });
 
         Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{
-          source: state.source
+          source: source,
+          date: new Date(Date.now()).toLocaleDateString()
         }).then(console.log('sent source'));
       }
     };
@@ -113,13 +109,7 @@ function App() {
             <textarea className="message_user"  placeholder="Write something.."  onChange={(event) => {
                 setMessage(event.target.value);
             }}></textarea>
-             <input 
-              type="hidden"
-              name="source"
-              placeholder="source"
-              value={state.source = "Reviews"}
-              onChange={handleChange}
-            />
+        
             <div className="buttons_reviews_user">
 
             

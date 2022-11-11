@@ -11,6 +11,7 @@ function App() {
   const [time] = useState('Asia/Hong_Kong');
   const [token, setToken] = useState('');
   const [updateToken, setUpdateToken] = useState('');
+  
   //Generate new token every 1 hour in Postman
   //const token = 'ya29.a0AeTM1if687PcMMqijxbSfzvpDMijbfIpSNFxPT99bVtEd4UwJaRq5pqYI7iAJg5O3SXuwXw1WLYJqhlK1yWj2kdI6hHTVh2Myvu-5b7y5jD3iE-XCBUlFyMikVP_mRPeKevrS74o5ACB5OmxouwsBQmZJSDELgaCgYKATwSARASFQHWtWOmEX8lFrHgao1cCg3g1_M9TQ0165';
 
@@ -52,6 +53,11 @@ const addToken = (/** ${projId} */) => {
   }
 };
 
+const verifychatbotname = ()=>{
+ 
+
+}
+
 
 const addChatbot = (/** ${projId} */) => {
   if(name == "" || projId == "" || mail == "") {
@@ -61,26 +67,61 @@ const addChatbot = (/** ${projId} */) => {
     displayName: name,
     timeZone: time,
   }).then(() => {
-    Axios.post('https://aust-chatbot.herokuapp.com/insertBot' , {
-      mail: mail,
-      projId: projId,
-      name: name,
-      time: time,
-    },
-    getBots()
-    );
-    Swal.fire({
-      title:'Thank you!',
-      text:'Chatbot Has been Created!',
-      icon:'success',
-      confirmButtonColor: '#f7ce05'
-     });
-    document.getElementById("email").value = '';
-    document.getElementById("projId").value = '';
-    document.getElementById("bot").value = '';
+
+    const projIDcontainer = [];
+    const chatbotnamecontainer = [];
+
+    for(var i = 0; i<datas.length;i++){
+      projIDcontainer.push(datas[i].projId);
+    }
+    for(var i = 0; i<datas.length;i++){
+      chatbotnamecontainer.push(datas[i].name);
+    }
+
+    const isProjIDexisting = projIDcontainer.indexOf(projId) > -1;
+    const ischatbotnameexisting = chatbotnamecontainer.indexOf(name) > -1;
+    if (isProjIDexisting && ischatbotnameexisting){
+      alert('Chatbot name and project name already exists');
+    }
+    else if(ischatbotnameexisting){
+      alert('Chatbot name already exists');
+    }
+    else if(isProjIDexisting){
+      alert('Project ID already exists');
+    }else{
+      
+      Axios.post('https://aust-chatbot.herokuapp.com/insertBot' , {
+        mail: mail,
+        projId: projId,
+        name: name,
+        time: time,
+      }
+      
+      ).then(getBots());
+      Swal.fire({
+        title:'Thank you!',
+        text:'Chatbot Has been Created!',
+        icon:'success',
+        confirmButtonColor: '#f7ce05'
+      });
+      document.getElementById("email").value = '';
+      document.getElementById("projId").value = '';
+      document.getElementById("bot").value = '';
+    }
+    
+
+  
+
+
+   
+    
     });
   }
 };
+
+
+
+
 
 const deleteBot = (id, projId) => {
   Swal.fire({
@@ -129,7 +170,7 @@ function displayBots(){
   );
 
 }
-
+  console.log(name);
   return (
     <div className='chatbot_body'>
       

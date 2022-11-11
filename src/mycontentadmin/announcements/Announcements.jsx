@@ -33,15 +33,19 @@ function App() {
           icon:'success',
           confirmButtonColor: '#f7ce05'
       }) 
-  
-        Axios.post("https://aust-chatbot.herokuapp.com/insert", {
+        const dateandtime = new Date(Date.now()).toLocaleString();
+        const data = {
           title: title,
-        name: name,
-        email: email,
-        body: body,
-        });
+          name: name,
+          email: email,
+          body: body,
+          date: dateandtime};
+        console.log('container', data);
+        Axios.post("https://aust-chatbot.herokuapp.com/insert",data)
+        .then(console.log('time today',dateandtime));
       }
     };
+
 
     const updateTitle = (id) => {
       if(newTitle === "" && newBody === "") {
@@ -171,7 +175,7 @@ function App() {
                 {val.body}
               </p>
               <h4>
-                {val.date}
+                {val.date} 
               </h4>
               <div class="content_questions">
               <div class="info_questions">
