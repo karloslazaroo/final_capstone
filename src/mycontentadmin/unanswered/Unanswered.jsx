@@ -52,9 +52,7 @@ function App () {
       <a href='Chatbot_Content'>Answer now!</a>
       </div>
         </div>
-        <div class="image">
-          <img src={Profile} alt=""/>
-        </div>
+        
       </div>
     </div>
     
