@@ -26,16 +26,44 @@ function App() {
     if(email == "" || office == "") {
       alert('All fields required.')
     } else {
-    Swal.fire({
-      title:'Thank you!',
-      text:'Your account has been added!',
-      icon:'success',
-      confirmButtonColor: '#f7ce05'
-    })
-    Axios.post("https://aust-chatbot.herokuapp.com/insertAdmin", {
-      email: email,
-      office: office,
-    });
+    
+    const emailcontainer = [];
+    const officenamecontainer = [];
+
+    for(var i = 0; i<adminList.length;i++){
+      emailcontainer.push(adminList[i].email);
+    }
+    for(var i = 0; i<adminList.length;i++){
+      officenamecontainer.push(adminList[i].office);
+    }
+
+    const isemailexisting = emailcontainer.indexOf(email) > -1;
+    const isofficenameexisting = officenamecontainer.indexOf(office) > -1;
+    
+    if (isemailexisting && isofficenameexisting){
+      alert('Office name and email already exists');
+    }
+    else if(isofficenameexisting){
+      alert('Office name already exists');
+    }
+    else if(isemailexisting){
+      alert('Email already exists');
+    }else{
+      // console.log(office, email);
+      // console.log(isemailexisting, isofficenameexisting);
+        Axios.post("https://aust-chatbot.herokuapp.com/insertAdmin", {
+        email: email,
+        office: office,
+      }).then(
+        Swal.fire({
+          title:'Thank you!',
+          text:'Your account has been added!',
+          icon:'success',
+          confirmButtonColor: '#f7ce05'
+        })
+      );
+      }
+    
   }
   };
 
