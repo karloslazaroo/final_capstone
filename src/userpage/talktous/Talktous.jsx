@@ -85,8 +85,8 @@ function App() {
             <p>Name:  <span>{user?.displayName}</span></p>
             <p>Email:  <span>{user?.email}</span></p>
             <p>Address To:  <span></span></p> 
-            <p>{receiver}  <span></span></p> 
-            <select value={receiver} onChange={e=>setReceiver(e.target.value)}>
+            
+            <select className="receiver" value={receiver} onChange={e=>setReceiver(e.target.value)}>
                     <option></option>
               {admi.map((val, key) => {
               return (
