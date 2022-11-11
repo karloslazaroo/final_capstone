@@ -27,7 +27,7 @@ function App() {
                 <img src={ust} class="logo-icon"/>
             </a>
             <div class="nav-links_user">
-                <li><a href="/user"><i class="fa-solid fa-house-user"></i><p>Dashboard</p></a></li>
+                <li><a href="/user"><i class="fa-solid fa-house-user"></i><p>Profile</p></a></li>
                 <li><a href="/Announcements_User"><i class="fa-solid fa-bullhorn"></i><p>Announcements</p></a></li>
                 
                 <li><a href="/Talktous_User"><i class="fa-solid fa-address-book"></i><p>Talk To Us!</p></a></li>
