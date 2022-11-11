@@ -11,6 +11,7 @@ const AnalyticsModel = require("./models/ForAnalytics");
 const ChatbotModel = require("./models/Chatbot");
 const FaqsModel = require("./models/FAQs");
 const LogsModel = require("./models/Logs");
+const OfficeModel = require("./models/Office");
 
 
 require('dotenv').config();
@@ -481,6 +482,30 @@ app.post('/insertLogs', async (req, res) => {
 app.get('/readLogs', async (req, res) => {
     var mysort = {_id: -1};
     LogsModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
+
+        res.send(result);
+    }).sort(mysort);
+});
+
+app.post('/insertOffice', async (req, res) => {
+    const offi = req.body.offi;
+
+    const office = new OfficeModel({offi: offi});
+
+    try {
+        await office.save();
+        res.send("inserted data");
+    } catch(err) {
+        console.log(err)
+    }
+});
+
+app.get('/readOffice', async (req, res) => {
+    var mysort = {_id: -1};
+    OfficeModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
         if (err) {
             res.send(err);
         }

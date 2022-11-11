@@ -5,14 +5,22 @@ import Swal from 'sweetalert2';
 
 function App() {
   const [email, setEmail] = useState('');
-  const [office, setOffice] = useState(''); //0 pag integer/number
+  const [office, setOffice] = useState('');
+  const [offi, setOffi] = useState(''); //0 pag integer/number
   const [adminList, setAdminList] = useState([]);
+  const [offf, setOfff] = useState([]);
 
   useEffect(() => {
     Axios.get('https://aust-chatbot.herokuapp.com/readAdmin').then((response) => {
       setAdminList(response.data);
     });
   }, [adminList]);
+
+  useEffect(() => {
+    Axios.get('https://aust-chatbot.herokuapp.com/readOffice').then((response) => {
+      setOfff(response.data);
+    });
+  }, [offf]);
 
   const addToList = () => {
     if(email == "" || office == "") {
@@ -27,6 +35,22 @@ function App() {
     Axios.post("https://aust-chatbot.herokuapp.com/insertAdmin", {
       email: email,
       office: office,
+    });
+  }
+  };
+
+  const addOffice = () => {
+    if(offi == "") {
+      alert('All fields required.')
+    } else {
+    Swal.fire({
+      title:'Thank you!',
+      text:'Office has been added!',
+      icon:'success',
+      confirmButtonColor: '#f7ce05'
+    })
+    Axios.post("https://aust-chatbot.herokuapp.com/insertOffice", {
+      offi: offi,
     });
   }
   };
@@ -142,11 +166,14 @@ function App() {
             <input 
             className="office" type="text" placeholder="" onChange={(event) => {setEmail(event.target.value);}}
             />
-             <label>Department </label>
-              <select className="departments">
+             <label>Office </label> {/* <p>{office}  <span></span></p>  */}
+              <select className="departments" value={office} onChange={e=>setOffice(e.target.value)}>
                 <option></option>
-                <option>College of Computing and Information Sciences</option>
-                <option>College of Education</option>
+                {offf.map((val, key) => {
+              return (
+                    <option key={key}>{val.offi}</option>
+              );
+            })}
               </select>
             {/* <input className="office" type="text" onChange={(event) => {
                 setOffice(event.target.value);
@@ -161,10 +188,10 @@ function App() {
       <p><ion-icon name="add-outline"></ion-icon>  If you don't see the designated department/offices, please <u onClick={addDepartment}>click here!</u> to add.</p>
       <div className="add_department" id="add_department">
       <label>New Department / Office: </label>
-              <textarea className="title_content" type="text" placeholder="enter your new department / office"></textarea>
+              <textarea className="title_content" type="text" placeholder="enter your new department / office" onChange={(event) => {setOffi(event.target.value);}}></textarea>
              
             <div className="button_confirm_content">
-                <button href="#" > Add </button>
+                <button href="#" onClick={addOffice}> Add </button>
               </div>
       </div>
           </div>
