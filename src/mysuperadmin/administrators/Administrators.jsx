@@ -85,10 +85,7 @@ function App() {
     
   }
   
-  const sucessadd = () => {
-    addOffice();
-    addDepartment();
-  }
+  
 
   const [modal, setModal] = useState(false);
 
