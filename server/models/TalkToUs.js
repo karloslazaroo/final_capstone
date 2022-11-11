@@ -13,6 +13,10 @@ const TalkSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    receiver: {
+        type: String,
+        required: true,
+    },
 });
 
 const Talk = mongoose.model("talktous", TalkSchema);

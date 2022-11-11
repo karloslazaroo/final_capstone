@@ -10,6 +10,8 @@ function App() {
   const name = user.displayName;
   const email = user.email; //0 pag integer/number
   const [message, setMessage] = useState('');
+  const [admi, setAdmi] = useState([]);
+  const [receiver, setReceiver] = useState('');
   const [faqsList, setFaqsList] = useState([]);
 
   const state = {
@@ -22,13 +24,19 @@ function App() {
     });
   }, [faqsList]);
 
+  useEffect(() => {
+    Axios.get('https://aust-chatbot.herokuapp.com/readAdmin').then((response) => {
+      setAdmi(response.data);
+    });
+  }, [admi]);
+
   const handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
 
   const addToList = () => {
-    if(message == ""){
+    if(message === "" || receiver === ""){
       alert('All fields are required.')
     } else{
     Swal.fire({
@@ -42,6 +50,7 @@ function App() {
       name: name,
       email: email,
       message: message,
+      receiver: receiver,
     });
 
     Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{
@@ -75,6 +84,19 @@ function App() {
             <h2>Contact Us</h2>
             <p>Name:  <span>{user?.displayName}</span></p>
             <p>Email:  <span>{user?.email}</span></p>
+            <p>Address To:  <span></span></p> 
+            <p>{receiver}  <span></span></p> 
+            <select value={receiver} onChange={e=>setReceiver(e.target.value)}>
+                    <option></option>
+              {admi.map((val, key) => {
+              return (
+                    <option key={key}>{val.email}</option>
+              );
+            })}
+            </select>
+            
+            
+            
             <textarea id="inputs" placeholder="Message" class="field"
             onChange={(event) => {
               setMessage(event.target.value);
