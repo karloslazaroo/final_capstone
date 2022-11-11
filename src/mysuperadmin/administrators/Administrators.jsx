@@ -53,6 +53,7 @@ function App() {
       offi: offi,
     });
   }
+  addDepartment()
   };
 
   const deleteAnnounce = (id) => {
@@ -83,6 +84,11 @@ function App() {
     toggleModal();
     
   }
+  
+  const sucessadd = () => {
+    addOffice();
+    addDepartment();
+  }
 
   const [modal, setModal] = useState(false);
 
@@ -110,6 +116,8 @@ function App() {
   
     }
   }
+  
+  
  
   
   
