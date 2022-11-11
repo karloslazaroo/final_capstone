@@ -161,6 +161,17 @@ app.get('/readContent/:email', async (req, res) => {
     }).sort(mysort);
 });
 
+app.get('/readContentTalk/:email', async (req, res) => {
+    var mysort = {_id: -1};
+    const receiver = req.params.email;
+    TalkModel.find({ receiver: receiver} , (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
+        res.send(result);
+    }).sort(mysort);
+});
+
 app.put('/update', async (req, res) => {
     const newTitle = req.body.newTitle;
     const id = req.body.id;

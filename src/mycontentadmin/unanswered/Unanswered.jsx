@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import './unanswered.css'
-import Profile from '../../assets/profile1.jpg'
+import Profile from '../../assets/profile1.jpg';
+import { UserAuth } from '../../context/AuthContext';
 
 function App () {
   const [talkList, setTalkList] = useState([]);
+  const {  user } = UserAuth();
 
-    useEffect(() => {
-      Axios.get('https://aust-chatbot.herokuapp.com/readTalk').then((response) => {
-        setTalkList(response.data);
-      });
-    }, [talkList]);
+  useEffect(() => {
+    const email = user.email;
+    Axios.get(`https://aust-chatbot.herokuapp.com/readContentTalk/${email}`).then((response) => {
+      console.log(response.data);
+      setTalkList(response.data);
+    });
+  }, [talkList]);
 
 
     const [modal, setModal] = useState(false);
