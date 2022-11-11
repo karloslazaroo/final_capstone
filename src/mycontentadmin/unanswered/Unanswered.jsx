@@ -8,22 +8,12 @@ function App () {
   const [talkList, setTalkList] = useState([]);
   const {  user } = UserAuth();
 
-<<<<<<< Updated upstream
-  useEffect(() => {
-    const email = user.email;
-    Axios.get(`https://aust-chatbot.herokuapp.com/readContentTalk/${email}`).then((response) => {
-      console.log(response.data);
-      setTalkList(response.data);
-    });
-  }, [talkList]);
-=======
     useEffect(() => {
       Axios.get('https://aust-chatbot.herokuapp.com/readTalk').then((response) => {
         // console.log(response.data);
         setTalkList(response.data);
       });
     }, [talkList]);
->>>>>>> Stashed changes
 
 
     const [modal, setModal] = useState(false);
