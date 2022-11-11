@@ -102,11 +102,13 @@ function App() {
       }).then((result) => {
         if (result.isConfirmed) {
           Axios.delete(`https://aust-chatbot.herokuapp.com/delete/${id}`)
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
+          Swal.fire({
+            title:'Deleted!',
+            text:'Your file has been deleted.',
+            icon:'success',
+            confirmButtonColor: '#f7ce05'
+
+          })
         }
       })
      
