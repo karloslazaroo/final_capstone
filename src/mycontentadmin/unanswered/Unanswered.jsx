@@ -9,7 +9,8 @@ function App () {
   const {  user } = UserAuth();
 
     useEffect(() => {
-      Axios.get('https://aust-chatbot.herokuapp.com/readTalk').then((response) => {
+      const email = user.email;
+      Axios.get(`https://aust-chatbot.herokuapp.com/readContentTalk/${email}`).then((response) => {
         // console.log(response.data);
         setTalkList(response.data);
       });
