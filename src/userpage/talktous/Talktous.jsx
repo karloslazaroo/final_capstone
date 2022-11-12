@@ -73,7 +73,7 @@ function App() {
   return (
     <div className="body_talktous">
       <div className="talktous_user">
-            <h2><span>Talk to Us!</span></h2>
+            <h2><span>Contact Us</span></h2>
             <div className="divider_talktous_user"></div>
             </div>
             
