@@ -105,7 +105,7 @@ class Analytics extends React.Component {
       this.setState({reviewsdata : data});
 
       console.log('Data from reviews received: ', data);
-
+      data.sort(((a, b) => new Date(a._id) - new Date(b._id)));
       //code for staging date and count
       for(var i = 0; i < data.length; i ++){
         this.reviewslabelscontainer.push(data[i]._id);
@@ -143,23 +143,29 @@ class Analytics extends React.Component {
     axios.get('https://aust-chatbot.herokuapp.com/readanalytics')
     .then((response)=>{
       const data = response.data;
-      this.setState({talktousdata : data});
 
-      console.log('Data from talk to us received: ', data);
+      
 
+     
+      console.log(new Date(Date.now()).toLocaleString());
+      data.sort(((a, b) => new Date(a._id) - new Date(b._id)));
+      console.log('after', data);
       //code for staging date and count
       for(var i = 0; i < data.length; i ++){
         this.labelscontainer.push(data[i]._id);
-      
         this.datacontainer.push(data[i].count);
         
       }
 
-      this.number.push(Math.max(...this.datacontainer)*2);
+    
+      
+      
 
-      // console.log('labels', this.labelscontainer);
-      // console.log('counts', this.datacontainer);
-      // console.log('counts max number', this.number[0]);
+      this.number.push(Math.max(...this.datacontainer));
+      this.state.talktousdata.push(data);
+      console.log('Data from talk to us received: ', data);
+      
+ 
     
     })
     .catch(() =>{
