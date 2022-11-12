@@ -109,7 +109,9 @@ function App() {
             <textarea className="message_user"  placeholder="Write something.."  onChange={(event) => {
                 setMessage(event.target.value);
             }}></textarea>
-        
+            
+            <input type="checkbox"></input>
+            <label> Send Anonymously</label>
             <div className="buttons_reviews_user">
 
             
