@@ -172,7 +172,7 @@ df-messenger {
   .mema span a:before,
   .mema span a:after{
     position: absolute;
-    content: "LOGIN";
+    content: "Login";
     height: 55px;
     width: 180px;
     display: flex;
