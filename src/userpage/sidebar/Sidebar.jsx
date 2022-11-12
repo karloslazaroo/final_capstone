@@ -1,5 +1,5 @@
 import React from 'react'
-import ust from '../../assets/ust.png'
+import ust from '../../assets/mainlogo.png'
 import './sidebar.css'
 import { UserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ function App() {
   return (
       <div class="header">
         <div class="side-nav">
-            <a href="#" class="logo">
+            <a href="#" class="logos">
                 <img src={ust} class="logo-img"/>
                 <img src={ust} class="logo-icon"/>
             </a>
@@ -30,10 +30,10 @@ function App() {
                 <li><a href="/user"><i class="fa-solid fa-house-user"></i><p>Profile</p></a></li>
                 <li><a href="/Announcements_User"><i class="fa-solid fa-bullhorn"></i><p>Announcements</p></a></li>
                 
-                <li><a href="/Talktous_User"><i class="fa-solid fa-address-book"></i><p>Talk To Us!</p></a></li>
+                <li><a href="/Talktous_User"><i class="fa-solid fa-address-book"></i><p>Contact Us</p></a></li>
                 
-                <li><a href="/Ratings_User"><i class="fa-solid fa-star"></i><p>Rate Us!</p></a></li>
-                <li><a onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i><p>Logout</p></a></li>
+                <li><a href="/Ratings_User"><i class="fa-solid fa-square-envelope"></i><p>Review Us</p></a></li>
+                <li><a href="#" onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i><p>Logout</p></a></li>
                 <div class="active"></div>
             </div>
             

@@ -3,15 +3,44 @@
   
  
 
-  .logo2 {
-    height: 100px;
+  .topnav {
+    height:100px;
     width: 100%;
-    object-fit: cover;
-    background: #f7ce05;
-    object-position: center;
-    display: flex;
-    
+    text-align: center;
+   
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
   }
+
+  .logo2 {
+    
+    height: 100%;
+  }
+
+  .topnav h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 50px;
+  }
+  .custom-shape-divider-top-1668265710 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: -1;
+}
+
+.custom-shape-divider-top-1668265710 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+}
+
+.custom-shape-divider-top-1668265710 .shape-fill {
+    fill: #ebd981;
+}
 
   df-messenger {
     --df-messenger-bot-message: #f7ce05;

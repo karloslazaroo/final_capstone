@@ -16,7 +16,7 @@
 .textBox_user {
     position: relative;
     max-width: 600px;
-
+    
 }
 
 .textBox_user h2 {
@@ -24,12 +24,16 @@
     font-size: 3em;
     line-height: 1.4em;
     font-weight: 500px;
+    
+   
+
 }
 
 .textBox_user span {
     color: #f7ce05;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 900px;
+   text-transform: lowercase;
 }
 
 .textBox_user p {

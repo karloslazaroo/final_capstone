@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import './login.css';
 import chathead from '../../assets/chathead.png';
-import logo from '../../assets/logo2.png'
+import logo from '../../assets/mainlogo.png'
 
 
 
@@ -54,7 +54,7 @@ function Signin (){
       const email = user.email;
       
       
-      if(email == "geromeeleubert.rosal.cics@ust.edu.ph") {
+      if(email == "karlosandrew.lazaro1.cics@ust.edu.ph") {
           navigate('/super');
           // logthelogin("super");
       } else  {

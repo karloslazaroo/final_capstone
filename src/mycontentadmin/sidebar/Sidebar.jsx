@@ -1,5 +1,5 @@
 import React from 'react'
-import ust from '../../assets/ust.png'
+import ust from '../../assets/mainlogo.png'
 import './sidebar.css'
 import { UserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ function App() {
   return (
       <div class="header">
         <div class="side-nav">
-            <a href="#" class="logo">
+            <a href="#" class="logos">
                 <img src={ust} class="logo-img"/>
                 <img src={ust} class="logo-icon"/>
             </a>
@@ -32,7 +32,7 @@ function App() {
                 <li><a href="Chatbot_Content"><i class="fa-solid fa-headset"></i><p>Chatbot Interface</p></a></li>
                 <li><a href="/Unanswered_Content"><i class="fa-solid fa-address-book"></i><p>Questions</p></a></li>
                 <li><a href="/Analytics_Content"><i class="fa-solid fa-chart-line"></i><p>Analytics</p></a></li>
-                <li><a href="/Ratings_Content"><i class="fa-solid fa-star"></i><p>Ratings & Reviews</p></a></li>
+                <li><a href="/Ratings_Content"><i class="fa-solid fa-square-envelope"></i><p>Reviews</p></a></li>
                 <li><a href="/Faqs_Content"><i class="fa-solid fa-question"></i><p>FAQs</p></a></li>
                 <li><a href="#" onClick={handleSignOut}><i class="fa-solid fa-right-from-bracket"></i><p>Logout</p></a></li>
                 <div class="active"></div>

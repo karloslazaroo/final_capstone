@@ -7,13 +7,14 @@ import { UserAuth } from '../../context/AuthContext';
 const Homepage = () => {
 
   const { user } = UserAuth();
+  const name = user.displayName;
   return (
     <div className="body_homepage">
         
   
     <div className="content">
         <div className="textBox_user">
-            <h2>Hello, <br></br> <span>{user?.displayName}</span></h2>
+            <h2>Hello, <br></br> <span>{name}</span></h2>
             <p>User / {user?.email}</p><br></br>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores reprehenderit, soluta quae magnam quas quos dignissimos totam, sequi cum iure fuga dolor placeat ipsum nisi consequuntur sit magni, ex deleniti?</p>
             <a href='/Talktous_User'>Message Us Now!</a>

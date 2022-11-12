@@ -62,7 +62,7 @@ function App() {
   return (
     <div className='ratings_admin'>
       <div className="textBox_admin">
-      <h2>Ratings & Reviews<br></br></h2>
+      <h2>Reviews<br></br></h2>
       <div className="divider"></div>
       </div>
       
