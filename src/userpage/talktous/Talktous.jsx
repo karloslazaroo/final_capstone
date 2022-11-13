@@ -42,12 +42,14 @@ function App() {
       icon: 'success',
       confirmButtonColor: '#f7ce05'
     }) 
-
+    let dates = new Date();
+    let postDate = dates.toLocaleString("en-US", {timeZone: "Asia/Hong_Kong"});
     Axios.post("https://aust-chatbot.herokuapp.com/insertTalk", {
       name: name,
       email: email,
       message: message,
       receiver: receiver,
+      date: postDate,
     });
 
     Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{

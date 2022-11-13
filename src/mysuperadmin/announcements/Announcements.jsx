@@ -32,12 +32,15 @@ function App() {
         icon:'success',
         confirmButtonColor: '#f7ce05'
       }) 
-      Axios.post("https://aust-chatbot.herokuapp.com/insert", {
+      let dates = new Date();
+      let postDate = dates.toLocaleString("en-US", {timeZone: "Asia/Hong_Kong"});
+      const data = {
         title: title,
         name: name,
         email: email,
         body: body,
-      });
+        date: postDate};
+      Axios.post("https://aust-chatbot.herokuapp.com/insert", data);
     }
     };
 

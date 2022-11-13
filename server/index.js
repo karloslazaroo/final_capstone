@@ -214,8 +214,9 @@ app.post('/insertTalk', async (req, res) => {
     const email = req.body.email;
     const message = req.body.message;
     const receiver = req.body.receiver;
+    const date = req.body.date;
 
-    const talk = new TalkModel({name: name, email: email, message: message, receiver: receiver});
+    const talk = new TalkModel({name: name, email: email, message: message, receiver: receiver, date: date});
 
     try {
         await talk.save();

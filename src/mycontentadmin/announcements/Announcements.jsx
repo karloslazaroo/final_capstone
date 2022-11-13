@@ -33,16 +33,17 @@ function App() {
           icon:'success',
           confirmButtonColor: '#f7ce05'
       }) 
-        const dateandtime = new Date(Date.now()).toLocaleString();
+        let dates = new Date();
+        let postDate = dates.toLocaleString("en-US", {timeZone: "Asia/Hong_Kong"});
         const data = {
           title: title,
           name: name,
           email: email,
           body: body,
-          date: dateandtime};
+          date: postDate};
         console.log('container', data);
         Axios.post("https://aust-chatbot.herokuapp.com/insert",data)
-        .then(console.log('time today',dateandtime));
+        .then(console.log('time today',postDate));
       }
     };
 

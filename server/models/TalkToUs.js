@@ -17,6 +17,9 @@ const TalkSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    date: {
+        type: String,
+    },
 });
 
 const Talk = mongoose.model("talktous", TalkSchema);
