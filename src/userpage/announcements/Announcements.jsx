@@ -28,9 +28,9 @@ function Announce() {
                   <div class="box_questions">
                   <i class="fas fa-quote-left quote"></i>
                   <h1> {val.title} </h1>
-                  <h4>
+                  <div className="date">
                     {val.date}
-                  </h4>
+                    </div>
                   <p>
                     {val.body}
                   </p>
