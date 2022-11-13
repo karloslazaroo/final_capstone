@@ -44,6 +44,7 @@ function App() {
     }) 
     let dates = new Date();
     let postDate = dates.toLocaleString("en-US", {timeZone: "Asia/Hong_Kong"});
+    console.log(postDate);
     Axios.post("https://aust-chatbot.herokuapp.com/insertTalk", {
       name: name,
       email: email,
