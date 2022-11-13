@@ -58,15 +58,16 @@
     border-radius: 0px 25px 25px 0px;
     background-image: url("../../assets/loginside1.jpg");
     object-fit:scale-down;
-    padding: 25px;
+    padding: 45px;
     box-shadow: 10px 10px 21px -6px rgba(0, 0, 0, 0.2);
     margin-bottom: 20%;
 }
 
 .privacyact p {
-    margin-top: 220px;
+    margin-top: 185px;
     font-size: 15px;
-    color: #f7ce05;
+    color: #ffffff;
+    
 }
 
 .privacyact h1 {
