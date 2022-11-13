@@ -11,6 +11,7 @@ function App() {
   const [time] = useState('Asia/Hong_Kong');
   const [token, setToken] = useState('');
   const [updateToken, setUpdateToken] = useState('');
+  const [admi, setAdmi] = useState([]);
   
   //Generate new token every 1 hour in Postman
   //const token = 'ya29.a0AeTM1if687PcMMqijxbSfzvpDMijbfIpSNFxPT99bVtEd4UwJaRq5pqYI7iAJg5O3SXuwXw1WLYJqhlK1yWj2kdI6hHTVh2Myvu-5b7y5jD3iE-XCBUlFyMikVP_mRPeKevrS74o5ACB5OmxouwsBQmZJSDELgaCgYKATwSARASFQHWtWOmEX8lFrHgao1cCg3g1_M9TQ0165';
@@ -27,6 +28,11 @@ useEffect(() => {
 }
 , [datas]
 );
+useEffect(() => {
+  Axios.get('https://aust-chatbot.herokuapp.com/readAdmin').then((response) => {
+    setAdmi(response.data);
+  });
+}, [admi]);
 
 function getBots(){
   Axios.get('https://aust-chatbot.herokuapp.com/readBot').then((response) => {
@@ -104,7 +110,6 @@ const addChatbot = (/** ${projId} */) => {
         icon:'success',
         confirmButtonColor: '#f7ce05'
       });
-      document.getElementById("email").value = '';
       document.getElementById("projId").value = '';
       document.getElementById("bot").value = '';
     }
@@ -198,14 +203,14 @@ function displayBots(){
 
              <div className="chatbot_inputs">
         <label>Email of Content Admin: </label>  
-            <input id="email"
-            className="chatbot_creation"
-            type="text"
-            placeholder="Type your email..." 
-            onChange={(event) => {
-              setMail(event.target.value);
-            }}
-            />
+            <select className="receiver" value={mail} onChange={e=>setMail(e.target.value)}>
+                    <option></option>
+              {admi.map((val, key) => {
+              return (
+                    <option key={key}>{val.email}</option>
+              );
+            })}
+            </select>
        <label>Project ID: </label>  
             <input id="projId"
             className="chatbot_creation"
