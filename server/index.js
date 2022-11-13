@@ -505,7 +505,7 @@ app.post('/insertOffice', async (req, res) => {
 });
 
 app.get('/readOffice', async (req, res) => {
-    var mysort = {_id: -1};
+    var mysort = {offi: 1};
     OfficeModel.find(/*{ $where: {title: "Testing 1"}} */{}, (err, result) =>{
         if (err) {
             res.send(err);
