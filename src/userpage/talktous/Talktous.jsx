@@ -5,6 +5,7 @@ import './talktous.css';
 import Swal from 'sweetalert2';
 import '../../index.css'
 
+
 function App() {
   const {user} = UserAuth();
   const name = user.displayName;
@@ -14,6 +15,7 @@ function App() {
   const [receiver, setReceiver] = useState('');
   const [faqsList, setFaqsList] = useState([]);
   const source = "Talk to Us";
+  const [sendEmail, setSendEmail]= useState('');
 
 
 
@@ -30,7 +32,16 @@ function App() {
     });
   }, [admi]);
 
-
+  const getEmaildept = () =>{
+    const email = user.email;
+    const emailsplit = email.split('.');
+    const atsplit = emailsplit[2].split('@');
+    const deptcontainer = atsplit[0];
+    
+    console.log(deptcontainer);
+  }
+// getEmaildept();
+console.log(sendEmail);
 
   const addToList = () => {
     if(message === "" || receiver === ""){
@@ -43,7 +54,7 @@ function App() {
       confirmButtonColor: '#f7ce05'
     }) 
     let dates = new Date();
-    let postDate = dates.toLocaleString("en-US", {timeZone: "Asia/Hong_Kong"});
+    let postDate = dates.toLocaleString({timeZone: "Asia/Hong_Kong"});
     console.log(postDate);
     Axios.post("https://aust-chatbot.herokuapp.com/insertTalk", {
       name: name,
@@ -52,10 +63,11 @@ function App() {
       receiver: receiver,
       date: postDate,
     });
-
+    const receiveremailcontainer = admi[receiver].email;
     Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{
       source: source,
-      date: new Date(Date.now()).toLocaleDateString()
+      date: new Date(Date.now()).toLocaleDateString(),
+      receiver: receiveremailcontainer
     }).then(console.log('data logged for analytics'));
 
     document.getElementById('inputs').value = '';
@@ -71,8 +83,7 @@ function App() {
   });
 
 
- 
-
+// console.log(admi[receiver].email);
   return (
     <div className="body_talktous">
       <div className="talktous_user">
@@ -93,7 +104,10 @@ function App() {
                     <option></option>
               {admi.map((val, key) => {
               return (
-                    <option key={key}>{val.email}</option>
+                    <option key={key} value={key}
+                    >
+                      {val.email}
+                    </option>
               );
             })}
             </select>

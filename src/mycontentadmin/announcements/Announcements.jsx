@@ -14,6 +14,9 @@ function App() {
     const[newTitle, setNewTitle] = useState('');
     const[newBody, setNewBody] = useState('');
     const [announceList, setAnnounceList] = useState([]);
+    const [emaildeptcontainer, setEmaildeptcontainer] = useState('');
+
+    
 
     useEffect(() => {
       const email = user.email;

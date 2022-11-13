@@ -129,7 +129,7 @@ class Analytics extends React.Component {
     .then((response)=>{
       const data = response.data;
       this.setState({syslogdata: data});
-      console.log('Data from system log received: ', data);
+      console.log('Data from system log received: ', this.state.syslogdata);
     
     }).catch(() =>{
       alert('Error getting system log data')
@@ -163,7 +163,7 @@ class Analytics extends React.Component {
 
       this.number.push(Math.max(...this.datacontainer));
       this.state.talktousdata.push(data);
-      console.log('Data from talk to us received: ', data);
+      console.log('Data from talk to us received: ', this.state.talktousdata);
       
  
     

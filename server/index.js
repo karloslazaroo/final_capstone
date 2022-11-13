@@ -87,6 +87,42 @@ app.get('/readanalytics', (req , res) =>{
     }) 
 });
 
+//route for getting talk to us data based on content admin receiver
+app.get('/readanalytics/:email', (req , res) =>{
+    const email = req.params.email;
+    AnalyticsModel.aggregate([
+        {
+            // $match: { source : "Talk to Us"},
+            // $match: {receiver: email}
+            $match: {
+                $and: [
+                    { source : "Talk to Us"},
+                    { receiver: email}
+                    
+                ]
+            }
+        },
+        
+        {
+            $group: {
+                _id: '$date',
+                count : {$sum : 1}
+        }}
+        ,{
+            $sort: {
+                date : 1   
+            }
+    }
+    ]
+    ).then((result) => {
+        console.log('result: ', result);
+        res.send(result);
+    })
+    .catch((error)=>{
+        console.log('error: ', dataerror);
+    }) 
+});
+
 app.get('/readanalyticsreviews', async (req , res) =>{
     
     AnalyticsModel.aggregate([
