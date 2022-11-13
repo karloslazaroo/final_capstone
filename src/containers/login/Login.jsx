@@ -56,7 +56,7 @@ function Signin (){
       const email = user.email;
       
       
-      if(email == "geromeeleubert.rosal.cics@ust.edu.ph") {
+      if(email == "karlosandrew.lazaro.cics@ust.edu.ph") {
           navigate('/super');
           // logthelogin("super");
       } else  {

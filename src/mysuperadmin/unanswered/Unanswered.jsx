@@ -29,14 +29,12 @@ function App() {
       <div class="content_questions">
         <div class="info_questions">
           <div class="name">{val.name}</div>
-          <div class="job">{val.date}</div>
+          <div class="date">{val.date}</div>
           <div className="button_questions">
       <a href='/Chatbot_Admin'>Leave a reply</a>
       </div>
         </div>
-        <div class="image">
-          <img src={Profile} alt=""/>
-        </div>
+       
       </div>
     </div>
 

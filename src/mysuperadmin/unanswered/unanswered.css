@@ -56,10 +56,14 @@
     width: 1200px;
     padding: 25px;
     border-radius: 25px;
-box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
     margin-top: 2%;
     margin-bottom: 5%;
     
+  }
+  .date {
+    color: rgb(187, 182, 182);
+    font-style: italic;
   }
   .box_questions i.quote{
     font-size: 20px;

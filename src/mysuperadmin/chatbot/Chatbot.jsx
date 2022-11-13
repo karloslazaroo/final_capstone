@@ -203,7 +203,7 @@ function displayBots(){
 
              <div className="chatbot_inputs">
         <label>Email of Content Admin: </label>  
-            <select className="receiver" value={mail} onChange={e=>setMail(e.target.value)}>
+            <select className="chatbot_email" value={mail} onChange={e=>setMail(e.target.value)}>
                     <option></option>
               {admi.map((val, key) => {
               return (
