@@ -151,23 +151,23 @@ function Analytics(){
 
       console.log(data);
 
-      // console.log(new Date(Date.now()).toLocaleString());
-      // data.sort(((a, b) => new Date(a._id) - new Date(b._id)));
-      // console.log('after', data);
+      console.log(new Date(Date.now()).toLocaleString());
+      data.sort(((a, b) => new Date(a._id) - new Date(b._id)));
+      console.log('after', data);
       // //code for staging date and count
-      // for(var i = 0; i < data.length; i ++){
-      //   labelscontainer.push(data[i]._id);
-      //   datacontainer.push(data[i].count);
+      for(var i = 0; i < data.length; i ++){
+      labelscontainer.push(data[i]._id);
+      datacontainer.push(data[i].count);
         
-      // }
+      }
 
     
       
       
 
-      // number.push(Math.max(...datacontainer));
-      // state.talktousdata.push(data);
-      // console.log('Data from talk to us received: ', data);
+      number.push(Math.max(...datacontainer));
+      state.talktousdata.push(data);
+      console.log('Data from talk to us received: ', data);
       
  
     
@@ -180,7 +180,7 @@ function Analytics(){
   
 
 
-  const getTalktoUsData = () =>{
+  /* const getTalktoUsData = () =>{
     axios.get('https://aust-chatbot.herokuapp.com/readanalytics')
     .then((response)=>{
       const data = response.data;
@@ -212,10 +212,10 @@ function Analytics(){
       alert('Error getting talk to us data')
     });
    
-  };
+  }; */
 
   useEffect (() =>{
-    getTalktoUsData();
+    // getTalktoUsData();
     getReviewsData();
     getSysLogData();
     //  console.log('number',number);

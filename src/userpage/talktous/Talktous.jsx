@@ -56,14 +56,16 @@ console.log(sendEmail);
     let dates = new Date();
     let postDate = dates.toLocaleString({timeZone: "Asia/Hong_Kong"});
     console.log(postDate);
+    const receiveremailcontainer = admi[receiver].email;
     Axios.post("https://aust-chatbot.herokuapp.com/insertTalk", {
       name: name,
       email: email,
       message: message,
-      receiver: receiver,
+      receiver: receiveremailcontainer,
       date: postDate,
     });
-    const receiveremailcontainer = admi[receiver].email;
+    
+    console.log(receiveremailcontainer);
     Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{
       source: source,
       date: new Date(Date.now()).toLocaleDateString(),
@@ -73,7 +75,7 @@ console.log(sendEmail);
     document.getElementById('inputs').value = '';
   }
   };
-
+  
   const faqs = document.querySelectorAll(".faq");
 
   faqs.forEach(faq =>{
