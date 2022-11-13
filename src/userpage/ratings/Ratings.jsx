@@ -110,8 +110,6 @@ function App() {
                 setMessage(event.target.value);
             }}></textarea>
             
-            <input type="checkbox"></input>
-            <label> Send Anonymously</label>
             <div className="buttons_reviews_user">
 
             
