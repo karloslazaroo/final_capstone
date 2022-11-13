@@ -232,6 +232,10 @@ function displayBots(){
             <div className="button_chatbot_content">
       <button href='#' onClick={addChatbot} >Create Chatbot!</button>
       </div>
+      <div className="privacy">
+      <p>Note: <br></br>  The personal information gathered through the website will be processed with the utmost confidentiality in 
+        accordance with the Data Privacy Act of 2012 and with the purpose of sending information in the chatbot.</p>
+        </div>
       <div className="divider_admin"></div>
       </div>
             

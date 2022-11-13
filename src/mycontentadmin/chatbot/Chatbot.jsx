@@ -242,7 +242,8 @@ const openDialog = (projectid) => {
     <div className="intents">
           <div className="intents_content">
               <h2>YOUR CHATBOTS</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+              <p>The personal information gathered through the website will be processed with the utmost confidentiality in 
+                accordance with the Data Privacy Act of 2012 and with the purpose of sending information in the chatbot.</p>
               <div className="divider_content"></div>
               <div className='scroll'>
               {/* {dataaa.map((val, key) => {
