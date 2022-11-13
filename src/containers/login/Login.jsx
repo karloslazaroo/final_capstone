@@ -6,6 +6,8 @@ import Axios from 'axios';
 import './login.css';
 import chathead from '../../assets/chathead.png';
 import logo from '../../assets/mainlogo.png'
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
 
 
 
@@ -73,27 +75,27 @@ function Signin (){
   }, [user])
 
   return (
+    <div>
+    
     <div className='bodyLogin' >
-      
-      <df-messenger
-  intent="WELCOME"
-  chat-title="TOM"
-  agent-id="ceefe9bb-13a3-4f75-976b-b312b79ab17f"
-  language-code="en"
-  chat-icon= {chathead}
-></df-messenger>
+<Header/>
+
     <div className='login'>
+      
       <div className='formLogin'>
         <div className="picture">
       <img src= {logo} className='login_logo'></img>
       </div>
-        <a>
-        {/* <GoogleButton className='google' onClick={handleGoogleSignIn} /> */}
-       </a>
+       
        <div className="mema">
        <span><a href="#" onClick={handleGoogleSignIn}></a></span>
        </div>
       </div>
+      <div className="privacyact">
+      <h1>Hello, Thomasian!</h1>
+				<p>DATA PRIVACY AGREEMENT: <br></br>  The personal information gathered through the website will be processed with the utmost confidentiality in accordance with the Data Privacy Act of 2012 and with the purpose of logging in on the website.</p>
+      </div>
+      
       
     </div>
     <div class="custom-shape-divider-bottom-1667119216">
@@ -103,6 +105,7 @@ function Signin (){
         <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
     </svg>
 </div>
+    </div>
     </div>
     
   )
