@@ -8,6 +8,7 @@ import {Line} from 'react-chartjs-2';
 import { errorPrefix } from '@firebase/util';
 import {UserAuth} from '../../context/AuthContext'
 import { useEffect, useState } from 'react';
+import { render } from '@testing-library/react';
 
 ChartJS.register(
   LineElement, CategoryScale,
@@ -26,7 +27,9 @@ function Analytics(){
   const reviewslabelscontainer = [];
   const reviewsdatacontainer = [];
   const {user} = UserAuth();
-  const [logs, setLogs] = useState([]);
+  //const [logs, setLogs] = useState([]);
+  const labelLogs = [];
+  const logs = [];
   
   
   //talk to us pa lang
@@ -128,20 +131,27 @@ function Analytics(){
   };
   
   const getSysLogData = () =>{
-    axios.get('https://aust-chatbot.herokuapp.com/readLogs')
-    .then((response)=>{
+    const email = user.email;
+    axios.get(`https://aust-chatbot.herokuapp.com/readLogsUse/${email}`).then((response) => {
+      //setLogs(response.data);
       const data = response.data;
+      //setLogs(data);
+      state.syslogdata.push(data);
 
-      for (var i =0 ; i < data.length; i++){
-        state.syslogdata.push(data[i]);
+      console.log('Data from sys log received: ', data);
+      data.sort(((a, b) => new Date(a._id) - new Date(b._id)));
+      //code for staging date and count
+      for(var i = 0; i < data.length; i ++){
+        labelLogs.push(data[i]._id);
+      
+        logs.push(data[i].count);
+        
       }
-    
-      console.log('Data from system log received: ', state.syslogdata);
     
     }).catch(() =>{
       alert('Error getting system log data')
     });
-  }
+  };
 
   const gettalktousdatabyemail = () =>{
     const email = user.email;
@@ -176,6 +186,8 @@ function Analytics(){
     .catch(() =>{
       alert('Error getting talk to us data')
     });
+
+    
   }
   
   
@@ -218,17 +230,18 @@ function Analytics(){
   useEffect (() =>{
     // getTalktoUsData();
     getReviewsData();
-    getSysLogData();
+    //getSysLogData();
     //  console.log('number',number);
     gettalktousdatabyemail();
-  })
+    getSysLogData();
+  });
 
-  useEffect(() => {
+  /* useEffect(() => {
     const email = user.email;
     axios.get(`https://aust-chatbot.herokuapp.com/readLogsUse/${email}`).then((response) => {
       setLogs(response.data);
     });
-  }, [logs]);
+  }, [logs]); */
 
   // displayTalktoUsData = (talktousdata) =>{
   //   return talktousdata.map((ttsdata, index) => (
@@ -243,7 +256,7 @@ function Analytics(){
   // }
 
   const generatePDF = () =>{
-    const data = state.syslogdata;
+    const data = logs;
     const logcontainer = [];
 
     for(var i = 0 ; i < data.length; i++){
@@ -295,7 +308,6 @@ function Analytics(){
   }
 
 
-
   return (
       
       <div className='analytics_body' >
@@ -315,47 +327,10 @@ function Analytics(){
          <div className='graph_container_content' >
           <Line data={reviewsdata} options={reviewsoptions}></Line>
           </div>
-        <div className="textBox">
-        <h2>System Logs<br></br></h2>
-        </div>
-        <div className='divider'></div>
-        <div className='button_container' >
-            <button onClick={() => generatePDF()}>Download pdf</button>
-          </div>
-        <div className="table" id='my-table'>
-       
-        {logs.map((data, index) =>{
-
-return ( 
-  
-<div key={index} >
-  
-
-    
-  <tr>
-    <td>{data.date}</td>
-    <td>{data.email}</td>
-    <td>{data.description}</td>
-    
-    </tr>
-  
-   
- 
-</div>
-
-)
-
-})}
-         
-           
-         
-        </div>
       
       
         </div>
     )
-  
- 
 }
 
 export default Analytics

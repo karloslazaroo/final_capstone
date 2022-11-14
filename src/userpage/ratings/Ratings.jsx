@@ -40,9 +40,11 @@ function App() {
           email: email,
         });
 
+        let dates = new Date();
+        let postDate = dates.toLocaleString({timeZone: "Asia/Hong_Kong"});
         Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{
           source: source,
-          date: new Date(Date.now()).toLocaleDateString()
+          date: postDate,
         }).then(console.log('sent source'));
       }
     };
