@@ -7,7 +7,7 @@ import jsPDF from 'jspdf';
 import {Line} from 'react-chartjs-2';
 import { errorPrefix } from '@firebase/util';
 import {UserAuth} from '../../context/AuthContext'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 ChartJS.register(
   LineElement, CategoryScale,
@@ -26,6 +26,7 @@ function Analytics(){
   const reviewslabelscontainer = [];
   const reviewsdatacontainer = [];
   const {user} = UserAuth();
+  const [logs, setLogs] = useState([]);
   
   
   //talk to us pa lang
@@ -222,6 +223,13 @@ function Analytics(){
     gettalktousdatabyemail();
   })
 
+  useEffect(() => {
+    const email = user.email;
+    axios.get(`https://aust-chatbot.herokuapp.com/readLogsUse/${email}`).then((response) => {
+      setLogs(response.data);
+    });
+  }, [logs]);
+
   // displayTalktoUsData = (talktousdata) =>{
   //   return talktousdata.map((ttsdata, index) => (
      
@@ -316,7 +324,28 @@ function Analytics(){
           </div>
         <div className="table" id='my-table'>
        
-        {displaysystemlogs()}
+        {logs.map((data, index) =>{
+
+return ( 
+  
+<div key={index} >
+  
+
+    
+  <tr>
+    <td>{data.date}</td>
+    <td>{data.email}</td>
+    <td>{data.description}</td>
+    
+    </tr>
+  
+   
+ 
+</div>
+
+)
+
+})}
          
            
          

@@ -27,12 +27,7 @@ function Signin (){
   const handleGoogleSignIn = async () => {
       try{
           await googleSignIn()
-          const email = user.email;
-          const description = "Logged In.";
-          Axios.post('https://aust-chatbot.herokuapp.com/insertLogs', {
-            email: email,
-            description: description,
-          });
+          
       } catch (error){
           console.log(error);
       }
@@ -52,9 +47,15 @@ function Signin (){
 
   useEffect(() => {
     if(user != null){
-      
+      let dates = new Date();
+      let postDate = dates.toLocaleString({timeZone: "Asia/Hong_Kong"});
       const email = user.email;
-      
+      const description = "Logged In";
+      Axios.post('https://aust-chatbot.herokuapp.com/insertLogs', {
+            email: email,
+            description: description,
+            date: postDate,
+          });
       
       if(email == "karlosandrew.lazaro.cics@ust.edu.ph") {
           navigate('/super');

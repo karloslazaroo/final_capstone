@@ -505,8 +505,9 @@ app.delete("/deleteBot/:id", async (req, res) => {
 app.post('/insertLogs', async (req, res) => {
     const email = req.body.email;
     const description = req.body.description;
+    const date = req.body.date;
 
-    const logs = new LogsModel({email: email, description: description});
+    const logs = new LogsModel({email: email, description: description, date: date});
 
     try {
         await logs.save();
@@ -523,6 +524,17 @@ app.get('/readLogs', async (req, res) => {
             res.send(err);
         }
 
+        res.send(result);
+    }).sort(mysort);
+});
+
+app.get('/readLogsUse/:email', async (req, res) => {
+    var mysort = {_id: -1};
+    const email = req.params.email;
+    LogsModel.find({ email: email} , (err, result) =>{
+        if (err) {
+            res.send(err);
+        }
         res.send(result);
     }).sort(mysort);
 });

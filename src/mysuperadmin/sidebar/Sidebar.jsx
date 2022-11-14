@@ -3,16 +3,26 @@ import ust from '../../assets/mainlogo.png'
 import './sidebar.css'
 import { UserAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Axios from 'axios';
 
 
 
 
 function App() {
 
-  const {logOut} = UserAuth()
+  const {user, logOut} = UserAuth()
   const navigate = useNavigate();
 
     const handleSignOut = async () => {
+        let dates = new Date();
+      let postDate = dates.toLocaleString({timeZone: "Asia/Hong_Kong"});
+      const email = user.email;
+      const description = "Logged Out";
+      Axios.post('https://aust-chatbot.herokuapp.com/insertLogs', {
+            email: email,
+            description: description,
+            date: postDate,
+          });
         try{
             await logOut();
             navigate('/');

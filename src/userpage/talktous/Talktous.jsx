@@ -16,6 +16,7 @@ function App() {
   const [faqsList, setFaqsList] = useState([]);
   const source = "Talk to Us";
   const [sendEmail, setSendEmail]= useState('');
+  const [logs, setLogs] = useState([]);
 
 
 
@@ -31,6 +32,13 @@ function App() {
       setAdmi(response.data);
     });
   }, [admi]);
+
+  useEffect(() => {
+    const email = user.email;
+    Axios.get(`https://aust-chatbot.herokuapp.com/readLogsUse/${email}`).then((response) => {
+      setLogs(response.data);
+    });
+  }, [logs]);
 
   const getEmaildept = () =>{
     const email = user.email;
@@ -155,7 +163,41 @@ console.log(sendEmail);
   
 </section>
 </div>
+<center>
+<div className="textBox">
+        <h2>System Logs<br></br></h2>
+        </div>
+        <div className='divider'></div>
+        <div className="table" id='my-table'>
+       
+        {logs.map((data, index) =>{
 
+return ( 
+  
+<div key={index} >
+  
+
+    
+  <tr>
+    <td>{data.date}</td>
+    <td>{data.email}</td>
+    <td>{data.description}</td>
+    
+    </tr>
+  
+   
+ 
+</div>
+
+)
+
+})}
+         
+           
+         
+        </div>
+
+        </center>
 </div>
 
   )

@@ -33,7 +33,7 @@ function App() {
         confirmButtonColor: '#f7ce05'
       }) 
       let dates = new Date();
-      let postDate = dates.toLocaleString("en-US", {timeZone: "Asia/Hong_Kong"});
+      let postDate = dates.toLocaleString({timeZone: "Asia/Hong_Kong"});
       const data = {
         title: title,
         name: name,
