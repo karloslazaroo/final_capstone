@@ -62,6 +62,7 @@ function Homepage() {
         
     </div>
     <Post/>
+    <div className="Logs">
     <div className="textBox">
         <h2>System Logs<br></br></h2>
         </div>
@@ -96,6 +97,7 @@ return (
          
            
          
+        </div>
         </div>
     
     </div>

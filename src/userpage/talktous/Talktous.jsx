@@ -163,41 +163,7 @@ console.log(sendEmail);
   
 </section>
 </div>
-<center>
-<div className="textBox">
-        <h2>System Logs<br></br></h2>
-        </div>
-        <div className='divider'></div>
-        <div className="table" id='my-table'>
-       
-        {logs.map((data, index) =>{
 
-return ( 
-  
-<div key={index} >
-  
-
-    
-  <tr>
-    <td>{data.date}</td>
-    <td>{data.email}</td>
-    <td>{data.description}</td>
-    
-    </tr>
-  
-   
- 
-</div>
-
-)
-
-})}
-         
-           
-         
-        </div>
-
-        </center>
 </div>
 
   )
