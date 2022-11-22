@@ -1,3 +1,9 @@
+@media (-webkit-device-pixel-ratio: 1.25) {
+  .user_reviews {
+    zoom: 0.8;
+  }
+}
+
 .ratings_body{
     margin-left: 15%;
     min-height: 100vh;

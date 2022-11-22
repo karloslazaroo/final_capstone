@@ -78,7 +78,7 @@ function App() {
     document.body.classList.remove('active-modal')
   }
   return (
-    <div>
+    <div className="user_reviews">
        <div className="ratings_user">
             <h2><span>Review Us!</span></h2>
             <div className="divider_ratings_user"></div>

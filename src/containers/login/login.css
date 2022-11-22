@@ -1,242 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-.bodyLogin {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #f7ce05;
-    background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
- 
-  
-  
-  
-}
 
-.picture{
-    max-width: 100%;
-    height: 35vh;
-    display: flex;
-    justify-content: center;
-    z-index: -1;
-}
-
-
-
-
-.login{
-    max-width: 50%;
-    height: auto;
-    display: flex;
-    align-items: center; 
-    margin: auto; 
-    border-radius: 25px;
-    justify-content: center;
-    margin-top: 5%;
-    
-    
-    
-}
-
-.formLogin{
-   
-    height: 500px;
-    width: 50%;
-    background-color: #f8f9fa;
-    background: rgba(255, 255, 255, 1);
-    
-    border-radius: 25px 0px 0px 25px;
-    box-shadow: 10px 10px 21px -6px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20%;
-}
-
-.privacyact {
-    
-    height: 500px;
-    width: 50%;
-    background-color: #f7ce05;
-    background: #f7ce05;
-    border-radius: 0px 25px 25px 0px;
-    background-image: url("../../assets/loginside1.jpg");
-    background-repeat: no-repeat;
-    object-fit:scale-down;
-    padding: 45px;
-    box-shadow: 10px 10px 21px -6px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20%;
-}
-
-.privacyact p {
-    margin-top: 185px;
-    font-size: 15px;
-    color: #ffffff;
-    
-}
-
-.privacyact h1 {
-    margin-top: 50px;
-    color: #f7ce05;
-}
-
-.login, .formLogin h1{
-    margin-bottom: 30px;
-    text-align: center;
-}
-.formLogin a{
-    display: flex;
-    justify-content: center;
-    
-}
-.inputContainer {
-    position: relative;
-    height: 48px;
-    margin-bottom: 30px;
-}
-
-.inputLogin {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
-    border: 1px solid #adb5bd;
-    border-radius: 15px;
-    outline: none;
-    background: none;
-    padding: 16px;
-    z-index: 1;
-}
-
-.labelLogin{
-    position: absolute;
-    left: 16px;
-    top: 10px;
-    background-color: #f8f9fa;
-    padding: 3px 5px;
-    color: #adb5bd;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-.submitButton{
-    display: block;
-    margin: auto;
-    padding: 10px 30px;
-    outline: none;
-    border: none;
-    background-color: #252629;
-    color: #f8f9fa;
-    font-size: 16px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.submitButton:hover {
-    border-radius: 5px 15px;
-
-}
-
-.inputLogin:focus + .labelLogin{
-    top: -10px;
-    font-size: 13px;
-    font-weight: bold;
-    color: #252629;
-    z-index: 2;
-}
-
-
-
-.inputLogin:focus{
-    border: 1px solid #252629;
-}
-
-df-messenger {
-    --df-messenger-bot-message: #f7ce05;
-    --df-messenger-button-titlebar-color: #f7ce05;
-    --df-messenger-chat-background-color: #fafafa;
-    --df-messenger-send-icon: #f7ce05;
-   }
-
-
-  
-   .custom-shape-divider-bottom-1667119216 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1667119216 svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 150px;
-    transform: rotateY(180deg);
-}
-
-.custom-shape-divider-bottom-1667119216 .shape-fill {
-    fill: #2b2a2a;
-}
-
-.mema {
-  
-
-    
-    align-items: center;
-    justify-content: center;
-    
-}
-.mema span{
-    
-    width: 180px;
-    height: 55px;
-    margin: 0 15px;
-    perspective: 1000px;
-  }
-  .mema span a{
-    font-size: 19px;
-    letter-spacing: 1px;
-    transform-style: preserve-3d;
-    transform: translateZ(-25px);
-    transition: transform .25s;
-    font-family: 'Montserrat', sans-serif;
-    
-  }
-  .mema span a:before,
-  .mema span a:after{
-    position: absolute;
-    content: "Login";
-    height: 55px;
-    width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid black;
-    box-sizing: border-box;
-    border-radius: 5px;
-  }
-  .mema span a:before{
-    color: #ffffff;
-    background: #000;
-    transform: rotateY(0deg) translateZ(25px);
-  }
-  .mema span a:after{
-    color: rgb(255, 255, 255);
-    background: #f7ce05;
-    border: 5px solid #f7ce05;
-    transform: rotateX(90deg) translateZ(25px);
-  }
-  .mema span a:hover{
-    transform: translateZ(-25px) rotateX(-90deg);
-    
-  }
 
 
 @media (-webkit-device-pixel-ratio: 1.25) {
+    .bodyLogin {
+        zoom: 0.8;
+    }
+}
 
    
 .bodyLogin {
@@ -246,7 +17,7 @@ df-messenger {
 
   position: absolute;
   background-size: cover;
-  zoom: 0.8;
+  
  
   
   
@@ -474,7 +245,7 @@ df-messenger {
     transform: translateZ(-25px) rotateX(-90deg);
     
   }
-}
+
 
   
 
