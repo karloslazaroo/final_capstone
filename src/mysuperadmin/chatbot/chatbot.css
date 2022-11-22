@@ -1,3 +1,9 @@
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .chatbot_body {
+        zoom: 0.8;
+    }
+}
+
 .authorizeload{
     margin-left: 600px;
 
