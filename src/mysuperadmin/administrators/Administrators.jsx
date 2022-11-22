@@ -221,7 +221,7 @@ function App() {
       <p><ion-icon name="add-outline"></ion-icon>  If you don't see the designated department/offices, please <u onClick={addDepartment}>click here!</u> to add.</p>
       <div className="add_department" id="add_department">
       <label>New Office: </label>
-              <textarea className="title_content" type="text" placeholder="enter your new department / office" onChange={(event) => {setOffi(event.target.value);}}></textarea>
+              <textarea className="title_content" type="text" placeholder="enter your new office" onChange={(event) => {setOffi(event.target.value);}}></textarea>
              
             <div className="button_confirm_content">
                 <button href="#" onClick={addOffice}> Add </button>
