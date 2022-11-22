@@ -14,6 +14,7 @@ function App() {
     const [approval] = useState('Pending');
     const [reviewList, setReviewList] = useState([]);
     const source = "Reviews";
+    const [isChecked, setIsChecked] = useState(false);
    
   
     useEffect(() => {
@@ -32,22 +33,32 @@ function App() {
           icon:'success',
           confirmButtonColor: '#f7ce05'
       })
-  
-        Axios.post("https://aust-chatbot.herokuapp.com/insertReview", {
-          name: name,
-          message: message,
-          approval: approval,
-          email: email,
-        });
+        
+        if(isChecked==true){
+          insertReviewonAxios("Anonymous", message, approval, "Anonymous");
+        }
+        else{
+          insertReviewonAxios(name, message, approval, email);
+        }    
 
         let dates = new Date();
-        let postDate = dates.toLocaleString({timeZone: "Asia/Hong_Kong"});
+        let postDate = dates.toLocaleDateString('en-US',{timeZone: "Asia/Hong_Kong"});
         Axios.post("https://aust-chatbot.herokuapp.com/analyticsdata",{
           source: source,
           date: postDate,
         }).then(console.log('sent source'));
       }
     };
+
+  const insertReviewonAxios = (name, message, approval, email) =>{
+    Axios.post("https://aust-chatbot.herokuapp.com/insertReview", {
+      name: name,
+      message: message,
+      approval: approval,
+      email: email,
+    });
+    // .then(console.log('name and email',email, name));
+  }
 
 
   const [modal, setModal] = useState(false);
@@ -111,6 +122,7 @@ function App() {
             <textarea className="message_user"  placeholder="Write something.."  onChange={(event) => {
                 setMessage(event.target.value);
             }}></textarea>
+            <input type="checkbox" checked={isChecked} onChange={() =>setIsChecked((prev) => !prev)}/> Leave review anonymously
             
             <div className="buttons_reviews_user">
 

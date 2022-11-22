@@ -62,7 +62,7 @@ console.log(sendEmail);
       confirmButtonColor: '#f7ce05'
     }) 
     let dates = new Date();
-    let postDate = dates.toLocaleString({timeZone: "Asia/Hong_Kong"});
+    let postDate = dates.toLocaleDateString('en-US', {timeZone: "Asia/Hong_Kong"});
     console.log(postDate);
     const receiveremailcontainer = admi[receiver].email;
     Axios.post("https://aust-chatbot.herokuapp.com/insertTalk", {
