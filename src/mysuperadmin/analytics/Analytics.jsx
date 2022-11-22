@@ -156,11 +156,7 @@ class Analytics extends React.Component {
         this.datacontainer.push(data[i].count);
         
       }
-
-    
       
-      
-
       this.number.push(Math.max(...this.datacontainer));
       this.state.talktousdata.push(data);
       console.log('Data from talk to us received: ', this.state.talktousdata);
@@ -257,6 +253,7 @@ class Analytics extends React.Component {
 
 
   render(){
+    // console.log(this.ttudata.labels);
      return (
       
       <div className='analytics_body' >

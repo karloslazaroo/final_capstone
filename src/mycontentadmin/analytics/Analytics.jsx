@@ -1,6 +1,6 @@
 import React from 'react'
 import './analytics.css'
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 import {Chart as ChartJS, Title, Tooltip, LineElement, Legend, CategoryScale, LinearScale, PointElement} from 'chart.js';
 import autotable from 'jspdf-autotable';
 import jsPDF from 'jspdf';
@@ -31,7 +31,7 @@ function Analytics(){
   const labelLogs = [];
   const logs = [];
   
-  
+  console.log(labelscontainer);
   //talk to us pa lang
   const ttudata = ({
     labels: labelscontainer ,
@@ -47,6 +47,7 @@ function Analytics(){
       }
     ]
   });
+
 
   const ttuoptions = {
     plugins:{
@@ -110,7 +111,7 @@ function Analytics(){
       const data = response.data;
       state.reviewsdata.push(data);
 
-      console.log('Data from reviews received: ', data);
+      // console.log('Data from reviews received: ', data);
       data.sort(((a, b) => new Date(a._id) - new Date(b._id)));
       //code for staging date and count
       for(var i = 0; i < data.length; i ++){
@@ -121,6 +122,8 @@ function Analytics(){
       }
 
       number.push(Math.max(...reviewsdatacontainer));
+      console.log('reviewslabelscontainer', reviewslabelscontainer);
+      console.log('reviewsdatacontainer', reviewsdatacontainer);
 
     })
     .catch(() =>{
@@ -159,10 +162,8 @@ function Analytics(){
     axios.get(`https://aust-chatbot.herokuapp.com/readanalytics/${email}`)
     .then((response)=>{
       const data = response.data;
-
       console.log(data);
 
-      console.log(new Date(Date.now()).toLocaleString());
       data.sort(((a, b) => new Date(a._id) - new Date(b._id)));
       console.log('after', data);
       // //code for staging date and count
@@ -172,14 +173,13 @@ function Analytics(){
         
       }
 
-    
-      
       
 
       number.push(Math.max(...datacontainer));
-      state.talktousdata.push(data);
-      console.log('Data from talk to us received: ', data);
-      
+      // state.talktousdata.push(data);
+      // console.log('Data from talk to us received: ', data);
+      console.log('labelscontainer', labelscontainer);
+      console.log('datacontainer', datacontainer);
  
     
     })
@@ -224,6 +224,42 @@ function Analytics(){
     .catch(() =>{
       alert('Error getting talk to us data')
     });
+  }
+  
+  
+
+
+  // const getTalktoUsData = () =>{
+  //   axios.get('https://aust-chatbot.herokuapp.com/readanalytics')
+  //   .then((response)=>{
+  //     const data = response.data;
+
+      
+
+  //     console.log(new Date(Date.now()).toLocaleString());
+  //     data.sort(((a, b) => new Date(a._id) - new Date(b._id)));
+  //     console.log('after', data);
+  //     //code for staging date and count
+  //     for(var i = 0; i < data.length; i ++){
+  //       labelscontainer.push(data[i]._id);
+  //       datacontainer.push(data[i].count);
+        
+  //     }
+
+    
+      
+      
+
+  //     number.push(Math.max(...datacontainer));
+  //     state.talktousdata.push(data);
+      // console.log('Data from talk to us received: ', data);
+      
+ 
+    
+  //   })
+  //   .catch(() =>{
+  //     alert('Error getting talk to us data')
+  //   });
    
   }; */
 
@@ -232,16 +268,26 @@ function Analytics(){
     getReviewsData();
     //getSysLogData();
     //  console.log('number',number);
+    getReviewsData();
     gettalktousdatabyemail();
     getSysLogData();
   });
 
   /* useEffect(() => {
     const email = user.email;
-    axios.get(`https://aust-chatbot.herokuapp.com/readLogsUse/${email}`).then((response) => {
-      setLogs(response.data);
-    });
-  }, [logs]); */
+      axios.get(`https://aust-chatbot.herokuapp.com/readLogsUse/${email}`).then((response) => {
+        setLogs(response.data);
+      });
+  }
+
+
+  // useEffect(() => {
+  //   const email = user.email;
+  //   axios.get(`https://aust-chatbot.herokuapp.com/readLogsUse/${email}`).then((response) => {
+  //     setLogs(response.data);
+  //   }); */
+   
+  // }, [logs]);
 
   // displayTalktoUsData = (talktousdata) =>{
   //   return talktousdata.map((ttsdata, index) => (
