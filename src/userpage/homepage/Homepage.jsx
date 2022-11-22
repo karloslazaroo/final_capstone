@@ -27,7 +27,6 @@ function Homepage()  {
         <div className="textBox_user">
             <h2>Hello, <br></br> <span>{name}</span></h2>
             <p>User / {user?.email}</p><br></br>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores reprehenderit, soluta quae magnam quas quos dignissimos totam, sequi cum iure fuga dolor placeat ipsum nisi consequuntur sit magni, ex deleniti?</p>
             <a href='/Talktous_User'>Message Us Now!</a>
             </div>
             <div class="imgBox">

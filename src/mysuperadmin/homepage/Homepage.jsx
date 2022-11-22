@@ -15,7 +15,6 @@ const Homepage = () => {
         <div className="textBox_superadmin">
             <h2>Hello, <br></br> <span>{user?.displayName}</span></h2>
             <p>Super Administrator / {user?.email}</p><br></br>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores reprehenderit, soluta quae magnam quas quos dignissimos totam, sequi cum iure fuga dolor placeat ipsum nisi consequuntur sit magni, ex deleniti?</p>
             <a href='/Chatbot_Admin'>Edit your Chatbots</a>
             </div>
             <div class="imgBox">
