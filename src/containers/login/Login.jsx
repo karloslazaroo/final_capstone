@@ -96,7 +96,10 @@ function Signin (){
       <h1>Hello, Thomasian!</h1>
 				<p>DATA PRIVACY AGREEMENT: <br></br>  The personal information gathered through the website will be processed with the utmost confidentiality in accordance with the Data Privacy Act of 2012 and with the purpose of logging in on the website.</p>
       </div>
+      <div className="privacyact_mobile">
       
+				<p>DATA PRIVACY AGREEMENT: <br></br>  The personal information gathered through the website will be processed with the utmost confidentiality in accordance with the Data Privacy Act of 2012 and with the purpose of logging in on the website.</p>
+      </div>
       
     </div>
     <div class="custom-shape-divider-bottom-1667119216">

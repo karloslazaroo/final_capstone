@@ -245,6 +245,9 @@ df-messenger {
     transform: translateZ(-25px) rotateX(-90deg);
     
   }
+  .privacyact_mobile {
+    display: none;
+  }
 
 
   
@@ -253,7 +256,11 @@ df-messenger {
 @media only screen and (max-width: 600px) {
     .formLogin {
         height: 320px;
-        width: 300px;
+        width: 80%;
+        border-radius: 25px;
+        margin-top: 25%;
+        margin: auto;
+        margin-top: 25%;
     }
     .picture {
         height: 200px;
@@ -263,9 +270,25 @@ df-messenger {
         width: 50px;
     }
 
-    .custom-shape-divider-bottom-1667119216 {
-        display: none;
+    .custom-shape-divider-bottom-1667119216 svg {
+        height: 80px;
     }
+    .privacyact {
+        display: none;
+        
+    }
+    .login {
+        max-width: 100%;
+        display: block;
+        margin: auto;
+    }
+    .privacyact_mobile {
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
 }
 
 
