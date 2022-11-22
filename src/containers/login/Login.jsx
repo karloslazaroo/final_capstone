@@ -57,7 +57,7 @@ function Signin (){
             date: postDate,
           });
       
-      if(email == "karlosandrew.lazaro.cics@ust.edu.ph") {
+      if(email == "neestrella@ust.edu.ph") {
           navigate('/super');
           // logthelogin("super");
       } else  {
