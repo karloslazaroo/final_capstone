@@ -36,6 +36,21 @@
     margin-top: 30%;
 }
 
+.systemlogs span {
+    color: #f7ce05;
+    font-size: 1em;
+    font-weight: 900px;
+    
+}
+
+.systemlogs h2 {
+    color: #333;
+    font-size: 4em;
+    line-height: 1.4em;
+    font-weight: 500px;
+    
+}
+
 .textBox_user span {
     color: #f7ce05;
     font-size: 1em;
@@ -87,6 +102,19 @@
     .imgBox {
         display: none;
     }
-}
+    
+    
+    .systemlogs h2 {
+            font-size: 2em;
+            
+        }
+    .Logs {
+        margin-top: 75%;
+    }
+
+   
+    }
+
+
 
 

@@ -36,10 +36,10 @@ function Homepage()  {
     </div>
     <Post/>
   <div className="Logs"> 
-<div className="textBox">
+<div className="systemlogs">
         <h2>System Logs<br></br></h2>
         </div>
-        <div className='divider'></div>
+        <div className='divider_user'></div>
         <div className="table" id='my-table'>
        
         {logs.map((data, index) =>{

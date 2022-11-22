@@ -144,7 +144,7 @@
 }
 
 .faq {
-	max-width: 700px;
+	width: 900px;
 	margin-top: 2rem;
 	padding-bottom: 1rem;
 	border-bottom: 2px solid rgb(0, 0, 0);
@@ -237,6 +237,10 @@ svg{
 	}
 	.right{
 		padding: 10px;
+	}
+
+	.faq {
+		width: 250px;
 	}
 	
 }

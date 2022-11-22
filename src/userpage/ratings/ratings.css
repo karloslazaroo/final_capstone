@@ -219,4 +219,16 @@ width: 1610px;
     font-weight: 600;
   font-size: 14px;
   }
+
+  .modal-content {
+    width: 80%;
+
+  }
+  .wrapper {
+    padding: 0px;
+    margin: 0px;
+  }
+  .box {
+    padding: 15px;
+  }
 }

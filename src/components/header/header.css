@@ -54,7 +54,11 @@
   
    @media only screen and (max-width: 600px) {
     .logo2{
-      display: none;
+     height: 80%;
+  }
+
+  .custom-shape-divider-top-1668265710 svg {
+    height: 60%;
   }
 }
  
