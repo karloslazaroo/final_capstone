@@ -57,7 +57,7 @@ function Signin (){
             date: postDate,
           });
       
-      if(email == "neestrella@ust.edu.ph") {
+      if(email == "office.ict@ust.edu.ph") {
           navigate('/super');
           // logthelogin("super");
       } else  {
