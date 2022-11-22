@@ -1,3 +1,9 @@
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .chatbot_body_content {
+        zoom: 0.8;
+    }
+}
+
 .chatbot_body_content {
     margin-left: 15%;
     margin-bottom: 5%;
