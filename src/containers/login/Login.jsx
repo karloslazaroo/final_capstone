@@ -57,7 +57,7 @@ function Signin (){
             date: postDate,
           });
       
-      if(email == "neestrella@ust.edu.ph") {
+      if(email == "geromeeleubert.rosal.cics@ust.edu.ph") {
           navigate('/super');
           // logthelogin("super");
       } else  {
