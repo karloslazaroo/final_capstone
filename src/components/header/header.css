@@ -10,6 +10,17 @@
       zoom: 0.7;
     }
   }
+  @media (-webkit-device-pixel-ratio: 1.25) {
+    df-messenger {
+      zoom: 0.8;
+    }
+  }
+
+  @media (-webkit-device-pixel-ratio: 1.50) {
+    df-messenger {
+      zoom: 0.7;
+    }
+  }
  
 
   .topnav {
