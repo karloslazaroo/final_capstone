@@ -4,6 +4,11 @@
   }
 }
 
+@media (-webkit-device-pixel-ratio: 1.50) {
+  .body_Questions {
+    zoom: 0.7;
+  }
+}
 .body_Questions {
     margin-left: 15%;
 }

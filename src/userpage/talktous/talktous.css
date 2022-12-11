@@ -3,6 +3,12 @@
 		zoom: 0.8;
 	}
 }
+@media (-webkit-device-pixel-ratio: 1.50) {
+	.body_talktous {
+		zoom: 0.7;
+	}
+}
+
 
 .talktous_user{
 	color: #f7ce05;

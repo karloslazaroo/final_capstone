@@ -3,6 +3,12 @@
         zoom: 0.8;
     }
 }
+
+@media (-webkit-device-pixel-ratio: 1.50) {
+    .footer {
+        zoom: 0.7;
+    }
+}
 .footer{
     
     display: inline-block;

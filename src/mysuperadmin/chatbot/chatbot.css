@@ -4,6 +4,12 @@
     }
 }
 
+@media (-webkit-device-pixel-ratio: 1.50) {
+    .chatbot_body {
+        zoom: 0.7;
+    }
+}
+
 .authorizeload{
     margin-left: 600px;
 

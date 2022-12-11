@@ -4,6 +4,12 @@
   }
 }
 
+@media (-webkit-device-pixel-ratio: 1.50) {
+  .ratings_content {
+    zoom: 0.7;
+  }
+}
+
 .textBox_content {
   margin-left: 15%;
 }

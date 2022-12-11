@@ -3,6 +3,12 @@
         zoom: 0.8;
     }
 }
+
+@media (-webkit-device-pixel-ratio: 1.50) {
+    .side-nav {
+        zoom: 0.7;
+    }
+}
 .side-nav {
     width: 250px;
     height: 100%;

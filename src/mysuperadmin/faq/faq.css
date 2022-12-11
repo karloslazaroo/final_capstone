@@ -6,6 +6,14 @@
 
 }
 
+@media (-webkit-device-pixel-ratio: 1.50) {
+    .faq_body {
+        zoom: 0.7;
+
+    }
+
+}
+
 .faq_body {
     margin-left: 15%;
 }
