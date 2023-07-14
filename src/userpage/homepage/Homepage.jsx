@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "";
 import img1 from '../../assets/tiger_ust.jpg';
 import Axios from 'axios';
 import './homepage.css';
